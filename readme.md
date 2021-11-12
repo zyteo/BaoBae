@@ -65,5 +65,6 @@ npm Libraries
  ## References
 Had to do some research to better understand the topic and here are some websites I visited:  
 
-React Native Docs https://reactnative.dev/
+React Native Docs https://reactnative.dev/  
 Video on React Native https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=ProgrammingwithMosh
+React navigation https://reactnavigation.org/docs/getting-started/
