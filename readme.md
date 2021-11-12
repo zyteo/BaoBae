@@ -18,6 +18,7 @@ Technologies used to build this project.
 ```
 - React Native
 - Expo Client
+- React Navigation
 
 ```
 
@@ -51,20 +52,12 @@ Timeline
 
 ```
 
-
-
-
-## Acknowledgments
-
-npm Libraries
-- React Native
-- Expo Client
-
 ---
 
  ## References
 Had to do some research to better understand the topic and here are some websites I visited:  
 
 React Native Docs https://reactnative.dev/  
-Video on React Native https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=ProgrammingwithMosh
-React navigation https://reactnavigation.org/docs/getting-started/
+Video on React Native https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=ProgrammingwithMosh  
+React navigation https://reactnavigation.org/docs/getting-started/  
+Checking out React Native + Supabase https://www.youtube.com/watch?v=5e67b0PBcn4&list=PL2PY2-9rsgl0TTqJk3tCNJnBAjwHCjdYM&index=2&ab_channel=AaronSaunders
