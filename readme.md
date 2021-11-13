@@ -19,8 +19,8 @@ Technologies used to build this project.
 - React Native
 - Expo Client
 - React Navigation
-- Supabase
 - Asyncstorage
+- Firebase
 
 ```
 
@@ -54,7 +54,9 @@ Timeline
 - 12 Nov: Decided to try out React Native for final project. Did some research, watched videos to get a look of React Native. 
 Installed expo client and initialised first React Native project.
 - 13 Nov: Started planning for app. Also went to read drawio docs for mobile app wireframe.
-Created wireframes and components.
+Created wireframes and components. Did login and signup page to test backend authentication.
+Decided to ditch Supabase as backend as there are some jarring errors with React Native.
+
 
 
 ```

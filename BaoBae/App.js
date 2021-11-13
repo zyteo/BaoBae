@@ -1,11 +1,7 @@
-import { StatusBar } from "expo-status-bar";
-import React from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
-import colours from "./app/Config/colours";
+import React from "react";
 
-import PizzaTranslator from "./app/Screens/Test";
 import AccountScreen from "./app/Screens/AccountScreen";
 import BrowseScreen from "./app/Screens/BrowseScreen";
 import CartScreen from "./app/Screens/CartScreen";
@@ -14,6 +10,8 @@ import LoginScreen from "./app/Screens/LoginScreen";
 import OpenScreen from "./app/Screens/OpenScreen";
 import SearchScreen from "./app/Screens/SearchScreen";
 import SignupScreen from "./app/Screens/SignupScreen";
+import PizzaTranslator from "./app/Screens/Test";
+
 
 const Stack = createNativeStackNavigator();
 export default function App() {

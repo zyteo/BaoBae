@@ -8,31 +8,23 @@ const SignupScreen = ({ navigation }) => {
 
   const handleSignUp = () => {
     if (password !== passwordCheck) {
-      // Alert.alert("Notice!", "Passwords do not match!", [
-      //   {
-      //     text: "Ask me later",
-      //     onPress: () => console.log("Ask me later pressed"),
-      //   },
-      //   {
-      //     text: "Cancel",
-      //     onPress: () => console.log("Cancel Pressed"),
-      //     style: "cancel",
-      //   },
-      //   { text: "OK", onPress: () => console.log("OK Pressed") },
-      // ]);
-      console.log("not match");
+      Alert.alert("Oops!", "Passwords do not match!", [{ text: "OK" }]);
     } else {
-      console.log("match");
+      
     }
   };
   return (
     <View style={{ padding: 10 }}>
+      <Text>Email: </Text>
       <TextInput
         style={{ height: 40 }}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
         value={email}
+        keyboardType="email-address"
+        textContentType="emailAddress"
       />
+      <Text>Password: </Text>
       <TextInput
         secureTextEntry={true}
         style={{ height: 40 }}
@@ -40,6 +32,7 @@ const SignupScreen = ({ navigation }) => {
         onChangeText={(text) => setPassword(text)}
         value={password}
       />
+      <Text>Confirm Password: </Text>
       <TextInput
         secureTextEntry={true}
         style={{ height: 40 }}
