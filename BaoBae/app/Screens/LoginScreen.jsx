@@ -1,19 +1,21 @@
 import React, { useEffect, useState } from "react";
 import { Text, TextInput, View, Button, Alert } from "react-native";
+import { auth } from "../../firebase";
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [auth, setAuth] = useState("");
 
   const handleLogin = () => {
     console.log(email, password);
     if (email) {
-      
-      if (response?.error) {
-        console.log("err", response.error);
-        return;
-      }
+      auth
+        .signInWithEmailAndPassword(email, password)
+        .then((userCredentials) => {
+          const user = userCredentials.user;
+          console.log(user);
+        })
+        .catch((error) => console.log(error));
     } else {
       Alert.alert(
         "Oops!",
@@ -23,7 +25,6 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
-  
   return (
     <View style={{ padding: 10 }}>
       <Text>Email: </Text>
