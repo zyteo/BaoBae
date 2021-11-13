@@ -20,6 +20,7 @@ Technologies used to build this project.
 - Expo Client
 - React Navigation
 - Supabase
+- Asyncstorage
 
 ```
 
