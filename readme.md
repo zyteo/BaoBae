@@ -24,6 +24,7 @@ Technologies used to build this project.
 ```
 
 ### Wireframes
+<img src="./drawio/wireframes.png"/>
 
 ### User Stories
 
@@ -51,7 +52,8 @@ Timeline
 
 - 12 Nov: Decided to try out React Native for final project. Did some research, watched videos to get a look of React Native. 
 Installed expo client and initialised first React Native project.
-- 13 Nov: Started planning for app.
+- 13 Nov: Started planning for app. Also went to read drawio docs for mobile app wireframe.
+Created wireframes.
 
 
 ```
@@ -65,3 +67,4 @@ React Native Docs https://reactnative.dev/
 Video on React Native https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=ProgrammingwithMosh  
 React navigation https://reactnavigation.org/docs/getting-started/  
 Checking out React Native + Supabase https://www.youtube.com/watch?v=5e67b0PBcn4&list=PL2PY2-9rsgl0TTqJk3tCNJnBAjwHCjdYM&index=2&ab_channel=AaronSaunders
+Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mobile-apps/
