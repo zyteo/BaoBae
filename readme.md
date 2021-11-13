@@ -19,6 +19,7 @@ Technologies used to build this project.
 - React Native
 - Expo Client
 - React Navigation
+- Supabase
 
 ```
 
@@ -43,11 +44,14 @@ To use the app, user should:
 
 ## Planning and Development Process
 
+<img src="./drawio/plan.png"/>
 
 ```
 Timeline
 
-- 12 Nov: Decided to try out React Native for final project. Did some research, watched videos to get a look of React Native. Installed expo client and initialised first React Native project.
+- 12 Nov: Decided to try out React Native for final project. Did some research, watched videos to get a look of React Native. 
+Installed expo client and initialised first React Native project.
+- 13 Nov: Started planning for app.
 
 
 ```
