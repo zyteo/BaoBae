@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { Text, TextInput, View, Button } from "react-native";
 
-const PizzaTranslator = ({ navigation }) => {
-  const [text, setText] = useState("");
+const OpenScreen = ({ navigation }) => {
   return (
     <View style={{ padding: 10 }}>
       <TextInput
@@ -17,13 +16,10 @@ const PizzaTranslator = ({ navigation }) => {
           .map((word) => word && "🍕")
           .join(" ")}
       </Text>
-      <Button
-        title="Go to Details... again"
-        onPress={() => navigation.push("Test")}
-      />
+      <Button title="Go Home" onPress={() => navigation.push("Home")} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
 };
 
-export default PizzaTranslator;
+export default OpenScreen;
