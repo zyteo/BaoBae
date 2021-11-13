@@ -11,6 +11,10 @@ const SignupScreen = ({ navigation }) => {
     // alert if passwords dont match
     if (password !== passwordCheck) {
       Alert.alert("Oops!", "Passwords do not match!", [{ text: "OK" }]);
+    } else if (password.length < 6 || passwordCheck.length < 6) {
+      Alert.alert("Oops!", "Password must be at least 6 characters!", [
+        { text: "OK" },
+      ]);
     } else {
       auth
         .createUserWithEmailAndPassword(email, password)
@@ -45,7 +49,7 @@ const SignupScreen = ({ navigation }) => {
       <TextInput
         secureTextEntry={true}
         style={{ height: 40 }}
-        placeholder="Password"
+        placeholder="Password - Minimum 6 characters"
         onChangeText={(text) => setPassword(text)}
         value={password}
       />

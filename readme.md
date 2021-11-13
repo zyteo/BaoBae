@@ -56,6 +56,8 @@ Installed expo client and initialised first React Native project.
 - 13 Nov: Started planning for app. Also went to read drawio docs for mobile app wireframe.
 Created wireframes and components. Did login and signup page to test backend authentication.
 Decided to ditch Supabase as backend as there are some jarring errors with React Native.
+Switched to firebase, struggled quite a lot since V9 just got released and notes were still V8.
+Finally got firebase authentication working.
 
 
 

@@ -25,6 +25,14 @@ const LoginScreen = ({ navigation }) => {
     }
   };
 
+  useEffect(() => {
+    const unSubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        navigation.navigate("Browse");
+      }
+    });
+    return unSubscribe;
+  }, []);
   return (
     <View style={{ padding: 10 }}>
       <Text>Email: </Text>
