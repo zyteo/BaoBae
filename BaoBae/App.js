@@ -13,36 +13,9 @@ import ItemScreen from "./app/Screens/ItemScreen";
 import LoginScreen from "./app/Screens/LoginScreen";
 import OpenScreen from "./app/Screens/OpenScreen";
 import SearchScreen from "./app/Screens/SearchScreen";
-import SignupScreen from "./app/Screens/SearchScreen";
+import SignupScreen from "./app/Screens/SignupScreen";
 
 const Stack = createNativeStackNavigator();
-
-function HomeScreen({ navigation }) {
-  return (
-    <View style={styles.container}>
-      <Text>BaoBae</Text>
-      <Text>Taobao Clone</Text>
-      <StatusBar style="auto" />
-      <Button
-        title="Go to Details"
-        onPress={() => navigation.navigate("Test")}
-      />
-      <Button
-        title="Go to a"
-        onPress={() => navigation.navigate("Account")}
-      />
-      <Button
-        title="Go to b"
-        onPress={() => navigation.navigate("Browse")}
-      />
-      <Button
-        title="Go to c"
-        onPress={() => navigation.navigate("Cart")}
-      />
-    </View>
-  );
-}
-
 export default function App() {
   return (
     <>
@@ -50,7 +23,7 @@ export default function App() {
         <Stack.Navigator>
           <Stack.Screen
             name="Home"
-            component={HomeScreen}
+            component={OpenScreen}
             options={{ title: "Overview" }}
           />
           <Stack.Screen name="Test" component={PizzaTranslator} />
@@ -58,17 +31,11 @@ export default function App() {
           <Stack.Screen name="Browse" component={BrowseScreen} />
           <Stack.Screen name="Cart" component={CartScreen} />
           <Stack.Screen name="Item" component={ItemScreen} />
+          <Stack.Screen name="Login" component={LoginScreen} />
+          <Stack.Screen name="Signup" component={SignupScreen} />
+          <Stack.Screen name="Search" component={SearchScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
