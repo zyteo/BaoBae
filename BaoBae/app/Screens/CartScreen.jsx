@@ -7,8 +7,8 @@ const CartScreen = ({ navigation }) => {
       <Text style={{ padding: 10, fontSize: 42 }}>
         cart
       </Text>
-      <Button title="Go Home" onPress={() => navigation.push("Home")} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
+      <Button title="Remove item" onPress={() => navigation.push("Browse")} />
+      <Button title="BUY" onPress={() => navigation.push("Account")} />
     </View>
   );
 };
