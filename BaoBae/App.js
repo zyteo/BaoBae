@@ -12,7 +12,6 @@ import SearchScreen from "./app/Screens/SearchScreen";
 import SignupScreen from "./app/Screens/SignupScreen";
 import PizzaTranslator from "./app/Screens/Test";
 
-
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (

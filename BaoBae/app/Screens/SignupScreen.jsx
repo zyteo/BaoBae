@@ -1,6 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Button, Alert } from "react-native";
+import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
 import { auth } from "../../firebase";
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -35,7 +44,7 @@ const SignupScreen = ({ navigation }) => {
     return unSubscribe;
   }, []);
   return (
-    <View style={{ padding: 10 }}>
+    <View style={styles.container}>
       <Text>Email: </Text>
       <TextInput
         style={{ height: 40 }}

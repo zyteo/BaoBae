@@ -2,6 +2,15 @@ import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View, Button } from "react-native";
 import colours from "../Config/colours";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+});
+
 const OpenScreen = ({ navigation }) => {
   return (
     <View style={styles.container}>
@@ -14,12 +23,3 @@ const OpenScreen = ({ navigation }) => {
 };
 
 export default OpenScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
