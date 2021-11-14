@@ -19,7 +19,6 @@ Technologies used to build this project.
 - React Native
 - Expo Client
 - React Navigation
-- Asyncstorage
 - Firebase
 
 ```
@@ -58,6 +57,8 @@ Created wireframes and components. Did login and signup page to test backend aut
 Decided to ditch Supabase as backend as there are some jarring errors with React Native.
 Switched to firebase, struggled quite a lot since V9 just got released and notes were still V8.
 Finally got firebase authentication working.
+- 14 Nov: Exploring more of firebase. Set up the database for storing the items.
+Moved all relevant code from jsx to firebase backend to ensure division between frontend/backend.
 
 
 
@@ -72,4 +73,5 @@ React Native Docs https://reactnative.dev/
 Video on React Native https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=ProgrammingwithMosh  
 React navigation https://reactnavigation.org/docs/getting-started/  
 Checking out React Native + Supabase https://www.youtube.com/watch?v=5e67b0PBcn4&list=PL2PY2-9rsgl0TTqJk3tCNJnBAjwHCjdYM&index=2&ab_channel=AaronSaunders  
-Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mobile-apps/
+Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mobile-apps/  
+Firebase docs https://firebase.google.com/docs/
