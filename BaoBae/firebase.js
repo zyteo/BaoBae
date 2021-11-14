@@ -2,6 +2,8 @@
 // import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
+import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+
 import {
   FIREBASE_APIKEY,
   FIREBASE_AUTHDOMAIN,
@@ -29,4 +31,42 @@ const app = firebase.initializeApp(firebaseConfig);
 
 // for authentication
 const auth = firebase.auth();
-export { auth };
+
+// for signing up
+const signUpUser = (email, password) => {
+  auth
+    .createUserWithEmailAndPassword(email, password)
+    .then((userCredentials) => {
+      const user = userCredentials.user;
+      console.log(userCredentials);
+    })
+    .catch((error) => console.log(error));
+};
+// for logging in
+const signInUser = (email, password) => {
+  auth
+    .signInWithEmailAndPassword(email, password)
+    .then((userCredentials) => {
+      const user = userCredentials.user;
+      console.log(userCredentials);
+    })
+    .catch((error) => {
+      console.log(error);
+      Alert.alert("Oops!", "Login failed!", [{ text: "OK" }]);
+    });
+};
+// for logging out
+const logOutUser = (navigation) => {
+  auth
+    .signOut()
+    .then(() => {
+      navigation.replace("Home");
+    })
+    .catch((error) => console.log(error));
+};
+
+export { auth, signInUser, signUpUser, logOutUser };
+
+// for database
+const db = getFirestore();
+export { db };
