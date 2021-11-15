@@ -146,7 +146,7 @@ updateDoc(doc(db, "items", "Tissue"), {
 // );
 
 // get all the items from items collection
-const getitem = async (setItems) => {
+const getItems = async (setItems) => {
   const querySnapshot = await getDocs(collection(db, "items"));
   const itemArray = [];
   querySnapshot.forEach((doc) => {
@@ -161,4 +161,10 @@ const getItemSpecific = async (itemName, setItemSpecific) => {
   setItemSpecific(docSnap.data());
 };
 
-export { db, getitem, getItemSpecific };
+// get specific user
+const getCurrentUser = async (username, setUser) => {
+  const docSnap = await getDoc(doc(db, "users", username));
+  setUser(docSnap.data());
+};
+
+export { db, getItems, getItemSpecific, getCurrentUser };

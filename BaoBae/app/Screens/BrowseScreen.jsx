@@ -8,7 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { getitem, getItems, logOutUser } from "../../firebase";
+import { getItems, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
 
 const BrowseScreen = ({ navigation }) => {
@@ -16,7 +16,7 @@ const BrowseScreen = ({ navigation }) => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
-    getitem(setItems);
+    getItems(setItems);
   }, []);
 
   return (
