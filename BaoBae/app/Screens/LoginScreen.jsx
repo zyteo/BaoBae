@@ -30,8 +30,7 @@ const LoginScreen = ({ navigation }) => {
   useEffect(() => {
     const directBrowse = auth.onAuthStateChanged((user) => {
       if (user) {
-        console.log(user.email);
-        navigation.navigate("Browse");
+        navigation.navigate("Browse", { email: user.email });
       }
     });
     return directBrowse;

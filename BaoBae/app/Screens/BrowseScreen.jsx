@@ -8,7 +8,7 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { getItems, logOutUser } from "../../firebase";
+import { getCurrentUser, getItems, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
@@ -42,19 +42,22 @@ const styles = StyleSheet.create({
   },
 });
 
-const BrowseScreen = ({ navigation }) => {
+const BrowseScreen = ({ route, navigation }) => {
+  const userEmail = route.params.email;
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     getItems(setItems);
+    getCurrentUser(userEmail, setUser);
   }, []);
 
   return (
     <>
       <View style={styles.container}>
         <View>
-          <Text>What are you looking for today?</Text>
+          <Text>What are you looking for today, {user.username}?</Text>
           <TextInput
             style={styles.input}
             placeholder="Search items"

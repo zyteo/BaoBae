@@ -219,8 +219,10 @@ const getItemSpecific = async (itemName, setItemSpecific) => {
 };
 
 // get specific user
-const getCurrentUser = async (username, setUser) => {
-  const docSnap = await getDoc(doc(db, "users", username));
+const getCurrentUser = async (email, setUser) => {
+  // need to set first character uppercase because authentication email is stored as all lowercase
+  email = email.charAt(0).toUpperCase() + email.slice(1);
+  const docSnap = await getDoc(doc(db, "users", email));
   setUser(docSnap.data());
 };
 
