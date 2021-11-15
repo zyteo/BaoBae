@@ -80,9 +80,9 @@ Edited the browsing and item screens accordingly.
 - [ ] Account
 
 ##### Sample images...
-<img src="./images/login"/>
-<img src="./images/browse"/>
-<img src="./images/item"/>
+<img src="./images/login.jpg"/>
+<img src="./images/browse.jpg"/>
+<img src="./images/item.jpg"/>
 ---
 
 
