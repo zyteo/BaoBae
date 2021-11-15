@@ -10,6 +10,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  input: {
+    height: 40,
+    margin: 10,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: colours.inputbox,
+    color: colours.inputboxtext,
+    borderColor: colours.border,
+  },
 });
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -33,17 +42,17 @@ const LoginScreen = ({ navigation }) => {
     <View style={styles.container}>
       <Text>Email: </Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.input}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
         value={email}
         keyboardType="email-address"
         textContentType="emailAddress"
-      />
+        />
       <Text>Password: </Text>
       <TextInput
         secureTextEntry={true}
-        style={{ height: 40 }}
+        style={styles.input}
         placeholder="Password"
         onChangeText={(text) => setPassword(text)}
         value={password}

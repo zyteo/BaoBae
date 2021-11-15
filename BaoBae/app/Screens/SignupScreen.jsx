@@ -10,6 +10,15 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  input: {
+    height: 40,
+    margin: 10,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: colours.inputbox,
+    color: colours.inputboxtext,
+    borderColor: colours.border,
+  },
 });
 
 const SignupScreen = ({ navigation }) => {
@@ -32,22 +41,15 @@ const SignupScreen = ({ navigation }) => {
       ]);
     } else {
       signUpUser(email, password, Alert);
+      navigation.navigate("Home");
     }
   };
 
-  useEffect(() => {
-    const unSubscribe = auth.onAuthStateChanged((user) => {
-      if (user) {
-        navigation.navigate("Home");
-      }
-    });
-    return unSubscribe;
-  }, []);
   return (
     <View style={styles.container}>
       <Text>Email: </Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.input}
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
         value={email}
@@ -56,7 +58,7 @@ const SignupScreen = ({ navigation }) => {
       />
       <Text>Username: </Text>
       <TextInput
-        style={{ height: 40 }}
+        style={styles.input}
         placeholder="Username - Minimum 3 characters"
         onChangeText={(text) => setUsername(text)}
         value={username}
@@ -64,7 +66,7 @@ const SignupScreen = ({ navigation }) => {
       <Text>Password: </Text>
       <TextInput
         secureTextEntry={true}
-        style={{ height: 40 }}
+        style={styles.input}
         placeholder="Password - Minimum 6 characters"
         onChangeText={(text) => setPassword(text)}
         value={password}
@@ -72,7 +74,7 @@ const SignupScreen = ({ navigation }) => {
       <Text>Confirm Password: </Text>
       <TextInput
         secureTextEntry={true}
-        style={{ height: 40 }}
+        style={styles.input}
         placeholder="Confirm Password"
         onChangeText={(text) => setPasswordCheck(text)}
         value={passwordCheck}
