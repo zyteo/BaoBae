@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Text,
   TextInput,
@@ -8,35 +8,56 @@ import {
   StyleSheet,
   TouchableOpacity,
 } from "react-native";
-import { logOutUser } from "../../firebase";
+import { getitem, getItems, logOutUser } from "../../firebase";
+import colours from "../Config/colours";
 
 const BrowseScreen = ({ navigation }) => {
   const [text, setText] = useState("");
+  const [items, setItems] = useState([]);
+
+  useEffect(() => {
+    getitem(setItems);
+  }, []);
 
   return (
     <>
-      <View>
-        <TextInput
-          style={{ height: 40 }}
-          placeholder="Search items"
-          onChangeText={(text) => setText(text)}
-        />
-      </View>
-      <View>
-        <Text>Tissue</Text>
-        <TouchableOpacity onPress={() => navigation.push("Item")}>
-          <Image
-            style={styles.photo}
-            source={{
-              uri: "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
-            }}
+      <View style={styles.container}>
+        <View>
+          <Text>Search:</Text>
+          <TextInput
+            style={styles.input}
+            placeholder="Search items"
+            onChangeText={(text) => setText(text)}
           />
-        </TouchableOpacity>
-      </View>
-      <View style={{ padding: 10 }}>
-        <Text style={{ padding: 10, fontSize: 42 }}>Browse items!</Text>
-        <Button title="Logout" onPress={() => logOutUser(navigation)} />
-        <Button title="My Cart" onPress={() => navigation.push("Cart")} />
+          <Button title="🔍" onPress={() => logOutUser(navigation)} />
+        </View>
+
+        <View>
+          {items.map((element) => {
+            return (
+              <>
+                <Text>{element.name}</Text>
+                <TouchableOpacity
+                  onPress={() =>
+                    navigation.push("Item", { name: element.name })
+                  }
+                >
+                  <Image
+                    style={styles.photo}
+                    source={{
+                      uri: element.image,
+                    }}
+                  />
+                </TouchableOpacity>
+              </>
+            );
+          })}
+        </View>
+
+        <View style={styles.container}>
+          <Button title="Logout" onPress={() => logOutUser(navigation)} />
+          <Button title="My Cart" onPress={() => navigation.push("Cart")} />
+        </View>
       </View>
     </>
   );
@@ -46,7 +67,19 @@ export default BrowseScreen;
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: 50,
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  input: {
+    height: 40,
+    margin: 10,
+    borderWidth: 1,
+    padding: 10,
+    backgroundColor: colours.inputbox,
+    color: colours.inputboxtext,
+    borderColor: colours.border,
   },
   photo: {
     width: 50,

@@ -8,6 +8,10 @@ import {
   doc,
   setDoc,
   updateDoc,
+  getDocs,
+  collectionGroup,
+  query,
+  where,
 } from "firebase/firestore";
 import {
   FIREBASE_APIKEY,
@@ -126,6 +130,10 @@ setDoc(doc(db, "items", "Tissue"), {
   quantity: 1000,
   type: "Lifestyle",
   comments: {},
+  image:
+    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
+  description:
+    "This is a must have! For drying your tears when you code too much.",
 });
 setDoc(doc(db, "items", "Portable monitor"), {
   name: "Portable monitor",
@@ -133,6 +141,10 @@ setDoc(doc(db, "items", "Portable monitor"), {
   quantity: 1000,
   type: "Technology",
   comments: {},
+  image:
+    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
+  description:
+    "This is a must have! For drying your tears when you code too much.",
 });
 setDoc(doc(db, "items", "Wireless Earpiece"), {
   name: "Wireless Earpiece",
@@ -140,13 +152,38 @@ setDoc(doc(db, "items", "Wireless Earpiece"), {
   quantity: 1000,
   type: "Technology",
   comments: {},
+  image:
+    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
+  description:
+    "This is a must have! For drying your tears when you code too much.",
 });
 
 // test update doc
-updateDoc(doc(db, "items", "tissue"), {
+updateDoc(doc(db, "items", "Tissue"), {
   "comments.rating": 3,
   "comments.text": "very gud",
   "comments.username": "Bae",
 });
 
-export { db };
+// get all items data
+// const getItems = () => {
+//   const itemsForBrowse = getDocs(collection(db, "items"));
+//   console.log(itemsForBrowse)
+// };
+
+const museums = query(
+  collectionGroup(db, "items"),
+  where("type", "==", "Technology")
+);
+
+const getitem = async (setItems) => {
+  const querySnapshot = await getDocs(collection(db, "items"));
+  const itemArray = [];
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    // console.log(doc.id, " => ", doc.data());
+    itemArray.push(doc.data());
+  });
+  setItems(itemArray);
+};
+export { db, getitem };

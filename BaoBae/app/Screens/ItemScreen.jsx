@@ -1,10 +1,13 @@
+import { Route } from "@react-navigation/native";
 import React, { useState } from "react";
 import { Text, TextInput, View, Button, Image } from "react-native";
 
-const ItemScreen = ({ navigation }) => {
+const ItemScreen = ({ route, navigation }) => {
+  const item = route.params.name;
+
   return (
     <View style={{ padding: 10 }}>
-      <Text style={{ padding: 10, fontSize: 42 }}>TISSUE</Text>
+      <Text>{item}</Text>
       <Button title="Add to cart" onPress={() => navigation.push("Browse")} />
       <Button title="BUY" onPress={() => navigation.push("Browse")} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
