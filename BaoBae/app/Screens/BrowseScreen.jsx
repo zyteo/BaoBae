@@ -11,6 +11,37 @@ import {
 import { getItems, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
 
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  items: {
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
+  },
+  input: {
+    height: 40,
+    margin: 10,
+    borderWidth: 1,
+    padding: 10,
+    width: "90%",
+    backgroundColor: colours.inputbox,
+    color: colours.inputboxtext,
+    borderColor: colours.border,
+  },
+  photo: {
+    width: 80,
+    height: 80,
+  },
+});
+
 const BrowseScreen = ({ navigation }) => {
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
@@ -66,33 +97,3 @@ const BrowseScreen = ({ navigation }) => {
 };
 
 export default BrowseScreen;
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  items: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-  photo: {
-    width: 80,
-    height: 80,
-  },
-});

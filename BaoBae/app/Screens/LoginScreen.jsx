@@ -13,6 +13,7 @@ const styles = StyleSheet.create({
   input: {
     height: 40,
     margin: 10,
+    width: "90%",
     borderWidth: 1,
     padding: 10,
     backgroundColor: colours.inputbox,
@@ -29,6 +30,7 @@ const LoginScreen = ({ navigation }) => {
   useEffect(() => {
     const directBrowse = auth.onAuthStateChanged((user) => {
       if (user) {
+        console.log(user.email);
         navigation.navigate("Browse");
       }
     });
