@@ -59,6 +59,7 @@ Switched to firebase, struggled quite a lot since V9 just got released and notes
 Finally got firebase authentication working.
 - 14 Nov: Exploring more of firebase. Set up the database for storing the items.
 Moved all relevant code from jsx to firebase backend to ensure division between frontend/backend.
+- 15 Nov: Exploring firebase commands. Refined authentication code.
 
 
 

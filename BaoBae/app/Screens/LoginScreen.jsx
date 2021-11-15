@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Button, StyleSheet } from "react-native";
+import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
 import { auth, signInUser } from "../../firebase";
+import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
   container: {
@@ -10,15 +11,13 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
 });
-
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const handleLogin = () => {
-    console.log(email, password);
     if (email) {
-      signInUser(email, password);
+      signInUser(email, password, Alert);
     }
   };
 
@@ -57,4 +56,3 @@ const LoginScreen = ({ navigation }) => {
 };
 
 export default LoginScreen;
-

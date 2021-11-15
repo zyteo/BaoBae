@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
-import { auth } from "../../firebase";
+import { auth, signUpUser } from "../../firebase";
+import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
   container: {
@@ -13,6 +14,7 @@ const styles = StyleSheet.create({
 
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
+  const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
   // handle for user sign up
@@ -24,14 +26,12 @@ const SignupScreen = ({ navigation }) => {
       Alert.alert("Oops!", "Password must be at least 6 characters!", [
         { text: "OK" },
       ]);
+    } else if (username.length < 3) {
+      Alert.alert("Oops!", "Username must be at least 3 characters!", [
+        { text: "OK" },
+      ]);
     } else {
-      auth
-        .createUserWithEmailAndPassword(email, password)
-        .then((userCredentials) => {
-          const user = userCredentials.user;
-          console.log(user);
-        })
-        .catch((error) => console.log(error));
+      signUpUser(email, password, Alert);
     }
   };
 
@@ -53,6 +53,13 @@ const SignupScreen = ({ navigation }) => {
         value={email}
         keyboardType="email-address"
         textContentType="emailAddress"
+      />
+      <Text>Username: </Text>
+      <TextInput
+        style={{ height: 40 }}
+        placeholder="Username - Minimum 3 characters"
+        onChangeText={(text) => setUsername(text)}
+        value={username}
       />
       <Text>Password: </Text>
       <TextInput
