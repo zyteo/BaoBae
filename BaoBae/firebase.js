@@ -43,12 +43,17 @@ const app = firebase.initializeApp(firebaseConfig);
 const auth = firebase.auth();
 
 // for signing up
-const signUpUser = (email, password, Alert) => {
+const signUpUser = (email, password, username, Alert) => {
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((userCredentials) => {
       const user = userCredentials.user;
       console.log(userCredentials);
+      // after user is created, add the user in database also
+      setDoc(doc(db, "users", `${email}`), {
+        username: `${username}`,
+        email: `${email}`,
+      });
     })
     .catch((error) => {
       console.log(error.code);
@@ -124,44 +129,64 @@ export { auth, signInUser, signUpUser, logOutUser };
 // for database
 const db = getFirestore();
 
-// Add a new document in collection "items"
+// Add items in collection "items"
 setDoc(doc(db, "items", "Tissue"), {
   name: "Tissue",
   price: 1,
   quantity: 1000,
-  type: "Lifestyle",
+  type: "Health & Beauty",
   comments: {},
   image:
     "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
   description:
     "This is a must have! For drying your tears when you code too much.",
 });
-setDoc(doc(db, "items", "Portable monitor"), {
-  name: "Portable monitor",
+setDoc(doc(db, "items", "Clown Mask"), {
+  name: "Clown Mask",
+  price: 1,
+  quantity: 1000,
+  type: "Health & Beauty",
+  comments: {},
+  image:
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fs3.amazonaws.com%2Fpix.iemoji.com%2Fimages%2Femoji%2Fapple%2Fios-12%2F256%2Fclown-face.png&f=1&nofb=1",
+  description: "Make yourself beautiful again!",
+});
+setDoc(doc(db, "items", "Portable Monitor"), {
+  name: "Portable Monitor",
   price: 150,
   quantity: 1000,
   type: "Technology",
   comments: {},
   image:
-    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.-kkc8fR5hqCrz-Y8_iKv7QHaEJ%26pid%3DApi&f=1",
   description:
-    "This is a must have! For drying your tears when you code too much.",
+    "When you want a double screen but you don't want a desktop monitor...",
 });
-setDoc(doc(db, "items", "Wireless Earpiece"), {
-  name: "Wireless Earpiece",
+setDoc(doc(db, "items", "Bluetooth Earpiece"), {
+  name: "Bluetooth Earpiece",
   price: 20,
   quantity: 1000,
   type: "Technology",
   comments: {},
   image:
-    "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/gh-041420-best-facial-tissue-brands-1586973422.png?crop=0.537xw:0.825xh;0.231xw,0.138xh&resize=640:*",
+    "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2Fgadgetsin.com%2Fuploads%2F2018%2F10%2Fjlab_audio_jbuds_air_true_wireless_bluetooth_earbuds_1.jpg&f=1&nofb=1",
   description:
-    "This is a must have! For drying your tears when you code too much.",
+    "Just hope the connection notification doesn't make you go deaf aight! #TRUESTORY",
+});
+setDoc(doc(db, "items", "Track Pants"), {
+  name: "Track Pants",
+  price: 10,
+  quantity: 1000,
+  type: "Fashion",
+  comments: {},
+  image:
+    "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.rebelsport.com.au%2Fdw%2Fimage%2Fv2%2FBBRV_PRD%2Fon%2Fdemandware.static%2F-%2FSites-srg-internal-master-catalog%2Fdefault%2Fdw212cd97a%2Fimages%2F52464401%2FRebel_52464401_greyblack_hi-res.jpg&f=1&nofb=1",
+  description: "One size fits all ;)",
 });
 
 // test update doc
 updateDoc(doc(db, "items", "Tissue"), {
-  "comments.rating": 3,
+  comments: { rating: 3 },
   "comments.text": "very gud",
   "comments.username": "Bae",
 });

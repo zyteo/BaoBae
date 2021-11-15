@@ -40,7 +40,7 @@ const SignupScreen = ({ navigation }) => {
         { text: "OK" },
       ]);
     } else {
-      signUpUser(email, password, Alert);
+      signUpUser(email, password, username, Alert);
       navigation.navigate("Home");
     }
   };

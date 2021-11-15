@@ -21,8 +21,8 @@ const styles = StyleSheet.create({
     borderColor: colours.border,
   },
   photo: {
-    width: 50,
-    height: 50,
+    width: 300,
+    height: 300,
   },
 });
 
@@ -43,13 +43,14 @@ const ItemScreen = ({ route, navigation }) => {
           uri: itemSpecific.image,
         }}
       />
-      <Text>Description: {itemSpecific.name}</Text>
-      <Text>Price: ${itemSpecific.price}</Text>
+      <Text>{itemSpecific.description}</Text>
+      <Text>${itemSpecific.price}</Text>
       <Text>Quantity: {itemSpecific.quantity}</Text>
 
       <Button title="Add to cart" onPress={() => navigation.push("Browse")} />
       <Button title="BUY" onPress={() => navigation.push("Browse")} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
+      {itemSpecific.comments ? <Text>Comment</Text> : <></>}
     </View>
   );
 };
