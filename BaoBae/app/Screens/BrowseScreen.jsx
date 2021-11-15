@@ -23,7 +23,7 @@ const BrowseScreen = ({ navigation }) => {
     <>
       <View style={styles.container}>
         <View>
-          <Text>Search:</Text>
+          <Text>What are you looking for today?</Text>
           <TextInput
             style={styles.input}
             placeholder="Search items"
@@ -32,23 +32,25 @@ const BrowseScreen = ({ navigation }) => {
           <Button title="🔍" onPress={() => logOutUser(navigation)} />
         </View>
 
-        <View>
+        <View style={styles.items}>
           {items.map((element) => {
             return (
               <>
-                <Text>{element.name}</Text>
-                <TouchableOpacity
-                  onPress={() =>
-                    navigation.push("Item", { name: element.name })
-                  }
-                >
-                  <Image
-                    style={styles.photo}
-                    source={{
-                      uri: element.image,
-                    }}
-                  />
-                </TouchableOpacity>
+                <View>
+                  <Text>{element.name}</Text>
+                  <TouchableOpacity
+                    onPress={() =>
+                      navigation.push("Item", { name: element.name })
+                    }
+                  >
+                    <Image
+                      style={styles.photo}
+                      source={{
+                        uri: element.image,
+                      }}
+                    />
+                  </TouchableOpacity>
+                </View>
               </>
             );
           })}
@@ -71,6 +73,14 @@ const styles = StyleSheet.create({
     backgroundColor: colours.primary,
     alignItems: "center",
     justifyContent: "center",
+  },
+  items: {
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    flexWrap: "wrap",
   },
   input: {
     height: 40,

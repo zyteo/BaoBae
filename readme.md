@@ -68,7 +68,7 @@ Edited the browsing and item screens accordingly.
 
 ```
 
-MVP in progress...
+##### MVP in progress...
 
 - [x] Opening
 - [x] Login
@@ -79,7 +79,12 @@ MVP in progress...
 - [ ] Cart
 - [ ] Account
 
+##### Sample images...
+<img src="./images/login"/>
+<img src="./images/browse"/>
+<img src="./images/item"/>
 ---
+
 
 ## References
 
