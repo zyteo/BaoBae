@@ -60,6 +60,7 @@ Finally got firebase authentication working.
 - 14 Nov: Exploring more of firebase. Set up the database for storing the items.
 Moved all relevant code from jsx to firebase backend to ensure division between frontend/backend.
 - 15 Nov: Exploring firebase commands. Refined authentication code.
+Added some data and test update of item in collection.
 
 
 
@@ -75,4 +76,5 @@ Video on React Native https://www.youtube.com/watch?v=0-S5a0eXPoc&ab_channel=Pro
 React navigation https://reactnavigation.org/docs/getting-started/  
 Checking out React Native + Supabase https://www.youtube.com/watch?v=5e67b0PBcn4&list=PL2PY2-9rsgl0TTqJk3tCNJnBAjwHCjdYM&index=2&ab_channel=AaronSaunders  
 Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mobile-apps/  
-Firebase docs https://firebase.google.com/docs/
+Firebase docs https://firebase.google.com/docs/  
+Reading more about firebase + react native https://www.freecodecamp.org/news/react-native-firebase-tutorial/  

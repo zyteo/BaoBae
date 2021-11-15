@@ -2,7 +2,13 @@
 // import { initializeApp } from "firebase/app";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
-import { getFirestore, collection, doc, setDoc } from "firebase/firestore";
+import {
+  getFirestore,
+  collection,
+  doc,
+  setDoc,
+  updateDoc,
+} from "firebase/firestore";
 import {
   FIREBASE_APIKEY,
   FIREBASE_AUTHDOMAIN,
@@ -112,4 +118,35 @@ export { auth, signInUser, signUpUser, logOutUser };
 
 // for database
 const db = getFirestore();
+
+// Add a new document in collection "items"
+setDoc(doc(db, "items", "Tissue"), {
+  name: "Tissue",
+  price: 1,
+  quantity: 1000,
+  type: "Lifestyle",
+  comments: {},
+});
+setDoc(doc(db, "items", "Portable monitor"), {
+  name: "Portable monitor",
+  price: 150,
+  quantity: 1000,
+  type: "Technology",
+  comments: {},
+});
+setDoc(doc(db, "items", "Wireless Earpiece"), {
+  name: "Wireless Earpiece",
+  price: 20,
+  quantity: 1000,
+  type: "Technology",
+  comments: {},
+});
+
+// test update doc
+updateDoc(doc(db, "items", "tissue"), {
+  "comments.rating": 3,
+  "comments.text": "very gud",
+  "comments.username": "Bae",
+});
+
 export { db };
