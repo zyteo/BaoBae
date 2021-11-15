@@ -20,24 +20,21 @@ const styles = StyleSheet.create({
     borderColor: colours.border,
   },
 });
+
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
-  const handleLogin = () => {
-    if (email) {
-      signInUser(email, password, Alert);
-    }
-  };
-
+  // useEffect to direct user to browse screen once logged in
   useEffect(() => {
-    const unSubscribe = auth.onAuthStateChanged((user) => {
+    const directBrowse = auth.onAuthStateChanged((user) => {
       if (user) {
         navigation.navigate("Browse");
       }
     });
-    return unSubscribe;
+    return directBrowse;
   }, []);
+
   return (
     <View style={styles.container}>
       <Text>Email: </Text>
@@ -48,7 +45,7 @@ const LoginScreen = ({ navigation }) => {
         value={email}
         keyboardType="email-address"
         textContentType="emailAddress"
-        />
+      />
       <Text>Password: </Text>
       <TextInput
         secureTextEntry={true}
@@ -58,7 +55,10 @@ const LoginScreen = ({ navigation }) => {
         value={password}
       />
 
-      <Button title="Login" onPress={() => handleLogin()} />
+      <Button
+        title="Login"
+        onPress={() => signInUser(email, password, Alert)}
+      />
       <Button title="Go back" onPress={() => navigation.goBack()} />
     </View>
   );
