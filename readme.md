@@ -62,7 +62,7 @@ Moved all relevant code from jsx to firebase backend to ensure division between 
 - 15 Nov: Exploring firebase commands. Refined authentication code.
 Added some data and test update of item in collection.
 Tested out retrieval of all data from collection + specific item from collection.
-Edited the browsing and item screens accordingly.
+Edited the browsing and item screens accordingly. Still tinkering with Firebase backend.
 
 
 
@@ -98,3 +98,4 @@ Checking out React Native + Supabase https://www.youtube.com/watch?v=5e67b0PBcn4
 Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mobile-apps/  
 Firebase docs https://firebase.google.com/docs/  
 Reading more about firebase + react native https://www.freecodecamp.org/news/react-native-firebase-tutorial/
+Require cycle message https://stackoverflow.com/questions/55664673/require-cycles-are-allowed-but-can-result-in-uninitialized-values-consider-ref  

@@ -67,7 +67,7 @@ const BrowseScreen = ({ navigation }) => {
           {items.map((element) => {
             return (
               <>
-                <View>
+                <View key={element.name}>
                   <Text>{element.name}</Text>
                   <TouchableOpacity
                     onPress={() =>

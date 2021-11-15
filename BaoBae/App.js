@@ -1,7 +1,7 @@
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
-
+import { LogBox } from "react-native";
 import AccountScreen from "./app/Screens/AccountScreen";
 import BrowseScreen from "./app/Screens/BrowseScreen";
 import CartScreen from "./app/Screens/CartScreen";
@@ -12,6 +12,7 @@ import SearchScreen from "./app/Screens/SearchScreen";
 import SignupScreen from "./app/Screens/SignupScreen";
 import PizzaTranslator from "./app/Screens/Test";
 
+LogBox.ignoreLogs(["Setting a timer"]);
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
