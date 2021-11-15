@@ -9,6 +9,7 @@ import {
   setDoc,
   updateDoc,
   getDocs,
+  getDoc,
   collectionGroup,
   query,
   where,
@@ -165,25 +166,25 @@ updateDoc(doc(db, "items", "Tissue"), {
   "comments.username": "Bae",
 });
 
-// get all items data
-// const getItems = () => {
-//   const itemsForBrowse = getDocs(collection(db, "items"));
-//   console.log(itemsForBrowse)
-// };
+// const museums = query(
+//   collectionGroup(db, "items"),
+//   where("type", "==", "Technology")
+// );
 
-const museums = query(
-  collectionGroup(db, "items"),
-  where("type", "==", "Technology")
-);
-
+// get all the items from items collection
 const getitem = async (setItems) => {
   const querySnapshot = await getDocs(collection(db, "items"));
   const itemArray = [];
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
-    // console.log(doc.id, " => ", doc.data());
     itemArray.push(doc.data());
   });
   setItems(itemArray);
 };
-export { db, getitem };
+
+// get specific item
+const getItemSpecific = async (itemName, setItemSpecific) => {
+  const docSnap = await getDoc(doc(db, "items", itemName));
+  setItemSpecific(docSnap.data());
+};
+
+export { db, getitem, getItemSpecific };
