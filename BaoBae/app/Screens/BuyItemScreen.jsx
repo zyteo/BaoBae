@@ -12,6 +12,7 @@ import {
 import {
   getCurrentUser,
   getItemSpecific,
+  updateItemQuantity,
   updateUserBoughtItems,
 } from "../../firebase";
 import colours from "../Config/colours";
@@ -46,7 +47,7 @@ const BuyItemScreen = ({ route, navigation }) => {
   const [user, setUser] = useState([]);
   const [buyItemQuantity, setBuyItemQuantity] = useState();
 
-  // handle for user adding to cart
+  // handle for user to buy item
   const handleBuyItem = () => {
     // alert if passwords dont match
     if (Number.isNaN(parseInt(buyItemQuantity)) == true) {
@@ -74,6 +75,7 @@ const BuyItemScreen = ({ route, navigation }) => {
         }.`,
         [{ text: "TY 4 MAKING ME BROKE" }]
       );
+      updateItemQuantity(itemSpecific.name, buyItemQuantity);
       navigation.push("Account", {
         email: userEmail,
       });

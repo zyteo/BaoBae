@@ -1,7 +1,19 @@
 import { Route } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
-import { Text, TextInput, View, Button, Image, StyleSheet } from "react-native";
-import { getCurrentUser, getItemSpecific } from "../../firebase";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  Image,
+  StyleSheet,
+  Alert,
+} from "react-native";
+import {
+  getCurrentUser,
+  getItemSpecific,
+  updateItemQuantity,
+} from "../../firebase";
 import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
@@ -41,6 +53,28 @@ const CartScreen = ({ route, navigation }) => {
     cartArray.push(cartObjects[item]);
   }
 
+  // handle for user to buy item from cart
+  const handleBuyItem = (buyItemQuantity, itemName, itemPrice) => {
+    // updateUserBoughtItems(
+    //   userEmail,
+    //   itemSpecific.name,
+    //   itemSpecific.price,
+    //   parseInt(buyItemQuantity),
+    //   itemSpecific.image
+    // );
+    Alert.alert(
+      "Buy liao!",
+      `You bought ${buyItemQuantity} ${itemName} at $ ${itemPrice} each, for a total of $ ${
+        parseInt(buyItemQuantity) * itemPrice
+      }.`,
+      [{ text: "TY 4 MAKING ME BROKE" }]
+    );
+    updateItemQuantity(itemName, buyItemQuantity);
+    navigation.push("Account", {
+      email: userEmail,
+    });
+  };
+
   useEffect(() => {
     getCurrentUser(userEmail, setUser);
   }, []);
@@ -66,6 +100,12 @@ const CartScreen = ({ route, navigation }) => {
                   uri: element.image,
                 }}
               />
+              <Button
+                title="Buy"
+                onPress={() =>
+                  handleBuyItem(element.quantity, element.name, element.price)
+                }
+              />
             </View>
           </>
         );
@@ -76,7 +116,7 @@ const CartScreen = ({ route, navigation }) => {
         onPress={() => navigation.push("Browse", { email: userEmail })}
       />
       <Button
-        title="BUY"
+        title="Account"
         onPress={() =>
           navigation.push("Account", {
             email: userEmail,

@@ -1,28 +1,25 @@
 // Import the functions you need from the SDKs you need
 // import { initializeApp } from "firebase/app";
+import {
+  FIREBASE_APIKEY,
+  FIREBASE_APPID,
+  FIREBASE_AUTHDOMAIN,
+  FIREBASE_MESSAGING,
+  FIREBASE_PROJECTID,
+  FIREBASE_STORAGEBUCKET,
+} from "@env";
 import firebase from "firebase/compat/app";
 import "firebase/compat/auth";
 import {
-  getFirestore,
   collection,
   doc,
+  getDoc,
+  getDocs,
+  getFirestore,
   setDoc,
   updateDoc,
-  getDocs,
-  getDoc,
-  collectionGroup,
-  query,
-  where,
-  addDoc,
+  increment,
 } from "firebase/firestore";
-import {
-  FIREBASE_APIKEY,
-  FIREBASE_AUTHDOMAIN,
-  FIREBASE_PROJECTID,
-  FIREBASE_STORAGEBUCKET,
-  FIREBASE_MESSAGING,
-  FIREBASE_APPID,
-} from "@env";
 
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -265,6 +262,13 @@ const updateUserBoughtItems = async (
   );
 };
 
+const updateItemQuantity = async (itemName, quantity) => {
+  quantity = -1 * parseInt(quantity);
+  await updateDoc(doc(db, "items", itemName), {
+    quantity: increment(quantity),
+  });
+};
+
 export {
   db,
   getItems,
@@ -272,4 +276,5 @@ export {
   getCurrentUser,
   updateCartUser,
   updateUserBoughtItems,
+  updateItemQuantity,
 };
