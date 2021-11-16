@@ -49,7 +49,7 @@ const AddCartScreen = ({ route, navigation }) => {
   // handle for user adding to cart
   const handleAddCart = () => {
     // alert if passwords dont match
-    if (typeof parseInt(addCartQuantity) !== "number") {
+    if (Number.isNaN(parseInt(addCartQuantity) == true)) {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
     } else if (parseInt(addCartQuantity) > 10) {
       Alert.alert("CoNsuMeRiSm BaD!", "Boss say limit to 10 only OK", [
