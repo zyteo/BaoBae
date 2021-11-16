@@ -92,7 +92,10 @@ const BrowseScreen = ({ route, navigation }) => {
 
         <View style={styles.container}>
           <Button title="Logout" onPress={() => logOutUser(navigation)} />
-          <Button title="My Cart" onPress={() => navigation.push("Cart")} />
+          <Button
+            title="My Cart"
+            onPress={() => navigation.push("Cart", { email: user.email })}
+          />
         </View>
       </View>
     </>

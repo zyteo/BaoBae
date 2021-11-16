@@ -192,9 +192,7 @@ setDoc(doc(db, "items", "Instant Noodles"), {
 
 // test update doc
 updateDoc(doc(db, "items", "Tissue"), {
-  comments: { rating: 3 },
-  "comments.text": "very gud",
-  "comments.username": "Bae",
+  comments: { "iloveloot@baobae.com": ["Good", 4, "Bae"] },
 });
 
 // const museums = query(

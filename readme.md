@@ -47,6 +47,10 @@ To use the app, user should:
 
 <img src="./drawio/plan.png"/>
 
+Models:
+-Items: name (string), price, quantity, type (string), image (string), description (string), comments (map with arrays of comments)
+-Users: email (string), username (string), cart (map with arrays of items in cart [need name/price/quantity]), bought (map with arrays of items bought [need name/price/quantity])
+
 ```
 Timeline
 
@@ -63,12 +67,13 @@ Moved all relevant code from jsx to firebase backend to ensure division between 
 Added some data and test update of item in collection.
 Tested out retrieval of all data from collection + specific item from collection.
 Edited the browsing and item screens accordingly. Still tinkering with Firebase backend.
+- 16 Nov: Trying out addition of comments + items to cart for firebase.
 
 
 
 ```
 
-##### MVP in progress...
+### MVP in progress...
 
 - [x] Opening
 - [x] Login
@@ -79,7 +84,7 @@ Edited the browsing and item screens accordingly. Still tinkering with Firebase 
 - [ ] Cart
 - [ ] Account
 
-##### Sample images...
+### Sample images...
 
 <img src="./images/login.jpg" width="300px" height="500px"/>
 <img src="./images/browse.jpg" width="300px" height="500px"/>
