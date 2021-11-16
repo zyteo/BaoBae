@@ -74,7 +74,10 @@ const BrowseScreen = ({ route, navigation }) => {
                   <Text>{element.name}</Text>
                   <TouchableOpacity
                     onPress={() =>
-                      navigation.push("Item", { name: element.name })
+                      navigation.push("Item", {
+                        name: element.name,
+                        email: user.email,
+                      })
                     }
                   >
                     <Image

@@ -3,6 +3,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { LogBox } from "react-native";
 import AccountScreen from "./app/Screens/AccountScreen";
+import AddCartScreen from "./app/Screens/AddCartScreen";
 import BrowseScreen from "./app/Screens/BrowseScreen";
 import CartScreen from "./app/Screens/CartScreen";
 import ItemScreen from "./app/Screens/ItemScreen";
@@ -29,6 +30,7 @@ export default function App() {
           <Stack.Screen name="Browse" component={BrowseScreen} />
           <Stack.Screen name="Cart" component={CartScreen} />
           <Stack.Screen name="Item" component={ItemScreen} />
+          <Stack.Screen name="AddCart" component={AddCartScreen} />
           <Stack.Screen name="Login" component={LoginScreen} />
           <Stack.Screen name="Signup" component={SignupScreen} />
           <Stack.Screen name="Search" component={SearchScreen} />

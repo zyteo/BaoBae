@@ -224,4 +224,13 @@ const getCurrentUser = async (email, setUser) => {
   setUser(docSnap.data());
 };
 
-export { db, getItems, getItemSpecific, getCurrentUser };
+// update items in user cart
+const updateCartUser = async (email, itemname, price, quantity) => {
+  // need to set first character uppercase because authentication email is stored as all lowercase
+  email = email.charAt(0).toUpperCase() + email.slice(1);
+  await updateDoc(doc(db, "users", email), {
+    cart: { [itemname]: [itemname, price, quantity] },
+  });
+};
+
+export { db, getItems, getItemSpecific, getCurrentUser, updateCartUser };

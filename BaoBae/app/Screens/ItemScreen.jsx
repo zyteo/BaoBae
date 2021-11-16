@@ -1,7 +1,7 @@
 import { Route } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import { Text, TextInput, View, Button, Image, StyleSheet } from "react-native";
-import { getItemSpecific } from "../../firebase";
+import { getCurrentUser, getItemSpecific } from "../../firebase";
 import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
@@ -28,10 +28,13 @@ const styles = StyleSheet.create({
 
 const ItemScreen = ({ route, navigation }) => {
   const itemName = route.params.name;
+  const userEmail = route.params.email;
   const [itemSpecific, setItemSpecific] = useState([]);
+  const [user, setUser] = useState([]);
 
   useEffect(() => {
     getItemSpecific(itemName, setItemSpecific);
+    getCurrentUser(userEmail, setUser);
   }, []);
 
   return (
@@ -47,7 +50,15 @@ const ItemScreen = ({ route, navigation }) => {
       <Text>${itemSpecific.price}</Text>
       <Text>Quantity: {itemSpecific.quantity}</Text>
 
-      <Button title="Add to cart" onPress={() => navigation.push("Browse")} />
+      <Button
+        title="Add to cart"
+        onPress={() =>
+          navigation.push("AddCart", {
+            name: itemName,
+            email: userEmail,
+          })
+        }
+      />
       <Button title="BUY" onPress={() => navigation.push("Browse")} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       {itemSpecific.comments ? <Text>Comment</Text> : <></>}
