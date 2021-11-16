@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
-import { auth, signUpUser } from "../../firebase";
+import { auth, logOutUser, signUpUser } from "../../firebase";
 import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
@@ -42,7 +42,12 @@ const SignupScreen = ({ navigation }) => {
       ]);
     } else {
       signUpUser(email, password, username, Alert);
-      navigation.navigate("Home");
+      const directBrowse = auth.onAuthStateChanged((user) => {
+        if (user) {
+          navigation.navigate("Browse", { email: user.email });
+        }
+        return directBrowse;
+      });
     }
   };
 
