@@ -12,8 +12,6 @@ import LoginScreen from "./app/Screens/LoginScreen";
 import OpenScreen from "./app/Screens/OpenScreen";
 import SearchScreen from "./app/Screens/SearchScreen";
 import SignupScreen from "./app/Screens/SignupScreen";
-import PizzaTranslator from "./app/Screens/Test";
-
 LogBox.ignoreLogs(["Setting a timer"]);
 const Stack = createNativeStackNavigator();
 export default function App() {
@@ -21,21 +19,20 @@ export default function App() {
     <>
       <NavigationContainer>
         <Stack.Navigator>
-          <Stack.Screen
-            name="Home"
-            component={OpenScreen}
-            options={{ title: "Overview" }}
-          />
-          <Stack.Screen name="Test" component={PizzaTranslator} />
-          <Stack.Screen name="Account" component={AccountScreen} />
-          <Stack.Screen name="Browse" component={BrowseScreen} />
-          <Stack.Screen name="Cart" component={CartScreen} />
-          <Stack.Screen name="Item" component={ItemScreen} />
-          <Stack.Screen name="AddCart" component={AddCartScreen} />
-          <Stack.Screen name="BuyItem" component={BuyItemScreen} />
-          <Stack.Screen name="Login" component={LoginScreen} />
-          <Stack.Screen name="Signup" component={SignupScreen} />
-          <Stack.Screen name="Search" component={SearchScreen} />
+            <Stack.Screen
+              name="Home"
+              component={OpenScreen}
+              options={{ title: "Overview" }}
+            />
+            <Stack.Screen name="Account" component={AccountScreen} />
+            <Stack.Screen name="Browse" component={BrowseScreen} />
+            <Stack.Screen name="Cart" component={CartScreen} />
+            <Stack.Screen name="Item" component={ItemScreen} />
+            <Stack.Screen name="AddCart" component={AddCartScreen} />
+            <Stack.Screen name="BuyItem" component={BuyItemScreen} />
+            <Stack.Screen name="Login" component={LoginScreen} />
+            <Stack.Screen name="Signup" component={SignupScreen} />
+            <Stack.Screen name="Search" component={SearchScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     </>

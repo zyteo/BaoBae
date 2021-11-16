@@ -38,7 +38,6 @@ const styles = StyleSheet.create({
     height: 300,
   },
 });
-
 const AddCartScreen = ({ route, navigation }) => {
   const itemName = route.params.name;
   const userEmail = route.params.email;
@@ -111,5 +110,4 @@ const AddCartScreen = ({ route, navigation }) => {
     </View>
   );
 };
-
 export default AddCartScreen;

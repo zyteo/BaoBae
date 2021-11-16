@@ -8,6 +8,7 @@ import {
   Image,
   StyleSheet,
   Alert,
+  ScrollView,
 } from "react-native";
 import {
   getCurrentUser,
@@ -15,7 +16,6 @@ import {
   updateItemQuantity,
 } from "../../firebase";
 import colours from "../Config/colours";
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -80,50 +80,52 @@ const CartScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      {cartArray.length > 0 ? (
-        <Text>{user.username}'s cart:</Text>
-      ) : (
-        <Text>{user.username}, your cart is empty.</Text>
-      )}
-      {cartArray?.map((element) => {
-        return (
-          <>
-            <View key={element.name} style={styles.horizontalcontainer}>
-              <Text>{element.name}</Text>
-              <Text>${element.price}</Text>
-              <Text>{element.quantity}</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        {cartArray.length > 0 ? (
+          <Text>{user.username}'s cart:</Text>
+        ) : (
+          <Text>{user.username}, your cart is empty.</Text>
+        )}
+        {cartArray?.map((element) => {
+          return (
+            <>
+              <View key={element.name} style={styles.horizontalcontainer}>
+                <Text>{element.name}</Text>
+                <Text>${element.price}</Text>
+                <Text>{element.quantity}</Text>
 
-              <Image
-                style={styles.photo}
-                source={{
-                  uri: element.image,
-                }}
-              />
-              <Button
-                title="Buy"
-                onPress={() =>
-                  handleBuyItem(element.quantity, element.name, element.price)
-                }
-              />
-            </View>
-          </>
-        );
-      })}
+                <Image
+                  style={styles.photo}
+                  source={{
+                    uri: element.image,
+                  }}
+                />
+                <Button
+                  title="Buy"
+                  onPress={() =>
+                    handleBuyItem(element.quantity, element.name, element.price)
+                  }
+                />
+              </View>
+            </>
+          );
+        })}
 
-      <Button
-        title="Back"
-        onPress={() => navigation.push("Browse", { email: userEmail })}
-      />
-      <Button
-        title="Account"
-        onPress={() =>
-          navigation.push("Account", {
-            email: userEmail,
-          })
-        }
-      />
-    </View>
+        <Button
+          title="Back"
+          onPress={() => navigation.push("Browse", { email: userEmail })}
+        />
+        <Button
+          title="Account"
+          onPress={() =>
+            navigation.push("Account", {
+              email: userEmail,
+            })
+          }
+        />
+      </View>
+    </ScrollView>
   );
 };
 

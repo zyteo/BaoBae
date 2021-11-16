@@ -78,6 +78,7 @@ Created screens for adding to cart + buying items, and added the relevant fireba
 Struggled quite a bit updating the cart items in the database, finally got it right after a long time.
 CartScreen now reflects the items in the user's cart.
 AccountScreen now reflects the items that the user bought.
+Item quantity will decrease accordingly when user purchases the item.
 
 
 ```
