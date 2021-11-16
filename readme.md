@@ -48,7 +48,9 @@ To use the app, user should:
 <img src="./drawio/plan.png"/>
 
 Models:
+
 -Items: name (string), price, quantity, type (string), image (string), description (string), comments (map with arrays of comments)
+
 -Users: email (string), username (string), cart (map with arrays of items in cart [need name/price/quantity]), bought (map with arrays of items bought [need name/price/quantity])
 
 ```
