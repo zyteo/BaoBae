@@ -96,6 +96,7 @@ Struggled quite a bit updating the cart items in the database, finally got it ri
 <img src="./images/login.jpg" width="300px" height="500px"/>
 <img src="./images/browse.jpg" width="300px" height="500px"/>
 <img src="./images/item.jpg" width="300px" height="500px"/>
+<img src="./images/cart.jpg" width="300px" height="500px"/>
 
 ---
 
@@ -111,4 +112,4 @@ Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mo
 Firebase docs https://firebase.google.com/docs/  
 Reading more about firebase + react native https://www.freecodecamp.org/news/react-native-firebase-tutorial/
 Require cycle message https://stackoverflow.com/questions/55664673/require-cycles-are-allowed-but-can-result-in-uninitialized-values-consider-ref  
-Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript  
+Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript

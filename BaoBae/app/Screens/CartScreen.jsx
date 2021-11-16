@@ -11,6 +11,12 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
   },
+  horizontalcontainer: {
+    flex: 1,
+    backgroundColor: colours.primary,
+    alignItems: "center",
+    justifyContent: "center",
+  },
   input: {
     height: 40,
     margin: 10,
@@ -41,7 +47,7 @@ const CartScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
+    <View style={styles.horizontalcontainer}>
       <Text>{user.username}'s cart</Text>
       {cartArray?.map((element) => {
         return (
