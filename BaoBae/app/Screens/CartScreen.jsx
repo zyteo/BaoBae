@@ -39,7 +39,6 @@ const CartScreen = ({ route, navigation }) => {
   let cartObjects = user.cart;
   for (const item in cartObjects) {
     cartArray.push(cartObjects[item]);
-    console.log(cartArray);
   }
 
   useEffect(() => {
@@ -47,12 +46,16 @@ const CartScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.horizontalcontainer}>
-      <Text>{user.username}'s cart</Text>
+    <View style={styles.container}>
+      {cartArray.length > 0 ? (
+        <Text>{user.username}'s cart:</Text>
+      ) : (
+        <Text>{user.username}, your cart is empty.</Text>
+      )}
       {cartArray?.map((element) => {
         return (
           <>
-            <View key={element.name}>
+            <View key={element.name} style={styles.horizontalcontainer}>
               <Text>{element.name}</Text>
               <Text>${element.price}</Text>
               <Text>{element.quantity}</Text>

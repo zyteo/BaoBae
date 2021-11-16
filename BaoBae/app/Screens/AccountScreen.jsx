@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Button, StyleSheet } from "react-native";
+import { Text, TextInput, View, Button, StyleSheet, Image } from "react-native";
 import { getCurrentUser, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
 
@@ -34,6 +34,11 @@ const styles = StyleSheet.create({
 const AccountScreen = ({ navigation, route }) => {
   const userEmail = route.params.email;
   const [user, setUser] = useState([]);
+  let boughtItemsArray = [];
+  let boughtObjects = user.bought;
+  for (const item in boughtObjects) {
+    boughtItemsArray.push(boughtObjects[item]);
+  }
 
   useEffect(() => {
     getCurrentUser(userEmail, setUser);
@@ -41,6 +46,30 @@ const AccountScreen = ({ navigation, route }) => {
   return (
     <View style={styles.container}>
       <Text>{user.username}'s Account</Text>
+      {boughtItemsArray.length > 0 ? (
+        <Text>Here's what you bought:</Text>
+      ) : (
+        <Text>You haven't bought anything.</Text>
+      )}
+      {boughtItemsArray?.map((element) => {
+        return (
+          <>
+            <View key={element.name} style={styles.horizontalcontainer}>
+              <Text>{element.name}</Text>
+              <Text>${element.price}</Text>
+              <Text>{element.quantity}</Text>
+              <Text>Total cost ${element.price * element.quantity}</Text>
+
+              <Image
+                style={styles.photo}
+                source={{
+                  uri: element.image,
+                }}
+              />
+            </View>
+          </>
+        );
+      })}
       <Button
         title="Back to items"
         onPress={() => navigation.push("Browse", { email: userEmail })}
