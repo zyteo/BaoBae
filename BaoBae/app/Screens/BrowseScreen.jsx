@@ -7,6 +7,7 @@ import {
   Image,
   StyleSheet,
   TouchableOpacity,
+  ScrollView,
 } from "react-native";
 import { getCurrentUser, getItems, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
@@ -55,52 +56,54 @@ const BrowseScreen = ({ route, navigation }) => {
 
   return (
     <>
-      <View style={styles.container}>
-        <View>
-          <Text>What are you looking for today, {user.username}?</Text>
-          <TextInput
-            style={styles.input}
-            placeholder="Search items"
-            onChangeText={(text) => setText(text)}
-          />
-          <Button title="🔍" onPress={() => navigation.push("Search")} />
-        </View>
-
-        <View style={styles.items}>
-          {items.map((element) => {
-            return (
-              <>
-                <View key={element.name}>
-                  <Text>{element.name}</Text>
-                  <TouchableOpacity
-                    onPress={() =>
-                      navigation.push("Item", {
-                        name: element.name,
-                        email: user.email,
-                      })
-                    }
-                  >
-                    <Image
-                      style={styles.photo}
-                      source={{
-                        uri: element.image,
-                      }}
-                    />
-                  </TouchableOpacity>
-                </View>
-              </>
-            );
-          })}
-        </View>
-
+      <ScrollView>
         <View style={styles.container}>
-          <Button title="Logout" onPress={() => logOutUser(navigation)} />
-          <Button
-            title="My Cart"
-            onPress={() => navigation.push("Cart", { email: user.email })}
-          />
+          <View>
+            <Text>What are you looking for today, {user.username}?</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="Search items"
+              onChangeText={(text) => setText(text)}
+            />
+            <Button title="🔍" onPress={() => navigation.push("Search")} />
+          </View>
+
+          <View style={styles.items}>
+            {items.map((element) => {
+              return (
+                <>
+                  <View key={element.name}>
+                    <Text>{element.name}</Text>
+                    <TouchableOpacity
+                      onPress={() =>
+                        navigation.push("Item", {
+                          name: element.name,
+                          email: user.email,
+                        })
+                      }
+                    >
+                      <Image
+                        style={styles.photo}
+                        source={{
+                          uri: element.image,
+                        }}
+                      />
+                    </TouchableOpacity>
+                  </View>
+                </>
+              );
+            })}
+          </View>
+
+          <View style={styles.container}>
+            <Button title="Logout" onPress={() => logOutUser(navigation)} />
+            <Button
+              title="My Cart"
+              onPress={() => navigation.push("Cart", { email: user.email })}
+            />
+          </View>
         </View>
-      </View>
+      </ScrollView>
     </>
   );
 };

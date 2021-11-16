@@ -1,6 +1,14 @@
 import { Route } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
-import { Text, TextInput, View, Button, Image, StyleSheet } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  Image,
+  StyleSheet,
+  ScrollView,
+} from "react-native";
 import { getCurrentUser, getItemSpecific } from "../../firebase";
 import colours from "../Config/colours";
 
@@ -38,39 +46,41 @@ const ItemScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>{itemSpecific.name}</Text>
-      <Image
-        style={styles.photo}
-        source={{
-          uri: itemSpecific.image,
-        }}
-      />
-      <Text>{itemSpecific.description}</Text>
-      <Text>${itemSpecific.price}</Text>
-      <Text>Quantity: {itemSpecific.quantity}</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>{itemSpecific.name}</Text>
+        <Image
+          style={styles.photo}
+          source={{
+            uri: itemSpecific.image,
+          }}
+        />
+        <Text>{itemSpecific.description}</Text>
+        <Text>${itemSpecific.price}</Text>
+        <Text>Quantity: {itemSpecific.quantity}</Text>
 
-      <Button
-        title="Add to cart"
-        onPress={() =>
-          navigation.push("AddCart", {
-            name: itemName,
-            email: userEmail,
-          })
-        }
-      />
-      <Button
-        title="BUY"
-        onPress={() =>
-          navigation.push("BuyItem", {
-            name: itemName,
-            email: userEmail,
-          })
-        }
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      {itemSpecific.comments ? <Text>Comment</Text> : <></>}
-    </View>
+        <Button
+          title="Add to cart"
+          onPress={() =>
+            navigation.push("AddCart", {
+              name: itemName,
+              email: userEmail,
+            })
+          }
+        />
+        <Button
+          title="BUY"
+          onPress={() =>
+            navigation.push("BuyItem", {
+              name: itemName,
+              email: userEmail,
+            })
+          }
+        />
+        <Button title="Go back" onPress={() => navigation.goBack()} />
+        {itemSpecific.comments ? <Text>Comment</Text> : <></>}
+      </View>
+    </ScrollView>
   );
 };
 

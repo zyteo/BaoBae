@@ -222,6 +222,7 @@ const getCurrentUser = async (email, setUser) => {
 };
 
 // update items in user cart
+// If item doesn't exist, new info created, otherwise, info will be overwritten
 const updateCartUser = async (email, itemname, price, quantity, image) => {
   await setDoc(
     doc(db, "users", email),
@@ -238,7 +239,9 @@ const updateCartUser = async (email, itemname, price, quantity, image) => {
     { merge: true }
   );
 };
+
 // update items that user bought
+// If item doesn't exist, new info created, otherwise, info will be overwritten
 const updateUserBoughtItems = async (
   email,
   itemname,
@@ -262,6 +265,7 @@ const updateUserBoughtItems = async (
   );
 };
 
+// update the stock quantity once user purchases item
 const updateItemQuantity = async (itemName, quantity) => {
   quantity = -1 * parseInt(quantity);
   await updateDoc(doc(db, "items", itemName), {

@@ -8,6 +8,7 @@ import {
   Image,
   StyleSheet,
   Alert,
+  ScrollView,
 } from "react-native";
 import {
   getCurrentUser,
@@ -83,31 +84,33 @@ const AddCartScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>{itemSpecific.name}</Text>
-      <Image
-        style={styles.photo}
-        source={{
-          uri: itemSpecific.image,
-        }}
-      />
-      <Text>{itemSpecific.description}</Text>
-      <Text>${itemSpecific.price}</Text>
-      <Text>Quantity: {itemSpecific.quantity}</Text>
-      <Text>
-        {user.username}, how many items would you like to add to cart?
-      </Text>
-      <TextInput
-        style={styles.input}
-        placeholder="How many?"
-        onChangeText={(text) => setAddCartQuantity(text)}
-        value={addCartQuantity}
-        keyboardType="numeric"
-      />
-      <Button title="ADD!" onPress={() => handleAddCart()} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      {itemSpecific.comments ? <Text>Comment</Text> : <></>}
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>{itemSpecific.name}</Text>
+        <Image
+          style={styles.photo}
+          source={{
+            uri: itemSpecific.image,
+          }}
+        />
+        <Text>{itemSpecific.description}</Text>
+        <Text>${itemSpecific.price}</Text>
+        <Text>Quantity: {itemSpecific.quantity}</Text>
+        <Text>
+          {user.username}, how many items would you like to add to cart?
+        </Text>
+        <TextInput
+          style={styles.input}
+          placeholder="How many?"
+          onChangeText={(text) => setAddCartQuantity(text)}
+          value={addCartQuantity}
+          keyboardType="numeric"
+        />
+        <Button title="ADD!" onPress={() => handleAddCart()} />
+        <Button title="Go back" onPress={() => navigation.goBack()} />
+        {itemSpecific.comments ? <Text>Comment</Text> : <></>}
+      </View>
+    </ScrollView>
   );
 };
 export default AddCartScreen;

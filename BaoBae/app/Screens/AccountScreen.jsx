@@ -1,5 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Button, StyleSheet, Image } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  StyleSheet,
+  Image,
+  ScrollView,
+} from "react-native";
 import { getCurrentUser, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
 
@@ -44,38 +52,40 @@ const AccountScreen = ({ navigation, route }) => {
     getCurrentUser(userEmail, setUser);
   }, []);
   return (
-    <View style={styles.container}>
-      <Text>{user.username}'s Account</Text>
-      {boughtItemsArray.length > 0 ? (
-        <Text>Here's what you bought:</Text>
-      ) : (
-        <Text>You haven't bought anything.</Text>
-      )}
-      {boughtItemsArray?.map((element) => {
-        return (
-          <>
-            <View key={element.name} style={styles.horizontalcontainer}>
-              <Text>{element.name}</Text>
-              <Text>${element.price}</Text>
-              <Text>{element.quantity}</Text>
-              <Text>Total cost ${element.price * element.quantity}</Text>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>{user.username}'s Account</Text>
+        {boughtItemsArray.length > 0 ? (
+          <Text>Here's what you bought:</Text>
+        ) : (
+          <Text>You haven't bought anything.</Text>
+        )}
+        {boughtItemsArray?.map((element) => {
+          return (
+            <>
+              <View key={element.name} style={styles.horizontalcontainer}>
+                <Text>{element.name}</Text>
+                <Text>${element.price}</Text>
+                <Text>{element.quantity}</Text>
+                <Text>Total cost ${element.price * element.quantity}</Text>
 
-              <Image
-                style={styles.photo}
-                source={{
-                  uri: element.image,
-                }}
-              />
-            </View>
-          </>
-        );
-      })}
-      <Button
-        title="Back to items"
-        onPress={() => navigation.push("Browse", { email: userEmail })}
-      />
-      <Button title="Logout" onPress={() => logOutUser(navigation)} />
-    </View>
+                <Image
+                  style={styles.photo}
+                  source={{
+                    uri: element.image,
+                  }}
+                />
+              </View>
+            </>
+          );
+        })}
+        <Button
+          title="Back to items"
+          onPress={() => navigation.push("Browse", { email: userEmail })}
+        />
+        <Button title="Logout" onPress={() => logOutUser(navigation)} />
+      </View>
+    </ScrollView>
   );
 };
 

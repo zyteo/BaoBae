@@ -8,6 +8,7 @@ import {
   Image,
   StyleSheet,
   Alert,
+  ScrollView,
 } from "react-native";
 import {
   getCurrentUser,
@@ -88,29 +89,31 @@ const BuyItemScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>{itemSpecific.name}</Text>
-      <Image
-        style={styles.photo}
-        source={{
-          uri: itemSpecific.image,
-        }}
-      />
-      <Text>{itemSpecific.description}</Text>
-      <Text>${itemSpecific.price}</Text>
-      <Text>Quantity: {itemSpecific.quantity}</Text>
-      <Text>{user.username}, how many items would you like to purchase?</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="How many?"
-        onChangeText={(text) => setBuyItemQuantity(text)}
-        value={buyItemQuantity}
-        keyboardType="numeric"
-      />
-      <Button title="BUY!" onPress={() => handleBuyItem()} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-      {itemSpecific.comments ? <Text>Comment</Text> : <></>}
-    </View>
+    <ScrollView>
+      <View style={styles.container}>
+        <Text>{itemSpecific.name}</Text>
+        <Image
+          style={styles.photo}
+          source={{
+            uri: itemSpecific.image,
+          }}
+        />
+        <Text>{itemSpecific.description}</Text>
+        <Text>${itemSpecific.price}</Text>
+        <Text>Quantity: {itemSpecific.quantity}</Text>
+        <Text>{user.username}, how many items would you like to purchase?</Text>
+        <TextInput
+          style={styles.input}
+          placeholder="How many?"
+          onChangeText={(text) => setBuyItemQuantity(text)}
+          value={buyItemQuantity}
+          keyboardType="numeric"
+        />
+        <Button title="BUY!" onPress={() => handleBuyItem()} />
+        <Button title="Go back" onPress={() => navigation.goBack()} />
+        {itemSpecific.comments ? <Text>Comment</Text> : <></>}
+      </View>
+    </ScrollView>
   );
 };
 
