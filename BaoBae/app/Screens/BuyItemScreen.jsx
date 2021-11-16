@@ -12,7 +12,7 @@ import {
 import {
   getCurrentUser,
   getItemSpecific,
-  updateCartUser,
+  updateUserBoughtItems,
 } from "../../firebase";
 import colours from "../Config/colours";
 
@@ -39,39 +39,39 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddCartScreen = ({ route, navigation }) => {
+const BuyItemScreen = ({ route, navigation }) => {
   const itemName = route.params.name;
   const userEmail = route.params.email;
   const [itemSpecific, setItemSpecific] = useState([]);
   const [user, setUser] = useState([]);
-  const [addCartQuantity, setAddCartQuantity] = useState();
+  const [buyItemQuantity, setBuyItemQuantity] = useState();
 
   // handle for user adding to cart
   const handleAddCart = () => {
     // alert if passwords dont match
-    if (Number.isNaN(parseInt(addCartQuantity)) == true) {
+    if (Number.isNaN(parseInt(buyItemQuantity)) == true) {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
-    } else if (parseInt(addCartQuantity) > 10) {
-      Alert.alert("CoNsuMeRiSm BaD!", "Boss say limit to 10 only OK", [
+    } else if (parseInt(buyItemQuantity) > 10) {
+      Alert.alert("CoNsuMeRiSm BaD!", "Y U WAN buy so many? 10 max!!", [
         { text: "YES BOSS" },
       ]);
-    } else if (parseInt(addCartQuantity) <= 0) {
+    } else if (parseInt(buyItemQuantity) <= 0) {
       Alert.alert("Huh?", "You want to buy or not?", [{ text: "INDECISIVE" }]);
     } else {
-      updateCartUser(
+      updateUserBoughtItems(
         userEmail,
         itemSpecific.name,
         itemSpecific.price,
-        parseInt(addCartQuantity)
+        parseInt(buyItemQuantity)
       );
       Alert.alert(
-        "Added to cart!",
-        `You added ${addCartQuantity} ${
-          itemSpecific.name
-        } to your cart. YOU HAVE THE POTENTIAL to lose $ ${
-          parseInt(addCartQuantity) * itemSpecific.price
-        } once you buy it!`,
-        [{ text: "YAY I GOT POTENTIAL!" }]
+        "Buy liao!",
+        `You bought ${buyItemQuantity} ${itemSpecific.name} at $ ${
+          itemSpecific.price
+        } each, for a total of $ ${
+          parseInt(buyItemQuantity) * itemSpecific.price
+        }.`,
+        [{ text: "TY 4 MAKING ME BROKE" }]
       );
       navigation.navigate("Browse", { email: userEmail });
     }
@@ -94,14 +94,12 @@ const AddCartScreen = ({ route, navigation }) => {
       <Text>{itemSpecific.description}</Text>
       <Text>${itemSpecific.price}</Text>
       <Text>Quantity: {itemSpecific.quantity}</Text>
-      <Text>
-        {user.username}, how many items would you like to add to cart?
-      </Text>
+      <Text>{user.username}, how many items would you like to purchase?</Text>
       <TextInput
         style={styles.input}
         placeholder="How many?"
-        onChangeText={(text) => setAddCartQuantity(text)}
-        value={addCartQuantity}
+        onChangeText={(text) => setBuyItemQuantity(text)}
+        value={buyItemQuantity}
         keyboardType="numeric"
       />
       <Button title="ADD!" onPress={() => handleAddCart()} />
@@ -111,4 +109,4 @@ const AddCartScreen = ({ route, navigation }) => {
   );
 };
 
-export default AddCartScreen;
+export default BuyItemScreen;

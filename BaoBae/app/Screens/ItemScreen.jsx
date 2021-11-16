@@ -59,7 +59,15 @@ const ItemScreen = ({ route, navigation }) => {
           })
         }
       />
-      <Button title="BUY" onPress={() => navigation.push("Browse")} />
+      <Button
+        title="BUY"
+        onPress={() =>
+          navigation.push("BuyItem", {
+            name: itemName,
+            email: userEmail,
+          })
+        }
+      />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       {itemSpecific.comments ? <Text>Comment</Text> : <></>}
     </View>

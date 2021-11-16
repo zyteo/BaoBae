@@ -236,5 +236,24 @@ const updateCartUser = async (email, itemname, price, quantity) => {
     { merge: true }
   );
 };
+// update items that user bought
+const updateUserBoughtItems = async (email, itemname, price, quantity) => {
+  await setDoc(
+    doc(db, "users", email),
+    {
+      bought: {
+        [itemname]: { name: itemname, price: price, quantity: quantity },
+      },
+    },
+    { merge: true }
+  );
+};
 
-export { db, getItems, getItemSpecific, getCurrentUser, updateCartUser };
+export {
+  db,
+  getItems,
+  getItemSpecific,
+  getCurrentUser,
+  updateCartUser,
+  updateUserBoughtItems,
+};
