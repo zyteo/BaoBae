@@ -47,7 +47,7 @@ const BuyItemScreen = ({ route, navigation }) => {
   const [buyItemQuantity, setBuyItemQuantity] = useState();
 
   // handle for user adding to cart
-  const handleAddCart = () => {
+  const handleBuyItem = () => {
     // alert if passwords dont match
     if (Number.isNaN(parseInt(buyItemQuantity)) == true) {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
@@ -74,7 +74,9 @@ const BuyItemScreen = ({ route, navigation }) => {
         }.`,
         [{ text: "TY 4 MAKING ME BROKE" }]
       );
-      navigation.navigate("Browse", { email: userEmail });
+      navigation.push("Account", {
+        email: userEmail,
+      });
     }
   };
 
@@ -103,7 +105,7 @@ const BuyItemScreen = ({ route, navigation }) => {
         value={buyItemQuantity}
         keyboardType="numeric"
       />
-      <Button title="ADD!" onPress={() => handleAddCart()} />
+      <Button title="BUY!" onPress={() => handleBuyItem()} />
       <Button title="Go back" onPress={() => navigation.goBack()} />
       {itemSpecific.comments ? <Text>Comment</Text> : <></>}
     </View>

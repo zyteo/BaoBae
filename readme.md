@@ -74,7 +74,7 @@ Edited the browsing and item screens accordingly. Still tinkering with Firebase 
 - 16 Nov: Trying out addition of comments + items to cart for firebase.
 Created screens for adding to cart + buying items, and added the relevant firebase code.
 Struggled quite a bit updating the cart items in the database, finally got it right after a long time.
-
+CartScreen now reflects the items in the user's cart.
 
 
 ```
