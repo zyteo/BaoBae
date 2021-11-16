@@ -13,6 +13,7 @@ import {
   collectionGroup,
   query,
   where,
+  addDoc,
 } from "firebase/firestore";
 import {
   FIREBASE_APIKEY,
@@ -225,9 +226,15 @@ const getCurrentUser = async (email, setUser) => {
 
 // update items in user cart
 const updateCartUser = async (email, itemname, price, quantity) => {
-  await updateDoc(doc(db, "users", email), {
-    cart: { [itemname]: { name: itemname, price: price, quantity: quantity } },
-  });
+  await setDoc(
+    doc(db, "users", email),
+    {
+      cart: {
+        [itemname]: { name: itemname, price: price, quantity: quantity },
+      },
+    },
+    { merge: true }
+  );
 };
 
 export { db, getItems, getItemSpecific, getCurrentUser, updateCartUser };
