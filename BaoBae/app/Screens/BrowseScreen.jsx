@@ -63,7 +63,7 @@ const BrowseScreen = ({ route, navigation }) => {
             placeholder="Search items"
             onChangeText={(text) => setText(text)}
           />
-          <Button title="🔍" onPress={() => logOutUser(navigation)} />
+          <Button title="🔍" onPress={() => navigation.push("Search")} />
         </View>
 
         <View style={styles.items}>
