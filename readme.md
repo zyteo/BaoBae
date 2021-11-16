@@ -56,17 +56,21 @@ Timeline
 
 - 12 Nov: Decided to try out React Native for final project. Did some research, watched videos to get a look of React Native.
 Installed expo client and initialised first React Native project.
+
 - 13 Nov: Started planning for app. Also went to read drawio docs for mobile app wireframe.
 Created wireframes and components. Did login and signup page to test backend authentication.
 Decided to ditch Supabase as backend as there are some jarring errors with React Native.
 Switched to firebase, struggled quite a lot since V9 just got released and notes were still V8.
 Finally got firebase authentication working.
+
 - 14 Nov: Exploring more of firebase. Set up the database for storing the items.
 Moved all relevant code from jsx to firebase backend to ensure division between frontend/backend.
+
 - 15 Nov: Exploring firebase commands. Refined authentication code.
 Added some data and test update of item in collection.
 Tested out retrieval of all data from collection + specific item from collection.
 Edited the browsing and item screens accordingly. Still tinkering with Firebase backend.
+
 - 16 Nov: Trying out addition of comments + items to cart for firebase.
 Created screens for adding to cart + buying items, and added the relevant firebase code.
 Struggled quite a bit updating the cart items in the database, finally got it right after a long time.
