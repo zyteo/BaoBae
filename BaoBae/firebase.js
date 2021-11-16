@@ -19,8 +19,9 @@ import {
   setDoc,
   updateDoc,
   increment,
+  where,
+  query,
 } from "firebase/firestore";
-
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -199,6 +200,18 @@ updateDoc(doc(db, "items", "Tissue"), {
 //   where("type", "==", "Technology")
 // );
 
+// get the items from search query
+const searchItems = async (searchQuery, setItems) => {
+  const q = query(collection(db, "items"), where("name", "==", searchQuery));
+  const itemArray = [];
+  const querySnapshot = await getDocs(q);
+  querySnapshot.forEach((doc) => {
+    // doc.data() is never undefined for query doc snapshots
+    itemArray.push(doc.data());
+  });
+  setItems(itemArray);
+};
+
 // get all the items from items collection
 const getItems = async (setItems) => {
   const querySnapshot = await getDocs(collection(db, "items"));
@@ -281,4 +294,5 @@ export {
   updateCartUser,
   updateUserBoughtItems,
   updateItemQuantity,
+  searchItems,
 };

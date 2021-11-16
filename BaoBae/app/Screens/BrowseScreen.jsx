@@ -65,7 +65,15 @@ const BrowseScreen = ({ route, navigation }) => {
               placeholder="Search items"
               onChangeText={(text) => setText(text)}
             />
-            <Button title="🔍" onPress={() => navigation.push("Search")} />
+            <Button
+              title="🔍"
+              onPress={() =>
+                navigation.push("Search", {
+                  email: user.email,
+                  search: text,
+                })
+              }
+            />
           </View>
 
           <View style={styles.items}>

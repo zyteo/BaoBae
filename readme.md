@@ -79,6 +79,7 @@ Struggled quite a bit updating the cart items in the database, finally got it ri
 CartScreen now reflects the items in the user's cart.
 AccountScreen now reflects the items that the user bought.
 Item quantity will decrease accordingly when user purchases the item.
+Done up the search function on the browse screen.
 
 
 ```
@@ -88,8 +89,8 @@ Item quantity will decrease accordingly when user purchases the item.
 - [x] Opening
 - [x] Login
 - [x] Signup
-- [ ] Browse
-- [ ] Search
+- [x] Browse
+- [x] Search
 - [x] Item
 - [x] Buy
 - [x] Cart
