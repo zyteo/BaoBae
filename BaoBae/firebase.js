@@ -49,6 +49,7 @@ const signUpUser = (email, password, username, Alert) => {
     .then((userCredentials) => {
       const user = userCredentials.user;
       // after user is created, add the user in database also
+      email = email.toLowerCase();
       setDoc(doc(db, "users", `${email}`), {
         username: `${username}`,
         email: `${email}`,
@@ -218,18 +219,14 @@ const getItemSpecific = async (itemName, setItemSpecific) => {
 
 // get specific user
 const getCurrentUser = async (email, setUser) => {
-  // need to set first character uppercase because authentication email is stored as all lowercase
-  email = email.charAt(0).toUpperCase() + email.slice(1);
   const docSnap = await getDoc(doc(db, "users", email));
   setUser(docSnap.data());
 };
 
 // update items in user cart
 const updateCartUser = async (email, itemname, price, quantity) => {
-  // need to set first character uppercase because authentication email is stored as all lowercase
-  email = email.charAt(0).toUpperCase() + email.slice(1);
   await updateDoc(doc(db, "users", email), {
-    cart: { [itemname]: [itemname, price, quantity] },
+    cart: { [itemname]: { name: itemname, price: price, quantity: quantity } },
   });
 };
 

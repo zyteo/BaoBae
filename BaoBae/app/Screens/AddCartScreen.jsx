@@ -62,7 +62,7 @@ const AddCartScreen = ({ route, navigation }) => {
         userEmail,
         itemSpecific.name,
         itemSpecific.price,
-        addCartQuantity
+        parseInt(addCartQuantity)
       );
       navigation.navigate("Browse", { email: userEmail });
     }
