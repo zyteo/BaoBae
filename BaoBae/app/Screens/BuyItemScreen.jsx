@@ -62,7 +62,8 @@ const BuyItemScreen = ({ route, navigation }) => {
         userEmail,
         itemSpecific.name,
         itemSpecific.price,
-        parseInt(buyItemQuantity)
+        parseInt(buyItemQuantity),
+        itemSpecific.image
       );
       Alert.alert(
         "Buy liao!",

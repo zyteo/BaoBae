@@ -62,7 +62,8 @@ const AddCartScreen = ({ route, navigation }) => {
         userEmail,
         itemSpecific.name,
         itemSpecific.price,
-        parseInt(addCartQuantity)
+        parseInt(addCartQuantity),
+        itemSpecific.image
       );
       Alert.alert(
         "Added to cart!",

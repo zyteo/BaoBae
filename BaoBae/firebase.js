@@ -225,24 +225,40 @@ const getCurrentUser = async (email, setUser) => {
 };
 
 // update items in user cart
-const updateCartUser = async (email, itemname, price, quantity) => {
+const updateCartUser = async (email, itemname, price, quantity, image) => {
   await setDoc(
     doc(db, "users", email),
     {
       cart: {
-        [itemname]: { name: itemname, price: price, quantity: quantity },
+        [itemname]: {
+          name: itemname,
+          price: price,
+          quantity: quantity,
+          image: image,
+        },
       },
     },
     { merge: true }
   );
 };
 // update items that user bought
-const updateUserBoughtItems = async (email, itemname, price, quantity) => {
+const updateUserBoughtItems = async (
+  email,
+  itemname,
+  price,
+  quantity,
+  image
+) => {
   await setDoc(
     doc(db, "users", email),
     {
       bought: {
-        [itemname]: { name: itemname, price: price, quantity: quantity },
+        [itemname]: {
+          name: itemname,
+          price: price,
+          quantity: quantity,
+          image: image,
+        },
       },
     },
     { merge: true }
