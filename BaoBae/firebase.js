@@ -192,15 +192,19 @@ setDoc(doc(db, "items", "Instant Noodles"), {
 
 // test update doc
 const addComment = async (itemName, email, userName, rating, text) => {
-  await updateDoc(doc(db, "items", itemName), {
-    comments: {
-      [email]: {
-        username: userName,
-        rating: rating,
-        text: text,
+  await setDoc(
+    doc(db, "items", itemName),
+    {
+      comments: {
+        [email]: {
+          username: userName,
+          rating: rating,
+          text: text,
+        },
       },
     },
-  });
+    { merge: true }
+  );
 };
 
 // const museums = query(
