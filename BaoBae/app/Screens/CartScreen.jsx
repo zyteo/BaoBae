@@ -13,6 +13,7 @@ import {
 import {
   getCurrentUser,
   getItemSpecific,
+  removeCartItem,
   updateBuyItemsFromCart,
   updateItemQuantity,
 } from "../../firebase";
@@ -55,14 +56,15 @@ const CartScreen = ({ route, navigation }) => {
   }
 
   // handle for user to buy item from cart
-  const handleBuyItem = (buyItemQuantity, itemName, itemPrice) => {
-    updateBuyItemsFromCart(userEmail, itemName);
-    //   userEmail,
-    //   itemSpecific.name,
-    //   itemSpecific.price,
-    //   parseInt(buyItemQuantity),
-    //   itemSpecific.image
-    // );
+  const handleBuyItem = (buyItemQuantity, itemName, itemPrice, itemImage) => {
+    updateBuyItemsFromCart(
+      userEmail,
+      itemName,
+      itemPrice,
+      buyItemQuantity,
+      itemImage
+    );
+
     Alert.alert(
       "Buy liao!",
       `You bought ${buyItemQuantity} ${itemName} at $ ${itemPrice} each, for a total of $ ${
@@ -74,6 +76,12 @@ const CartScreen = ({ route, navigation }) => {
     navigation.push("Account", {
       email: userEmail,
     });
+  };
+
+  const handleRemoveCartItem = (email, item) => {
+    removeCartItem(email, item);
+    Alert.alert("Item removed!", "Gudbai", [{ text: "$ave $" }]);
+    navigation.push("Cart", { email: userEmail });
   };
 
   useEffect(() => {
@@ -105,8 +113,17 @@ const CartScreen = ({ route, navigation }) => {
                 <Button
                   title="Buy"
                   onPress={() =>
-                    handleBuyItem(element.quantity, element.name, element.price)
+                    handleBuyItem(
+                      element.quantity,
+                      element.name,
+                      element.price,
+                      element.image
+                    )
                   }
+                />
+                <Button
+                  title="Remove from cart"
+                  onPress={() => handleRemoveCartItem(userEmail, element.name)}
                 />
               </View>
             </>

@@ -20,6 +20,7 @@ import {
   increment,
   where,
   query,
+  deleteField,
 } from "firebase/firestore";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
@@ -302,7 +303,7 @@ const updateItemQuantity = async (itemName, quantity) => {
 // if items not bought before, add to user database
 // if items bought before, increment the item count in database
 // afterwards, remove item from cart
-const updateBuyItemsFromCart = async (email, item) => {
+const updateBuyItemsFromCart = async (email, item, price, quantity, image) => {
   let itemsBoughtArray = [];
   const docSnap = await getDoc(doc(db, "users", email));
   // want to know all the items that the user bought
@@ -311,17 +312,37 @@ const updateBuyItemsFromCart = async (email, item) => {
   }
 
   if (itemsBoughtArray.indexOf(item) === -1) {
-    console.log("never bought before");
+    await setDoc(
+      doc(db, "users", email),
+      {
+        bought: {
+          [item]: {
+            name: item,
+            price: price,
+            quantity: quantity,
+            image: image,
+          },
+        },
+      },
+      { merge: true }
+    );
   } else {
-    console.log("bought before");
+    let accessBoughtItemQuantity = "bought." + item + ".quantity";
+    await updateDoc(doc(db, "users", email), {
+      [accessBoughtItemQuantity]: increment(quantity),
+    });
   }
 
-  // if (itemsBoughtArray.indexOf(item))
-  // if (docSnap.data().bought[item]) {
-  //   console.log("No have", docSnap.data().bought[item]);
-  // } else {
-  //   console.log("No have", docSnap.data().bought[item]);
-  // }
+  // remove item from cart
+  removeCartItem(email, item);
+};
+
+// remove item from cart
+const removeCartItem = async (email, item) => {
+  let accessCartItem = "cart." + item;
+  await updateDoc(doc(db, "users", email), {
+    [accessCartItem]: deleteField(),
+  });
 };
 
 export {
@@ -335,4 +356,5 @@ export {
   searchItems,
   addComment,
   updateBuyItemsFromCart,
+  removeCartItem,
 };
