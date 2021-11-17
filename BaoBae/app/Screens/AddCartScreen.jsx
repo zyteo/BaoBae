@@ -108,7 +108,6 @@ const AddCartScreen = ({ route, navigation }) => {
         />
         <Button title="ADD!" onPress={() => handleAddCart()} />
         <Button title="Go back" onPress={() => navigation.goBack()} />
-        {itemSpecific.comments ? <Text>Comment</Text> : <></>}
       </View>
     </ScrollView>
   );

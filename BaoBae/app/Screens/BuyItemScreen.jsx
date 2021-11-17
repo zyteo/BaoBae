@@ -111,7 +111,6 @@ const BuyItemScreen = ({ route, navigation }) => {
         />
         <Button title="BUY!" onPress={() => handleBuyItem()} />
         <Button title="Go back" onPress={() => navigation.goBack()} />
-        {itemSpecific.comments ? <Text>Comment</Text> : <></>}
       </View>
     </ScrollView>
   );
