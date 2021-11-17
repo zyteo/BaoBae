@@ -8,8 +8,15 @@ import {
   StyleSheet,
   TouchableOpacity,
   ScrollView,
+  Alert,
 } from "react-native";
-import { getCurrentUser, getItems, logOutUser } from "../../firebase";
+import {
+  addComment,
+  getCurrentUser,
+  getItems,
+  getItemSpecific,
+  logOutUser,
+} from "../../firebase";
 import colours from "../Config/colours";
 
 const styles = StyleSheet.create({
@@ -42,16 +49,49 @@ const styles = StyleSheet.create({
     height: 80,
   },
 });
-
 const CommentScreen = ({ route, navigation }) => {
+  const itemName = route.params.item;
   const userEmail = route.params.email;
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
-  const [items, setItems] = useState([]);
+  const [itemSpecific, setItemSpecific] = useState([]);
   const [user, setUser] = useState([]);
 
+  // handle for user adding comment
+  const handleAddComment = () => {
+    // alert if passwords dont match
+    if (Number.isNaN(parseInt(rating)) == true) {
+      Alert.alert("Oops!", "Rating is number pls", [{ text: "OK" }]);
+    } else if (parseInt(rating) > 5) {
+      Alert.alert("Sorry boss!", "I know the item very good but max 5 ok", [
+        { text: "OK" },
+      ]);
+    } else if (parseInt(rating) <= 0) {
+      Alert.alert("Pls...", "Don't like item but at least give 0 pls", [
+        { text: "OK" },
+      ]);
+    } else {
+      addComment(
+        itemSpecific.name,
+        userEmail,
+        user.username,
+        parseInt(rating),
+        text
+      );
+      Alert.alert(
+        "Comment added!",
+        `Now the whole world can see what you wrote!`,
+        [{ text: "YAY!" }]
+      );
+      navigation.push("Item", {
+        name: itemSpecific.name,
+        email: user.email,
+      });
+    }
+  };
+
   useEffect(() => {
-    getItems(setItems);
+    getItemSpecific(itemName, setItemSpecific);
     getCurrentUser(userEmail, setUser);
   }, []);
 
@@ -59,57 +99,36 @@ const CommentScreen = ({ route, navigation }) => {
     <>
       <ScrollView>
         <View style={styles.container}>
+          <Text>{itemSpecific.name}</Text>
+
+          <Image
+            style={styles.photo}
+            source={{
+              uri: itemSpecific.image,
+            }}
+          />
+          <Text>{itemSpecific.description}</Text>
           <View>
-            <Text>What are you looking for today, {user.username}?</Text>
+            <Text>Review</Text>
             <TextInput
               style={styles.input}
-              placeholder="Search items"
+              placeholder="Comment for this item you bought..."
               onChangeText={(text) => setText(text)}
+              value={text}
             />
-            <Button
-              title="🔍"
-              onPress={() =>
-                navigation.push("Search", {
-                  email: user.email,
-                  search: text,
-                })
-              }
+            <Text>Rating</Text>
+            <TextInput
+              style={styles.input}
+              placeholder="0 to 5"
+              onChangeText={(text) => setRating(text)}
+              value={rating}
+              keyboardType="numeric"
             />
-          </View>
-
-          <View style={styles.items}>
-            {items.map((element, index) => {
-              return (
-                <>
-                  <View key={index}>
-                    <Text>{element.name}</Text>
-                    <TouchableOpacity
-                      onPress={() =>
-                        navigation.push("Item", {
-                          name: element.name,
-                          email: user.email,
-                        })
-                      }
-                    >
-                      <Image
-                        style={styles.photo}
-                        source={{
-                          uri: element.image,
-                        }}
-                      />
-                    </TouchableOpacity>
-                  </View>
-                </>
-              );
-            })}
           </View>
 
           <View style={styles.container}>
-            <Button title="Logout" onPress={() => logOutUser(navigation)} />
-            <Button
-              title="My Cart"
-              onPress={() => navigation.push("Cart", { email: user.email })}
-            />
+            <Button title="Comment" onPress={() => handleAddComment()} />
+            <Button title="Back" onPress={() => navigation.goBack()} />
           </View>
         </View>
       </ScrollView>

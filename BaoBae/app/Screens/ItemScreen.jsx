@@ -83,7 +83,14 @@ const ItemScreen = ({ route, navigation }) => {
             })
           }
         />
-        <Button title="Go back" onPress={() => navigation.goBack()} />
+        <Button
+          title="All items"
+          onPress={() =>
+            navigation.push("Browse", {
+              email: userEmail,
+            })
+          }
+        />
         {commentsArray.length > 0 ? (
           <>
             <Text>Comment:</Text>

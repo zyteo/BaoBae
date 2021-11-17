@@ -191,15 +191,17 @@ setDoc(doc(db, "items", "Instant Noodles"), {
 });
 
 // test update doc
-updateDoc(doc(db, "items", "Tissue"), {
-  comments: {
-    "iloveloot@baobae.com": {
-      username: "Bae",
-      rating: 4,
-      text: "Very good",
+const addComment = async (itemName, email, userName, rating, text) => {
+  await updateDoc(doc(db, "items", itemName), {
+    comments: {
+      [email]: {
+        username: userName,
+        rating: rating,
+        text: text,
+      },
     },
-  },
-});
+  });
+};
 
 // const museums = query(
 //   collectionGroup(db, "items"),
@@ -307,4 +309,5 @@ export {
   updateUserBoughtItems,
   updateItemQuantity,
   searchItems,
+  addComment,
 };

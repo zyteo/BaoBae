@@ -77,7 +77,11 @@ const AccountScreen = ({ navigation, route }) => {
                 />
                 <Button
                   title="Comment"
-                  onPress={() => navigation.push("Comment", { email: userEmail })
+                  onPress={() =>
+                    navigation.push("Comment", {
+                      email: userEmail,
+                      item: element.name,
+                    })
                   }
                 />
               </View>
