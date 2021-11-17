@@ -1,5 +1,4 @@
 // Import the functions you need from the SDKs you need
-// import { initializeApp } from "firebase/app";
 import {
   FIREBASE_APIKEY,
   FIREBASE_APPID,
@@ -46,8 +45,8 @@ const signUpUser = (email, password, username, Alert) => {
   auth
     .createUserWithEmailAndPassword(email, password)
     .then((userCredentials) => {
-      const user = userCredentials.user;
       // after user is created, add the user in database also
+      // standardise and set email to lowercase - this email will be the key for the users object
       email = email.toLowerCase();
       setDoc(doc(db, "users", `${email}`), {
         username: `${username}`,
@@ -80,9 +79,7 @@ const signUpUser = (email, password, username, Alert) => {
 const signInUser = (email, password, Alert) => {
   auth
     .signInWithEmailAndPassword(email, password)
-    .then((userCredentials) => {
-      const user = userCredentials.user;
-    })
+    .then()
     .catch((error) => {
       // if email is not valid
       if (error.code === "auth/invalid-email") {
@@ -115,6 +112,7 @@ const logOutUser = (navigation) => {
   auth
     .signOut()
     .then(() => {
+      // bring user back to app opening page
       navigation.replace("Home");
     })
     .catch((error) => console.log(error));
@@ -190,7 +188,8 @@ const db = getFirestore();
 //   description: "Every broke kid will know this, issa best friend...",
 // });
 
-// test update doc
+// add/update comments for item
+// If comment doesn't exist, new info created, otherwise, info will be overwritten
 const addComment = async (itemName, email, userName, rating, text) => {
   await setDoc(
     doc(db, "items", itemName),

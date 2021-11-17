@@ -84,6 +84,7 @@ Done up the search function on the browse screen.
 - 17 Nov: Already had keys in my lists, but still got warning "Each child in a list should have a unique "key" prop."
 Used index for the keys to remove warning message. Added code to clean text from search query.
 Add comment to the item page.
+Polish up code for the cart / bought items such that the items update properly.
 
 ```
 
@@ -97,7 +98,7 @@ Add comment to the item page.
 - [x] Item
 - [x] Buy
 - [x] Cart
-- [ ] Account
+- [x] Account
 
 ### Sample images...
 
