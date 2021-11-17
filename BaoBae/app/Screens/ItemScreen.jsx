@@ -39,6 +39,11 @@ const ItemScreen = ({ route, navigation }) => {
   const userEmail = route.params.email;
   const [itemSpecific, setItemSpecific] = useState([]);
   const [user, setUser] = useState([]);
+  let commentsArray = [];
+  let comments = itemSpecific.comments;
+  for (const comment in comments) {
+    commentsArray.push(comments[comment]);
+  }
 
   useEffect(() => {
     getItemSpecific(itemName, setItemSpecific);
@@ -49,6 +54,7 @@ const ItemScreen = ({ route, navigation }) => {
     <ScrollView>
       <View style={styles.container}>
         <Text>{itemSpecific.name}</Text>
+
         <Image
           style={styles.photo}
           source={{
@@ -78,7 +84,24 @@ const ItemScreen = ({ route, navigation }) => {
           }
         />
         <Button title="Go back" onPress={() => navigation.goBack()} />
-        {itemSpecific.comments ? <Text>Comment</Text> : <></>}
+        {commentsArray.length > 0 ? (
+          <>
+            <Text>Comment:</Text>
+            {commentsArray?.map((element, index) => {
+              return (
+                <>
+                  <View key={index} style={styles.horizontalcontainer}>
+                    <Text>{element.username}</Text>
+                    <Text>Rating: {element.rating}</Text>
+                    <Text>{element.text}</Text>
+                  </View>
+                </>
+              );
+            })}
+          </>
+        ) : (
+          <></>
+        )}
       </View>
     </ScrollView>
   );
