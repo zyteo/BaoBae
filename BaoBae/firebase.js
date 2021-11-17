@@ -202,7 +202,13 @@ updateDoc(doc(db, "items", "Tissue"), {
 
 // get the items from search query
 const searchItems = async (searchQuery, setItems) => {
-  const q = query(collection(db, "items"), where("name", "==", searchQuery));
+  // Need to clean the search query first
+  // want the text to be upper case for the first character
+  let cleanedText = searchQuery
+    .split(" ")
+    .map((ele) => ele.charAt(0).toUpperCase() + ele.slice(1))
+    .join(" ");
+  const q = query(collection(db, "items"), where("name", "==", cleanedText));
   const itemArray = [];
   const querySnapshot = await getDocs(q);
   querySnapshot.forEach((doc) => {
