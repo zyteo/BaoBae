@@ -85,10 +85,11 @@ Done up the search function on the browse screen.
 Used index for the keys to remove warning message. Added code to clean text from search query.
 Add comment to the item page.
 Polish up code for the cart / bought items such that the items update properly.
+MVP completed, will now move on to styling.
 
 ```
 
-### MVP in progress...
+### MVP complete!
 
 - [x] Opening
 - [x] Login
@@ -99,6 +100,7 @@ Polish up code for the cart / bought items such that the items update properly.
 - [x] Buy
 - [x] Cart
 - [x] Account
+- [x] Comment
 
 ### Sample images...
 
