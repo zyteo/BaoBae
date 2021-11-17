@@ -81,6 +81,8 @@ AccountScreen now reflects the items that the user bought.
 Item quantity will decrease accordingly when user purchases the item.
 Done up the search function on the browse screen.
 
+- 17 Nov: Already had keys in my lists, but still got warning "Each child in a list should have a unique "key" prop."
+Used index for the keys to remove warning message.
 
 ```
 
@@ -117,4 +119,5 @@ Drawio mobile app wireframe https://drawio-app.com/use-draw-io-to-mockup-your-mo
 Firebase docs https://firebase.google.com/docs/  
 Reading more about firebase + react native https://www.freecodecamp.org/news/react-native-firebase-tutorial/
 Require cycle message https://stackoverflow.com/questions/55664673/require-cycles-are-allowed-but-can-result-in-uninitialized-values-consider-ref  
-Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript
+Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript  
+React Native keys https://stackoverflow.com/questions/37578548/react-native-setting-keys-on-elements

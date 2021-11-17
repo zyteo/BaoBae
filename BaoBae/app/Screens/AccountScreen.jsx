@@ -60,10 +60,10 @@ const AccountScreen = ({ navigation, route }) => {
         ) : (
           <Text>You haven't bought anything.</Text>
         )}
-        {boughtItemsArray?.map((element) => {
+        {boughtItemsArray?.map((element, index) => {
           return (
             <>
-              <View key={element.name} style={styles.horizontalcontainer}>
+              <View style={styles.horizontalcontainer} key={index}>
                 <Text>{element.name}</Text>
                 <Text>${element.price}</Text>
                 <Text>{element.quantity}</Text>

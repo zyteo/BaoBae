@@ -87,10 +87,10 @@ const CartScreen = ({ route, navigation }) => {
         ) : (
           <Text>{user.username}, your cart is empty.</Text>
         )}
-        {cartArray?.map((element) => {
+        {cartArray?.map((element, index) => {
           return (
             <>
-              <View key={element.name} style={styles.horizontalcontainer}>
+              <View key={index} style={styles.horizontalcontainer}>
                 <Text>{element.name}</Text>
                 <Text>${element.price}</Text>
                 <Text>{element.quantity}</Text>

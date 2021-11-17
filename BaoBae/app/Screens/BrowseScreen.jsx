@@ -77,10 +77,10 @@ const BrowseScreen = ({ route, navigation }) => {
           </View>
 
           <View style={styles.items}>
-            {items.map((element) => {
+            {items.map((element, index) => {
               return (
                 <>
-                  <View key={element.name}>
+                  <View key={index}>
                     <Text>{element.name}</Text>
                     <TouchableOpacity
                       onPress={() =>
