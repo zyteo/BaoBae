@@ -13,6 +13,7 @@ import {
 import {
   getCurrentUser,
   getItemSpecific,
+  updateBuyItemsFromCart,
   updateItemQuantity,
 } from "../../firebase";
 import colours from "../Config/colours";
@@ -55,7 +56,7 @@ const CartScreen = ({ route, navigation }) => {
 
   // handle for user to buy item from cart
   const handleBuyItem = (buyItemQuantity, itemName, itemPrice) => {
-    // updateUserBoughtItems(
+    updateBuyItemsFromCart(userEmail, itemName);
     //   userEmail,
     //   itemSpecific.name,
     //   itemSpecific.price,

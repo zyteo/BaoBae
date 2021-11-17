@@ -206,11 +206,6 @@ const addComment = async (itemName, email, userName, rating, text) => {
   );
 };
 
-// const museums = query(
-//   collectionGroup(db, "items"),
-//   where("type", "==", "Technology")
-// );
-
 // get the items from search query
 const searchItems = async (searchQuery, setItems) => {
   // Need to clean the search query first
@@ -303,6 +298,32 @@ const updateItemQuantity = async (itemName, quantity) => {
   });
 };
 
+// update user bought items for items in user cart
+// if items not bought before, add to user database
+// if items bought before, increment the item count in database
+// afterwards, remove item from cart
+const updateBuyItemsFromCart = async (email, item) => {
+  let itemsBoughtArray = [];
+  const docSnap = await getDoc(doc(db, "users", email));
+  // want to know all the items that the user bought
+  for (let key in docSnap.data().bought) {
+    itemsBoughtArray.push(key);
+  }
+
+  if (itemsBoughtArray.indexOf(item) === -1) {
+    console.log("never bought before");
+  } else {
+    console.log("bought before");
+  }
+
+  // if (itemsBoughtArray.indexOf(item))
+  // if (docSnap.data().bought[item]) {
+  //   console.log("No have", docSnap.data().bought[item]);
+  // } else {
+  //   console.log("No have", docSnap.data().bought[item]);
+  // }
+};
+
 export {
   db,
   getItems,
@@ -313,4 +334,5 @@ export {
   updateItemQuantity,
   searchItems,
   addComment,
+  updateBuyItemsFromCart,
 };
