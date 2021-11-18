@@ -8,36 +8,76 @@ import {
   Image,
   ScrollView,
 } from "react-native";
+import styled from "styled-components/native";
 import { getCurrentUser, logOutUser } from "../../firebase";
 import colours from "../Config/colours";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  horizontalcontainer: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-  photo: {
-    width: 50,
-    height: 50,
-  },
-});
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  alignItems: center;
+  justifyContent: center;
+  width: 100%;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
+
+const StyledImage = styled.Image`
+  width: 60px;
+  height: 60px;
+  borderRadius: 6px;
+  `;
+
+const StyledText = styled.Text`
+  height: 20px;
+  margin: 8px;
+  color: ${colours.inputboxtext};
+  fontSize: 16px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledViewItems = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  align-items: center;
+  justifyContent: center;
+  width: 100%;
+  flexDirection: column;
+  flexWrap: wrap;
+`;
+
+const StyledHorizontalItems = styled.View`
+  flex: 1;
+  flexDirection: row;
+  flexWrap: wrap;
+  align-items: center;
+  justifyContent: center;
+  width: 95%;
+  background-color: ${colours.itembox};
+  margin: 8px;
+  borderRadius: 6px;
+`;
+
+const StyledItem = styled.View`
+  alignItems: center;
+  justifyContent: center;
+  margin: 8px;
+`;
 
 const AccountScreen = ({ navigation, route }) => {
   const userEmail = route.params.email;
@@ -53,47 +93,55 @@ const AccountScreen = ({ navigation, route }) => {
   }, []);
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <Text>{user.username}'s Account</Text>
+      <StyledView>
+        <StyledText>{user.username}'s Account</StyledText>
         {boughtItemsArray.length > 0 ? (
           <Text>Here's what you bought:</Text>
         ) : (
           <Text>You haven't bought anything.</Text>
         )}
-        {boughtItemsArray?.map((element, index) => {
-          return (
-            
-              <View style={styles.horizontalcontainer} key={index}>
-                <Text>{element.name}</Text>
-                <Text>${element.price}</Text>
-                <Text>{element.quantity}</Text>
-                <Text>Total cost ${element.price * element.quantity}</Text>
-
-                <Image
-                  style={styles.photo}
-                  source={{
-                    uri: element.image,
-                  }}
-                />
-                <Button
-                  title="Comment"
+        <StyledViewItems>
+          {boughtItemsArray?.map((element, index) => {
+            return (
+              <StyledHorizontalItems key={index}>
+                <StyledItem>
+                  <StyledImage
+                    source={{
+                      uri: element.image,
+                    }}
+                  />
+                  <Text>{element.name}</Text>
+                </StyledItem>
+                <StyledItem>
+                  <Text>${element.price} each</Text>
+                  <Text>{element.quantity} bought</Text>
+                  <Text>Total ${element.price * element.quantity}</Text>
+                </StyledItem>
+                <StyledTouchableOpacity
                   onPress={() =>
                     navigation.push("Comment", {
                       email: userEmail,
                       item: element.name,
                     })
                   }
-                />
-              </View>
-            
-          );
-        })}
-        <Button
-          title="Back to items"
+                >
+                  <StyledTouchableOpacityText>
+                    Comment
+                  </StyledTouchableOpacityText>
+                </StyledTouchableOpacity>
+              </StyledHorizontalItems>
+            );
+          })}
+        </StyledViewItems>
+        <StyledTouchableOpacity
           onPress={() => navigation.push("Browse", { email: userEmail })}
-        />
-        <Button title="Logout" onPress={() => logOutUser(navigation)} />
-      </View>
+        >
+          <StyledTouchableOpacityText>Back to items</StyledTouchableOpacityText>
+        </StyledTouchableOpacity>
+        <StyledTouchableOpacity onPress={() => logOutUser(navigation)}>
+          <StyledTouchableOpacityText>Logout</StyledTouchableOpacityText>
+        </StyledTouchableOpacity>
+      </StyledView>
     </ScrollView>
   );
 };

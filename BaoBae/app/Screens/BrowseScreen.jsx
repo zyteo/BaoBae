@@ -162,6 +162,11 @@ const BrowseScreen = ({ route, navigation }) => {
             >
               <StyledTouchableOpacityText>Cart 🛒</StyledTouchableOpacityText>
             </StyledTouchableOpacity>
+            <StyledTouchableOpacity
+              onPress={() => navigation.push("Account", { email: user.email })}
+            >
+              <StyledTouchableOpacityText>Account</StyledTouchableOpacityText>
+            </StyledTouchableOpacity>
             <StyledTouchableOpacity onPress={() => logOutUser(navigation)}>
               <StyledTouchableOpacityText>Logout</StyledTouchableOpacityText>
             </StyledTouchableOpacity>

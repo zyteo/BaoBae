@@ -10,4 +10,5 @@ export default {
   buttonboxtext: "white",
   headerbox: "black",
   headerboxtext: "white",
+  itembox: "lightgrey",
 };
