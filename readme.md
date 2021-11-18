@@ -122,7 +122,7 @@ Created logo with photoshop.
 - [x] Item
 - [x] Buy
 - [x] Cart
-- [ ] Account
+- [x] Account
 - [ ] Comment
 
 ### Sample images...

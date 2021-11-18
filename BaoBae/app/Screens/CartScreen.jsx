@@ -10,6 +10,7 @@ import {
   Alert,
   ScrollView,
 } from "react-native";
+import styled from "styled-components/native";
 import {
   getCurrentUser,
   getItemSpecific,
@@ -18,6 +19,74 @@ import {
   updateItemQuantity,
 } from "../../firebase";
 import colours from "../Config/colours";
+
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  alignItems: center;
+  justifyContent: center;
+  width: 100%;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
+
+const StyledImage = styled.Image`
+  width: 60px;
+  height: 60px;
+  borderRadius: 6px;
+  `;
+
+const StyledText = styled.Text`
+  height: 20px;
+  margin: 8px;
+  color: ${colours.inputboxtext};
+  fontSize: 16px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledViewItems = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  align-items: center;
+  justifyContent: center;
+  width: 100%;
+  flexDirection: column;
+  flexWrap: wrap;
+`;
+
+const StyledHorizontalItems = styled.View`
+  flex: 1;
+  flexDirection: row;
+  flexWrap: wrap;
+  align-items: center;
+  justifyContent: center;
+  width: 95%;
+  background-color: ${colours.itembox};
+  margin: 8px;
+  borderRadius: 6px;
+`;
+
+const StyledItem = styled.View`
+  alignItems: center;
+  justifyContent: center;
+  margin: 8px;
+`;
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
@@ -90,57 +159,77 @@ const CartScreen = ({ route, navigation }) => {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
+      <StyledView>
         {cartArray.length > 0 ? (
-          <Text>{user.username}'s cart:</Text>
+          <StyledText>{user.username}'s cart:</StyledText>
         ) : (
-          <Text>{user.username}, your cart is empty.</Text>
+          <StyledText>{user.username}, your cart is empty.</StyledText>
         )}
+        <StyledViewItems>
         {cartArray?.map((element, index) => {
           return (
-              <View key={index} style={styles.horizontalcontainer}>
-                <Text>{element.name}</Text>
-                <Text>${element.price}</Text>
-                <Text>{element.quantity}</Text>
+            <StyledHorizontalItems key={index} >
+              <StyledItem>
+              <StyledImage
+                source={{
+                  uri: element.image,
+                }}
+              />
+              <Text>{element.name}</Text>
+              </StyledItem>
+              <StyledItem>
+              <Text>${element.price} each</Text>
+              <Text>{element.quantity} in cart</Text>
+              </StyledItem>
 
-                <Image
-                  style={styles.photo}
-                  source={{
-                    uri: element.image,
-                  }}
-                />
-                <Button
-                  title="Buy"
-                  onPress={() =>
-                    handleBuyItem(
-                      element.quantity,
-                      element.name,
-                      element.price,
-                      element.image
-                    )
-                  }
-                />
-                <Button
-                  title="Remove from cart"
-                  onPress={() => handleRemoveCartItem(userEmail, element.name)}
-                />
-              </View>
+              <StyledTouchableOpacity
+                onPress={() =>
+                  handleBuyItem(
+                    element.quantity,
+                    element.name,
+                    element.price,
+                    element.image
+                  )
+                }
+              >
+                <StyledTouchableOpacityText>
+                    Buy
+                  </StyledTouchableOpacityText>
+              </StyledTouchableOpacity>
+              <StyledTouchableOpacity
+                onPress={() => handleRemoveCartItem(userEmail, element.name)}
+                >
+
+                <StyledTouchableOpacityText>
+                    Remove
+                  </StyledTouchableOpacityText>
+                </StyledTouchableOpacity>
+            </StyledHorizontalItems>
           );
         })}
+        </StyledViewItems>
 
-        <Button
-          title="Back"
+        <StyledTouchableOpacity
           onPress={() => navigation.push("Browse", { email: userEmail })}
-        />
-        <Button
-          title="Account"
+          >
+
+          <StyledTouchableOpacityText>
+            Back
+            </StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+        <StyledTouchableOpacity
           onPress={() =>
             navigation.push("Account", {
               email: userEmail,
             })
           }
-        />
-      </View>
+          >
+
+          <StyledTouchableOpacityText>
+            Account
+            </StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+      </StyledView>
     </ScrollView>
   );
 };
