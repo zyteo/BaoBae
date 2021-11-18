@@ -89,7 +89,7 @@ const StyledTextInput = styled.TextInput`
   borderColor: ${colours.border};
   fontSize: 14px;
   `;
-
+  
 const AddCartScreen = ({ route, navigation }) => {
   const itemName = route.params.name;
   const userEmail = route.params.email;
@@ -155,11 +155,11 @@ const AddCartScreen = ({ route, navigation }) => {
           value={addCartQuantity}
           keyboardType="numeric"
         />
-        <StyledTouchableOpacity onPress={() => handleAddCart()} >
-        <StyledTouchableOpacityText>ADD!</StyledTouchableOpacityText>
+        <StyledTouchableOpacity onPress={() => handleAddCart()}>
+          <StyledTouchableOpacityText>ADD!</StyledTouchableOpacityText>
         </StyledTouchableOpacity>
-        <StyledTouchableOpacity onPress={() => navigation.goBack()} >
-        <StyledTouchableOpacityText>Back</StyledTouchableOpacityText>
+        <StyledTouchableOpacity onPress={() => navigation.goBack()}>
+          <StyledTouchableOpacityText>Back</StyledTouchableOpacityText>
         </StyledTouchableOpacity>
       </StyledView>
     </ScrollView>

@@ -120,7 +120,7 @@ Created logo with photoshop.
 - [x] Browse
 - [x] Search
 - [x] Item
-- [ ] Buy
+- [x] Buy
 - [x] Cart
 - [ ] Account
 - [ ] Comment
