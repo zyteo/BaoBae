@@ -117,8 +117,8 @@ Created logo with photoshop.
 - [x] Opening
 - [x] Login
 - [x] Signup
-- [ ] Browse
-- [ ] Search
+- [x] Browse
+- [x] Search
 - [ ] Item
 - [ ] Buy
 - [ ] Cart
