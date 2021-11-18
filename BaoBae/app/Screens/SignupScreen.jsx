@@ -1,27 +1,63 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
-import { auth, logOutUser, signUpUser } from "../../firebase";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  Alert,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
+import styled from "styled-components/native";
+import { auth, signUpUser } from "../../firebase";
 import colours from "../Config/colours";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    width: "90%",
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-});
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
 
+const StyledTextInput = styled.TextInput`
+  height: 35px;
+  margin: 16px;
+  width: 92%;
+  borderWidth: 1.5px;
+  borderRadius: 8px;
+  padding: 8px;
+  background-color: ${colours.inputbox};
+  color: ${colours.inputboxtext};
+  borderColor: ${colours.border};
+  fontSize: 14px;
+  `;
+  
+  const StyledText = styled.Text`
+  height: 20px;
+  margin: 16px;
+  color: ${colours.inputboxtext};
+  fontSize: 16px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -52,43 +88,44 @@ const SignupScreen = ({ navigation }) => {
   };
 
   return (
-    <View style={styles.container}>
-      <Text>Email: </Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Email"
-        onChangeText={(text) => setEmail(text)}
-        value={email}
-        keyboardType="email-address"
-        textContentType="emailAddress"
-      />
-      <Text>Username: </Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Username - Minimum 3 characters"
-        onChangeText={(text) => setUsername(text)}
-        value={username}
-      />
-      <Text>Password: </Text>
-      <TextInput
-        secureTextEntry={true}
-        style={styles.input}
-        placeholder="Password - Minimum 6 characters"
-        onChangeText={(text) => setPassword(text)}
-        value={password}
-      />
-      <Text>Confirm Password: </Text>
-      <TextInput
-        secureTextEntry={true}
-        style={styles.input}
-        placeholder="Confirm Password"
-        onChangeText={(text) => setPasswordCheck(text)}
-        value={passwordCheck}
-      />
-
-      <Button title="Sign up" onPress={() => handleSignUp()} />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+    <ScrollView>
+      <StyledView>
+        <StyledText>Email: </StyledText>
+        <StyledTextInput
+          placeholder="Email"
+          onChangeText={(text) => setEmail(text)}
+          value={email}
+          keyboardType="email-address"
+          textContentType="emailAddress"
+        />
+        <StyledText>Username: </StyledText>
+        <StyledTextInput
+          placeholder="Username - Minimum 3 characters"
+          onChangeText={(text) => setUsername(text)}
+          value={username}
+        />
+        <StyledText>Password: </StyledText>
+        <StyledTextInput
+          secureTextEntry={true}
+          placeholder="Password - Minimum 6 characters"
+          onChangeText={(text) => setPassword(text)}
+          value={password}
+        />
+        <StyledText>Confirm Password: </StyledText>
+        <StyledTextInput
+          secureTextEntry={true}
+          placeholder="Confirm Password"
+          onChangeText={(text) => setPasswordCheck(text)}
+          value={passwordCheck}
+        />
+        <StyledTouchableOpacity onPress={() => handleSignUp()} >
+          <StyledTouchableOpacityText>SIGN UP</StyledTouchableOpacityText>
+        </StyledTouchableOpacity>
+        <StyledTouchableOpacity onPress={() => navigation.goBack()} >
+          <StyledTouchableOpacityText>BACK</StyledTouchableOpacityText>
+        </StyledTouchableOpacity>
+      </StyledView>
+    </ScrollView>
   );
 };
 

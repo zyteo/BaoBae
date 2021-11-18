@@ -20,6 +20,7 @@ Technologies used to build this project.
 - Expo Client
 - React Navigation
 - Firebase
+- Styled components
 
 ```
 
@@ -91,6 +92,7 @@ MVP completed, will now move on to styling.
 Removed react fragments which was causing the "Each child in a list.." warning.
 Work on styling
 Refine search for item types
+Realised styled components work on React Native. Yes!
 
 ```
 
@@ -111,7 +113,7 @@ Refine search for item types
 
 - [ ] Opening
 - [ ] Login
-- [ ] Signup
+- [x] Signup
 - [ ] Browse
 - [ ] Search
 - [ ] Item
