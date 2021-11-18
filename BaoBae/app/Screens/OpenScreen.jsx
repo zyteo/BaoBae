@@ -1,24 +1,49 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, TextInput, View, Button } from "react-native";
+import styled from "styled-components/native";
 import colours from "../Config/colours";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
+
+const StyledImage = styled.Image`
+  width: 250px;
+  height: 250px;
+  borderRadius: 10px;
+  `;
 
 const OpenScreen = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <Text>BaoBae</Text>
-      <Text>Taobao Clone</Text>
-      <Button title="Login" onPress={() => navigation.navigate("Login")} />
-      <Button title="Sign Up" onPress={() => navigation.navigate("Signup")} />
-    </View>
+    <StyledView>
+      <StyledImage source={require('../Config/Logo.jpg')}/>
+      <StyledTouchableOpacity onPress={() => navigation.navigate("Login")} >
+        <StyledTouchableOpacityText>Login</StyledTouchableOpacityText>
+      </StyledTouchableOpacity>
+      <StyledTouchableOpacity onPress={() => navigation.navigate("Signup")} >
+        <StyledTouchableOpacityText>Sign Up</StyledTouchableOpacityText>
+      </StyledTouchableOpacity>
+    </StyledView>
   );
 };
 

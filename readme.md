@@ -3,6 +3,7 @@
 
 # BaoBae
 
+<img src="./BaoBae/app/assets/Logo.jpg"/>
 Mobile app of a TaoBao clone. Made with React Native.
 
 ## Description
@@ -21,12 +22,13 @@ Technologies used to build this project.
 - React Navigation
 - Firebase
 - Styled components
+- Adobe Photoshop
 
 ```
 
 ### Wireframes
 
-<img src="./drawio/wireframes.png"/>
+<img src="./drawio/wireframes.png" width="300px" height="300px"/>
 
 ### User Stories
 
@@ -93,6 +95,7 @@ Removed react fragments which was causing the "Each child in a list.." warning.
 Work on styling
 Refine search for item types
 Realised styled components work on React Native. Yes!
+Created logo with photoshop.
 
 ```
 
@@ -111,7 +114,7 @@ Realised styled components work on React Native. Yes!
 
 ### Styling in progress...
 
-- [ ] Opening
+- [x] Opening
 - [x] Login
 - [x] Signup
 - [ ] Browse
@@ -144,4 +147,5 @@ Firebase docs https://firebase.google.com/docs/
 Reading more about firebase + react native https://www.freecodecamp.org/news/react-native-firebase-tutorial/
 Require cycle message https://stackoverflow.com/questions/55664673/require-cycles-are-allowed-but-can-result-in-uninitialized-values-consider-ref  
 Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript  
-React Native keys https://stackoverflow.com/questions/37578548/react-native-setting-keys-on-elements
+React Native keys https://stackoverflow.com/questions/37578548/react-native-setting-keys-on-elements  
+Logo icon https://thenounproject.com/newhaircut/

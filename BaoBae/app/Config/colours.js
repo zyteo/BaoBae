@@ -1,7 +1,7 @@
 import { useFonts, Inter_900Black } from "expo-font";
 
 export default {
-  primary: "orange",
+  primary: "red",
   secondary: "red",
   inputbox: "white",
   inputboxtext: "black",

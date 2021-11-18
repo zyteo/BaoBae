@@ -133,10 +133,10 @@ const SignupScreen = ({ navigation }) => {
           value={passwordCheck}
         />
         <StyledTouchableOpacity onPress={() => handleSignUp()} >
-          <StyledTouchableOpacityText>SIGN UP</StyledTouchableOpacityText>
+          <StyledTouchableOpacityText>Sign Up</StyledTouchableOpacityText>
         </StyledTouchableOpacity>
         <StyledTouchableOpacity onPress={() => navigation.goBack()} >
-          <StyledTouchableOpacityText>BACK</StyledTouchableOpacityText>
+          <StyledTouchableOpacityText>Back</StyledTouchableOpacityText>
         </StyledTouchableOpacity>
       </StyledView>
     </ScrollView>

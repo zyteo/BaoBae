@@ -96,10 +96,10 @@ const LoginScreen = ({ navigation }) => {
       />
 
       <StyledTouchableOpacity onPress={() => signInUser(email, password, Alert)}>
-        <StyledTouchableOpacityText>LOGIN</StyledTouchableOpacityText>
+        <StyledTouchableOpacityText>Login</StyledTouchableOpacityText>
       </StyledTouchableOpacity>
       <StyledTouchableOpacity onPress={() => navigation.goBack()}>
-        <StyledTouchableOpacityText>BACK</StyledTouchableOpacityText>
+        <StyledTouchableOpacityText>Back</StyledTouchableOpacityText>
       </StyledTouchableOpacity>
     </StyledView>
   );
