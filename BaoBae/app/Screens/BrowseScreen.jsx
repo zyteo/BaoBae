@@ -134,7 +134,7 @@ const BrowseScreen = ({ route, navigation }) => {
     <>
       <ScrollView>
         <StyledView>
-          <Text>What are you looking for today, {user.username}?</Text>
+          <StyledText>What are you looking for today, {user.username}?</StyledText>
           <StyledSearchView>
             <StyledTextInput
               placeholder="Search items"
@@ -178,11 +178,14 @@ const BrowseScreen = ({ route, navigation }) => {
           </View>
 
           <View style={styles.container}>
-            <Button title="Logout" onPress={() => logOutUser(navigation)} />
-            <Button
-              title="My 🛒"
+            <StyledTouchableOpacity onPress={() => logOutUser(navigation)} >
+              <StyledTouchableOpacityText>Logout</StyledTouchableOpacityText>
+            </StyledTouchableOpacity>
+            <StyledTouchableOpacity
               onPress={() => navigation.push("Cart", { email: user.email })}
-            />
+              >
+              <StyledTouchableOpacityText>Cart 🛒</StyledTouchableOpacityText>
+            </StyledTouchableOpacity>
           </View>
         </StyledView>
       </ScrollView>
