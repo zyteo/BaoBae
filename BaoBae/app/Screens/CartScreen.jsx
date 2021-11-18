@@ -98,7 +98,6 @@ const CartScreen = ({ route, navigation }) => {
         )}
         {cartArray?.map((element, index) => {
           return (
-            <>
               <View key={index} style={styles.horizontalcontainer}>
                 <Text>{element.name}</Text>
                 <Text>${element.price}</Text>
@@ -126,7 +125,6 @@ const CartScreen = ({ route, navigation }) => {
                   onPress={() => handleRemoveCartItem(userEmail, element.name)}
                 />
               </View>
-            </>
           );
         })}
 

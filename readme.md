@@ -87,6 +87,11 @@ Add comment to the item page.
 Polish up code for the cart / bought items such that the items update properly.
 MVP completed, will now move on to styling.
 
+- 18 Nov: Will refine project based on 1 to 1 discussion.
+Removed react fragments which was causing the "Each child in a list.." warning.
+Work on styling
+Refine search for item types
+
 ```
 
 ### MVP complete!
@@ -101,6 +106,19 @@ MVP completed, will now move on to styling.
 - [x] Cart
 - [x] Account
 - [x] Comment
+
+### Styling in progress...
+
+- [ ] Opening
+- [ ] Login
+- [ ] Signup
+- [ ] Browse
+- [ ] Search
+- [ ] Item
+- [ ] Buy
+- [ ] Cart
+- [ ] Account
+- [ ] Comment
 
 ### Sample images...
 

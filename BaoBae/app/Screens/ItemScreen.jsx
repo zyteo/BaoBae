@@ -96,13 +96,11 @@ const ItemScreen = ({ route, navigation }) => {
             <Text>Comment:</Text>
             {commentsArray?.map((element, index) => {
               return (
-                <>
                   <View key={index} style={styles.horizontalcontainer}>
                     <Text>{element.username}</Text>
                     <Text>Rating: {element.rating}</Text>
                     <Text>{element.text}</Text>
                   </View>
-                </>
               );
             })}
           </>

@@ -71,7 +71,6 @@ const SearchScreen = ({ route, navigation }) => {
           <View style={styles.items}>
             {items.map((element, index) => {
               return (
-                <>
                   <View key={index}>
                     <Text>{element.name}</Text>
                     <TouchableOpacity
@@ -90,7 +89,6 @@ const SearchScreen = ({ route, navigation }) => {
                       />
                     </TouchableOpacity>
                   </View>
-                </>
               );
             })}
           </View>

@@ -62,7 +62,7 @@ const AccountScreen = ({ navigation, route }) => {
         )}
         {boughtItemsArray?.map((element, index) => {
           return (
-            <>
+            
               <View style={styles.horizontalcontainer} key={index}>
                 <Text>{element.name}</Text>
                 <Text>${element.price}</Text>
@@ -85,7 +85,7 @@ const AccountScreen = ({ navigation, route }) => {
                   }
                 />
               </View>
-            </>
+            
           );
         })}
         <Button
