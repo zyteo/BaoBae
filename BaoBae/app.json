@@ -4,9 +4,9 @@
     "slug": "BaoBae",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./app/assets/icon.png",
+    "icon": "./app/Config/Logo.jpg",
     "splash": {
-      "image": "./app/assets/splash.png",
+      "image": "./app/Config/Logo.jpg",
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
@@ -26,8 +26,8 @@
       }
     },
     "web": {
-      "favicon": "./app/assets/favicon.png"
+      "favicon": "./app/Config/Logo.jpg"
     },
-    "description": "Taobao clone mobile app."
+    "description": "Taobao clone mobile app. Just for fun."
   }
 }
