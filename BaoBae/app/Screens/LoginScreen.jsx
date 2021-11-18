@@ -1,26 +1,66 @@
 import React, { useEffect, useState } from "react";
 import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
+import styled from "styled-components/native";
 import { auth, signInUser } from "../../firebase";
 import colours from "../Config/colours";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    width: "90%",
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-});
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+`;
+
+const StyledTextInput = styled.TextInput`
+  height: 35px;
+  margin: 16px;
+  width: 92%;
+  borderWidth: 1.5px;
+  borderRadius: 8px;
+  padding: 8px;
+  background-color: ${colours.inputbox};
+  color: ${colours.inputboxtext};
+  borderColor: ${colours.border};
+  fontSize: 14px;
+  `;
+  
+  const StyledText = styled.Text`
+  height: 20px;
+  margin: 16px;
+  color: ${colours.inputboxtext};
+  fontSize: 16px;
+  align-items: center;
+  justify-content: center;
+`;
+
+const StyledTextHeader = styled.Text`
+  margin: 2px;
+  height: 36px;
+  padding: 6px;
+  color: ${colours.headerboxtext};
+  background-color: ${colours.headerbox};
+  fontSize: 18px;
+  align-items: center;
+  justify-content: center;
+  borderRadius: 2px;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
 
 const LoginScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
@@ -37,31 +77,31 @@ const LoginScreen = ({ navigation }) => {
   }, []);
 
   return (
-    <View style={styles.container}>
-      <Text>Email: </Text>
-      <TextInput
-        style={styles.input}
+    <StyledView>
+      <StyledTextHeader>Login</StyledTextHeader>
+      <StyledText>Email: </StyledText>
+      <StyledTextInput
         placeholder="Email"
         onChangeText={(text) => setEmail(text)}
         value={email}
         keyboardType="email-address"
         textContentType="emailAddress"
       />
-      <Text>Password: </Text>
-      <TextInput
+      <StyledText>Password: </StyledText>
+      <StyledTextInput
         secureTextEntry={true}
-        style={styles.input}
         placeholder="Password"
         onChangeText={(text) => setPassword(text)}
         value={password}
       />
 
-      <Button
-        title="Login"
-        onPress={() => signInUser(email, password, Alert)}
-      />
-      <Button title="Go back" onPress={() => navigation.goBack()} />
-    </View>
+      <StyledTouchableOpacity onPress={() => signInUser(email, password, Alert)}>
+        <StyledTouchableOpacityText>LOGIN</StyledTouchableOpacityText>
+      </StyledTouchableOpacity>
+      <StyledTouchableOpacity onPress={() => navigation.goBack()}>
+        <StyledTouchableOpacityText>BACK</StyledTouchableOpacityText>
+      </StyledTouchableOpacity>
+    </StyledView>
   );
 };
 

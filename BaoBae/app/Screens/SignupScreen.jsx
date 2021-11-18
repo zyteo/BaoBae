@@ -43,6 +43,18 @@ const StyledTextInput = styled.TextInput`
   justify-content: center;
 `;
 
+  const StyledTextHeader = styled.Text`
+  margin: 2px;
+  height: 36px;
+  padding: 6px;
+  color: ${colours.headerboxtext};
+  background-color: ${colours.headerbox};
+  fontSize: 18px;
+  align-items: center;
+  justify-content: center;
+  borderRadius: 2px;
+`;
+
 const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
   margin: 2px;
@@ -58,6 +70,7 @@ const StyledTouchableOpacityText = styled.Text`
   color: ${colours.buttonboxtext};
   fontSize: 17px;
   `;
+
 const SignupScreen = ({ navigation }) => {
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
@@ -90,6 +103,7 @@ const SignupScreen = ({ navigation }) => {
   return (
     <ScrollView>
       <StyledView>
+      <StyledTextHeader>Create Account</StyledTextHeader>
         <StyledText>Email: </StyledText>
         <StyledTextInput
           placeholder="Email"

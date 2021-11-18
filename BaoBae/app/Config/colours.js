@@ -7,5 +7,7 @@ export default {
   inputboxtext: "black",
   border: "black",
   buttonbox: "darkblue",
-  buttonboxtext: "white"
+  buttonboxtext: "white",
+  headerbox: "black",
+  headerboxtext: "white",
 };

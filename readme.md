@@ -112,7 +112,7 @@ Realised styled components work on React Native. Yes!
 ### Styling in progress...
 
 - [ ] Opening
-- [ ] Login
+- [x] Login
 - [x] Signup
 - [ ] Browse
 - [ ] Search
