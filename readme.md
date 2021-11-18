@@ -112,7 +112,7 @@ Created logo with photoshop.
 - [x] Account
 - [x] Comment
 
-### Styling in progress...
+### Styling complete!
 
 - [x] Opening
 - [x] Login
@@ -123,7 +123,7 @@ Created logo with photoshop.
 - [x] Buy
 - [x] Cart
 - [x] Account
-- [ ] Comment
+- [x] Comment
 
 ### Sample images...
 

@@ -20,6 +20,7 @@ import {
 } from "../../firebase";
 import colours from "../Config/colours";
 
+
 const StyledView = styled.View`
   flex: 1;
   background-color: ${colours.primary};
@@ -87,34 +88,6 @@ const StyledItem = styled.View`
   margin: 8px;
 `;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  horizontalcontainer: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-  photo: {
-    width: 50,
-    height: 50,
-  },
-});
-
 const CartScreen = ({ route, navigation }) => {
   const userEmail = route.params.email;
   const [user, setUser] = useState([]);
@@ -166,69 +139,60 @@ const CartScreen = ({ route, navigation }) => {
           <StyledText>{user.username}, your cart is empty.</StyledText>
         )}
         <StyledViewItems>
-        {cartArray?.map((element, index) => {
-          return (
-            <StyledHorizontalItems key={index} >
-              <StyledItem>
-              <StyledImage
-                source={{
-                  uri: element.image,
-                }}
-              />
-              <Text>{element.name}</Text>
-              </StyledItem>
-              <StyledItem>
-              <Text>${element.price} each</Text>
-              <Text>{element.quantity} in cart</Text>
-              </StyledItem>
+          {cartArray?.map((element, index) => {
+            return (
+              <StyledHorizontalItems key={index}>
+                <StyledItem>
+                  <StyledImage
+                    source={{
+                      uri: element.image,
+                    }}
+                  />
+                  <Text>{element.name}</Text>
+                </StyledItem>
+                <StyledItem>
+                  <Text>${element.price} each</Text>
+                  <Text>{element.quantity} in cart</Text>
+                </StyledItem>
 
-              <StyledTouchableOpacity
-                onPress={() =>
-                  handleBuyItem(
-                    element.quantity,
-                    element.name,
-                    element.price,
-                    element.image
-                  )
-                }
-              >
-                <StyledTouchableOpacityText>
-                    Buy
-                  </StyledTouchableOpacityText>
-              </StyledTouchableOpacity>
-              <StyledTouchableOpacity
-                onPress={() => handleRemoveCartItem(userEmail, element.name)}
+                <StyledTouchableOpacity
+                  onPress={() =>
+                    handleBuyItem(
+                      element.quantity,
+                      element.name,
+                      element.price,
+                      element.image
+                    )
+                  }
                 >
-
-                <StyledTouchableOpacityText>
+                  <StyledTouchableOpacityText>Buy</StyledTouchableOpacityText>
+                </StyledTouchableOpacity>
+                <StyledTouchableOpacity
+                  onPress={() => handleRemoveCartItem(userEmail, element.name)}
+                >
+                  <StyledTouchableOpacityText>
                     Remove
                   </StyledTouchableOpacityText>
                 </StyledTouchableOpacity>
-            </StyledHorizontalItems>
-          );
-        })}
+              </StyledHorizontalItems>
+            );
+          })}
         </StyledViewItems>
 
         <StyledTouchableOpacity
           onPress={() => navigation.push("Browse", { email: userEmail })}
-          >
-
-          <StyledTouchableOpacityText>
-            Back
-            </StyledTouchableOpacityText>
-          </StyledTouchableOpacity>
+        >
+          <StyledTouchableOpacityText>Back</StyledTouchableOpacityText>
+        </StyledTouchableOpacity>
         <StyledTouchableOpacity
           onPress={() =>
             navigation.push("Account", {
               email: userEmail,
             })
           }
-          >
-
-          <StyledTouchableOpacityText>
-            Account
-            </StyledTouchableOpacityText>
-          </StyledTouchableOpacity>
+        >
+          <StyledTouchableOpacityText>Account</StyledTouchableOpacityText>
+        </StyledTouchableOpacity>
       </StyledView>
     </ScrollView>
   );

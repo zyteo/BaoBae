@@ -10,6 +10,7 @@ import {
   ScrollView,
   Alert,
 } from "react-native";
+import styled from "styled-components/native";
 import {
   addComment,
   getCurrentUser,
@@ -18,6 +19,91 @@ import {
   logOutUser,
 } from "../../firebase";
 import colours from "../Config/colours";
+
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  alignItems: center;
+  justifyContent: center;
+  width: 100%;
+`;
+
+const StyledSearchView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  alignItems: center;
+  justifyContent: center;
+  width: 80%;
+  flexDirection: row;
+  margin: 8px;
+`;
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
+
+const StyledImage = styled.Image`
+  width: 150px;
+  height: 150px;
+  borderRadius: 6px;
+  margin: 8px;
+  `;
+
+const StyledText = styled.Text`
+  height: 20px;
+  margin: 8px;
+  color: ${colours.inputboxtext};
+  fontSize: 16px;
+`;
+
+
+const StyledComment = styled.View`
+  alignItems: center;
+  justifyContent: center;
+  margin: 2px;
+  background-color: white;
+  width: 90%;
+  borderRadius: 6px;
+
+`;
+
+const StyledReviewInput = styled.TextInput`
+  height: 40px;
+  margin: 2px;
+  width: 80%;
+  borderWidth: 1.5px;
+  borderRadius: 8px;
+  padding: 8px;
+  background-color: ${colours.inputbox};
+  color: ${colours.inputboxtext};
+  borderColor: ${colours.border};
+  fontSize: 14px;
+  `;
+
+const StyledRatingInput = styled.TextInput`
+  height: 40px;
+  margin: 2px;
+  width: 28%;
+  borderWidth: 1.5px;
+  borderRadius: 8px;
+  padding: 8px;
+  background-color: ${colours.inputbox};
+  color: ${colours.inputboxtext};
+  borderColor: ${colours.border};
+  fontSize: 14px;
+  `;
 
 const styles = StyleSheet.create({
   container: {
@@ -67,7 +153,7 @@ const CommentScreen = ({ route, navigation }) => {
         { text: "OK" },
       ]);
     } else if (parseInt(rating) <= 0) {
-      Alert.alert("Pls...", "Don't like item but at least give 0 pls", [
+      Alert.alert("Pls...", "Don't like item but at least give 1 pls", [
         { text: "OK" },
       ]);
     } else {
@@ -98,39 +184,42 @@ const CommentScreen = ({ route, navigation }) => {
   return (
     <>
       <ScrollView>
-        <View style={styles.container}>
-          <Text>{itemSpecific.name}</Text>
+        <StyledView>
+          <StyledText>{itemSpecific.name}</StyledText>
 
-          <Image
-            style={styles.photo}
+          <StyledImage
             source={{
               uri: itemSpecific.image,
             }}
           />
           <Text>{itemSpecific.description}</Text>
-          <View>
-            <Text>Review</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="Comment for this item you bought..."
-              onChangeText={(text) => setText(text)}
-              value={text}
-            />
-            <Text>Rating</Text>
-            <TextInput
-              style={styles.input}
-              placeholder="0 to 5"
-              onChangeText={(text) => setRating(text)}
-              value={rating}
-              keyboardType="numeric"
-            />
-          </View>
+          <StyledText>Review</StyledText>
+          <StyledReviewInput
+            placeholder="How's the item?"
+            onChangeText={(text) => setText(text)}
+            value={text}
+          />
+          <StyledText>Rating</StyledText>
+          <StyledRatingInput
+            placeholder="0 to 5"
+            onChangeText={(text) => setRating(text)}
+            value={rating}
+            keyboardType="numeric"
+          />
 
-          <View style={styles.container}>
-            <Button title="Comment" onPress={() => handleAddComment()} />
-            <Button title="Back" onPress={() => navigation.goBack()} />
-          </View>
-        </View>
+          <StyledTouchableOpacity
+            title="Comment"
+            onPress={() => handleAddComment()}
+          >
+            <StyledTouchableOpacityText>Comment</StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+          <StyledTouchableOpacity
+            title="Back"
+            onPress={() => navigation.goBack()}
+          >
+            <StyledTouchableOpacityText>Back</StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+        </StyledView>
       </ScrollView>
     </>
   );
