@@ -16,18 +16,19 @@ import colours from "../Config/colours";
 const StyledView = styled.View`
   flex: 1;
   background-color: ${colours.primary};
-  align-items: center;
-  justify-content: center;
+  alignItems: center;
+  justifyContent: center;
   width: 100%;
 `;
 
 const StyledSearchView = styled.View`
   flex: 1;
   background-color: ${colours.primary};
-  align-items: center;
-  justify-content: center;
+  alignItems: center;
+  justifyContent: center;
   width: 80%;
   flexDirection: row;
+  margin: 8px;
 `;
 
 const StyledTextInput = styled.TextInput`
@@ -64,14 +65,14 @@ const StyledTouchableOpacityText = styled.Text`
   `;
 
 const StyledImage = styled.Image`
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   borderRadius: 6px;
   `;
 
 const StyledText = styled.Text`
   height: 20px;
-  margin: 16px;
+  margin: 8px;
   color: ${colours.inputboxtext};
   fontSize: 16px;
   align-items: center;
@@ -82,42 +83,19 @@ const StyledViewItems = styled.View`
   flex: 1;
   background-color: ${colours.primary};
   align-items: center;
-  justify-content: center;
+  justifyContent: center;
   width: 100%;
   flexDirection: row;
   flexWrap: wrap;
 `;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  items: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
-    width: "90%",
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-  photo: {
-    width: 80,
-    height: 80,
-  },
-});
+const StyledItem = styled.View`
+  alignItems: center;
+  justifyContent: center;
+  margin: 8px;
+  width: 100px;
+  height: 118px;
+`;
 
 const BrowseScreen = ({ route, navigation }) => {
   const userEmail = route.params.email;
@@ -134,7 +112,9 @@ const BrowseScreen = ({ route, navigation }) => {
     <>
       <ScrollView>
         <StyledView>
-          <StyledText>What are you looking for today, {user.username}?</StyledText>
+          <StyledText>
+            What are you looking for today, {user.username}?
+          </StyledText>
           <StyledSearchView>
             <StyledTextInput
               placeholder="Search items"
@@ -152,11 +132,10 @@ const BrowseScreen = ({ route, navigation }) => {
             </StyledSearch>
           </StyledSearchView>
 
-          <View style={styles.items}>
+          <StyledViewItems>
             {items.map((element, index) => {
               return (
-                <View key={index}>
-                  <Text>{element.name}</Text>
+                <StyledItem key={index}>
                   <TouchableOpacity
                     onPress={() =>
                       navigation.push("Item", {
@@ -165,28 +144,28 @@ const BrowseScreen = ({ route, navigation }) => {
                       })
                     }
                   >
-                    <Image
-                      style={styles.photo}
+                    <StyledImage
                       source={{
                         uri: element.image,
                       }}
                     />
+                    <Text>{element.name}</Text>
                   </TouchableOpacity>
-                </View>
+                </StyledItem>
               );
             })}
-          </View>
+          </StyledViewItems>
 
-          <View style={styles.container}>
-            <StyledTouchableOpacity onPress={() => logOutUser(navigation)} >
+          <StyledSearchView>
+            <StyledTouchableOpacity onPress={() => logOutUser(navigation)}>
               <StyledTouchableOpacityText>Logout</StyledTouchableOpacityText>
             </StyledTouchableOpacity>
             <StyledTouchableOpacity
               onPress={() => navigation.push("Cart", { email: user.email })}
-              >
+            >
               <StyledTouchableOpacityText>Cart 🛒</StyledTouchableOpacityText>
             </StyledTouchableOpacity>
-          </View>
+          </StyledSearchView>
         </StyledView>
       </ScrollView>
     </>
