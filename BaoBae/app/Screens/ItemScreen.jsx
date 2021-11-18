@@ -9,30 +9,69 @@ import {
   StyleSheet,
   ScrollView,
 } from "react-native";
+import styled from "styled-components/native";
 import { getCurrentUser, getItemSpecific } from "../../firebase";
 import colours from "../Config/colours";
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-  photo: {
-    width: 300,
-    height: 300,
-  },
-});
+const StyledView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  alignItems: center;
+  justifyContent: center;
+  width: 100%;
+`;
+
+const StyledSearchView = styled.View`
+  flex: 1;
+  background-color: ${colours.primary};
+  alignItems: center;
+  justifyContent: center;
+  width: 80%;
+  flexDirection: row;
+  margin: 8px;
+`;
+
+
+const StyledTouchableOpacity = styled.TouchableOpacity`
+  height: 40px;
+  margin: 2px;
+  borderWidth: 0.5px;
+  borderRadius: 6px;
+  padding: 8px;
+  background-color: ${colours.buttonbox};
+  color: ${colours.buttonboxtext};
+  borderColor: ${colours.border};
+  `;
+
+const StyledTouchableOpacityText = styled.Text`
+  color: ${colours.buttonboxtext};
+  fontSize: 17px;
+  `;
+
+const StyledImage = styled.Image`
+  width: 300px;
+  height: 300px;
+  borderRadius: 6px;
+  margin: 8px;
+  `;
+
+const StyledText = styled.Text`
+  height: 20px;
+  margin: 8px;
+  color: ${colours.inputboxtext};
+  fontSize: 16px;
+`;
+
+
+const StyledComment = styled.View`
+  alignItems: center;
+  justifyContent: center;
+  margin: 2px;
+  background-color: white;
+  width: 90%;
+  borderRadius: 6px;
+
+`;
 
 const ItemScreen = ({ route, navigation }) => {
   const itemName = route.params.name;
@@ -52,11 +91,10 @@ const ItemScreen = ({ route, navigation }) => {
 
   return (
     <ScrollView>
-      <View style={styles.container}>
-        <Text>{itemSpecific.name}</Text>
+      <StyledView>
+        <StyledText>{itemSpecific.name}</StyledText>
 
-        <Image
-          style={styles.photo}
+        <StyledImage
           source={{
             uri: itemSpecific.image,
           }}
@@ -65,49 +103,51 @@ const ItemScreen = ({ route, navigation }) => {
         <Text>${itemSpecific.price}</Text>
         <Text>Quantity: {itemSpecific.quantity}</Text>
 
-        <Button
-          title="Add to cart"
-          onPress={() =>
-            navigation.push("AddCart", {
-              name: itemName,
-              email: userEmail,
-            })
-          }
-        />
-        <Button
-          title="BUY"
-          onPress={() =>
-            navigation.push("BuyItem", {
-              name: itemName,
-              email: userEmail,
-            })
-          }
-        />
-        <Button
-          title="All items"
-          onPress={() =>
-            navigation.push("Browse", {
-              email: userEmail,
-            })
-          }
-        />
+        <StyledSearchView>
+          <StyledTouchableOpacity
+            onPress={() =>
+              navigation.push("AddCart", {
+                name: itemName,
+                email: userEmail,
+              })
+            }
+          >
+            <StyledTouchableOpacityText>Add to 🛒</StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+          <StyledTouchableOpacity
+            onPress={() =>
+              navigation.push("BuyItem", {
+                name: itemName,
+                email: userEmail,
+              })
+            }
+          >
+            <StyledTouchableOpacityText>Buy</StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+
+          <StyledTouchableOpacity
+            onPress={() => navigation.push("Browse", { email: userEmail })}
+          >
+            <StyledTouchableOpacityText>All Items</StyledTouchableOpacityText>
+          </StyledTouchableOpacity>
+        </StyledSearchView>
         {commentsArray.length > 0 ? (
           <>
-            <Text>Comment:</Text>
+            <StyledText>Review</StyledText>
             {commentsArray?.map((element, index) => {
               return (
-                  <View key={index} style={styles.horizontalcontainer}>
-                    <Text>{element.username}</Text>
-                    <Text>Rating: {element.rating}</Text>
-                    <Text>{element.text}</Text>
-                  </View>
+                <StyledComment key={index}>
+                  <Text>User: {element.username}</Text>
+                  <Text>Rating: {"⭐".repeat(parseInt(element.rating))}</Text>
+                  <Text>{element.text}</Text>
+                </StyledComment>
               );
             })}
           </>
         ) : (
           <></>
         )}
-      </View>
+      </StyledView>
     </ScrollView>
   );
 };

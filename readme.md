@@ -119,7 +119,7 @@ Created logo with photoshop.
 - [x] Signup
 - [x] Browse
 - [x] Search
-- [ ] Item
+- [x] Item
 - [ ] Buy
 - [ ] Cart
 - [ ] Account
