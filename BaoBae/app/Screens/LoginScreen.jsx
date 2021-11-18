@@ -1,5 +1,15 @@
 import React, { useEffect, useState } from "react";
-import { Text, TextInput, View, Button, Alert, StyleSheet } from "react-native";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+  Alert,
+} from "react-native";
 import styled from "styled-components/native";
 import { auth, signInUser } from "../../firebase";
 import colours from "../Config/colours";

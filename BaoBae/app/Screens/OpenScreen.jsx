@@ -1,7 +1,16 @@
-import React, { useState } from "react";
-import { StyleSheet, Text, TextInput, View, Button } from "react-native";
+import React from "react";
 import styled from "styled-components/native";
 import colours from "../Config/colours";
+import {
+  Text,
+  TextInput,
+  View,
+  Button,
+  Image,
+  StyleSheet,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 
 const StyledView = styled.View`
   flex: 1;
