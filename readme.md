@@ -8,9 +8,27 @@ Mobile app of a TaoBao clone. Made with React Native.
 
 ## Description
 
-A mobile app of a TaoBao clone.
+A mobile app of a TaoBao clone. Just for fun.
 
 Planning to keep things simple. Users can add items to cart and buy items.
+
+### Accessing the Application
+
+This app is not published on Google playstore / Apple appstore.
+
+However, Android users can access the app.
+
+1. Download the expo app
+   https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
+
+2. Headover to https://expo.dev/@zyteo/BaoBae
+   Scan the QR code with the expo app
+
+3. Enjoy!
+
+*I'm not sure if it works on Apple - no chance to try it out yet.
+
+* Note app is still in development - do expect bugs.
 
 ### Technology Used
 
@@ -28,7 +46,7 @@ Technologies used to build this project.
 
 ### Wireframes
 
-<img src="./drawio/wireframes.png" width="300px" height="300px"/>
+<img src="./drawio/wireframes.png" width="600px" height="600px"/>
 
 ### User Stories
 
@@ -92,10 +110,10 @@ MVP completed, will now move on to styling.
 
 - 18 Nov: Will refine project based on 1 to 1 discussion.
 Removed react fragments which was causing the "Each child in a list.." warning.
-Work on styling
 Refine search for item types
 Realised styled components work on React Native. Yes!
 Created logo with photoshop.
+Done styling for the screens.
 
 ```
 
