@@ -31,7 +31,6 @@ const StyledSearchView = styled.View`
   margin: 8px;
 `;
 
-
 const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
   margin: 2px;

@@ -121,7 +121,7 @@ Created logo with photoshop.
 - [x] Search
 - [x] Item
 - [ ] Buy
-- [ ] Cart
+- [x] Cart
 - [ ] Account
 - [ ] Comment
 

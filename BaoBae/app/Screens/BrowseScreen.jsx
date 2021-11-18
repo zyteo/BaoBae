@@ -157,13 +157,13 @@ const BrowseScreen = ({ route, navigation }) => {
           </StyledViewItems>
 
           <StyledSearchView>
-            <StyledTouchableOpacity onPress={() => logOutUser(navigation)}>
-              <StyledTouchableOpacityText>Logout</StyledTouchableOpacityText>
-            </StyledTouchableOpacity>
             <StyledTouchableOpacity
               onPress={() => navigation.push("Cart", { email: user.email })}
             >
               <StyledTouchableOpacityText>Cart 🛒</StyledTouchableOpacityText>
+            </StyledTouchableOpacity>
+            <StyledTouchableOpacity onPress={() => logOutUser(navigation)}>
+              <StyledTouchableOpacityText>Logout</StyledTouchableOpacityText>
             </StyledTouchableOpacity>
           </StyledSearchView>
         </StyledView>
