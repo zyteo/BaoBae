@@ -8,6 +8,7 @@ import {
   StyleSheet,
   ScrollView,
   TouchableOpacity,
+  Alert,
 } from "react-native";
 import styled from "styled-components/native";
 import { auth, signUpUser } from "../../firebase";

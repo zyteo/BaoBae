@@ -1,16 +1,7 @@
 import React from "react";
 import styled from "styled-components/native";
 import colours from "../Config/colours";
-import {
-  Text,
-  TextInput,
-  View,
-  Button,
-  Image,
-  StyleSheet,
-  ScrollView,
-  TouchableOpacity,
-} from "react-native";
+import { StyleSheet, Text, TextInput, View, Button } from "react-native";
 
 const StyledView = styled.View`
   flex: 1;
