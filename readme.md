@@ -3,7 +3,7 @@
 
 # BaoBae
 
-<img src="./BaoBae/app/assets/Logo.jpg"/>
+<img src="./BaoBae/app/Config/Logo.jpg"/>
 Mobile app of a TaoBao clone. Made with React Native.
 
 ## Description
