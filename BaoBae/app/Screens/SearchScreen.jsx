@@ -101,7 +101,7 @@ const SearchScreen = ({ route, navigation }) => {
 
   return (
     <>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <StyledView>
           <StyledText>{user.username}, here's the search results.</StyledText>
 

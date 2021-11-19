@@ -62,7 +62,6 @@ const StyledViewItems = styled.View`
 `;
 
 const StyledHorizontalItems = styled.View`
-  flex: 1;
   flexDirection: row;
   flexWrap: wrap;
   align-items: center;
@@ -92,7 +91,7 @@ const AccountScreen = ({ navigation, route }) => {
     getCurrentUser(userEmail, setUser);
   }, []);
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <StyledView>
         <StyledText>{user.username}'s Account</StyledText>
         {boughtItemsArray.length > 0 ? (

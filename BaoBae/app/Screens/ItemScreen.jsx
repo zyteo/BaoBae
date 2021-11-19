@@ -89,7 +89,7 @@ const ItemScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <StyledView>
         <StyledText>{itemSpecific.name}</StyledText>
 

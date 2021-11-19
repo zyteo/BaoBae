@@ -110,7 +110,7 @@ const BrowseScreen = ({ route, navigation }) => {
 
   return (
     <>
-      <ScrollView>
+      <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <StyledView>
           <StyledText>
             What are you looking for today, {user.username}?

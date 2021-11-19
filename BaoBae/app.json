@@ -28,6 +28,7 @@
     "web": {
       "favicon": "./app/Config/Logo.png"
     },
-    "description": "Taobao clone mobile app. Just for fun."
+    "description": "Taobao clone mobile app. Just for fun.",
+    "githubUrl": "https://github.com/zyteo/BaoBae"
   }
 }

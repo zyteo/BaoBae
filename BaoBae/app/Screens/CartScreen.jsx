@@ -71,7 +71,6 @@ const StyledViewItems = styled.View`
 `;
 
 const StyledHorizontalItems = styled.View`
-  flex: 1;
   flexDirection: row;
   flexWrap: wrap;
   align-items: center;
@@ -115,7 +114,7 @@ const CartScreen = ({ route, navigation }) => {
       [{ text: "TY 4 MAKING ME BROKE" }]
     );
     updateItemQuantity(itemName, buyItemQuantity);
-    navigation.push("Account", {
+    navigation.navigate("Browse", {
       email: userEmail,
     });
   };
@@ -131,7 +130,7 @@ const CartScreen = ({ route, navigation }) => {
   }, []);
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <StyledView>
         {cartArray.length > 0 ? (
           <StyledText>{user.username}'s cart:</StyledText>

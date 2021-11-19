@@ -16,17 +16,15 @@ Planning to keep things simple. Users can add items to cart and buy items.
 
 This app is not published on Google playstore / Apple appstore.
 
-However, Android users can access the app.
+However, Android users can access the app. (Sorry Apple users!)
 
 1. Download the expo app
    https://play.google.com/store/apps/details?id=host.exp.exponent&referrer=www
 
-2. Headover to https://expo.dev/@zyteo/BaoBae
+2. Headover to https://expo.dev/@zyteo/BaoBae  
    Scan the QR code with the expo app
 
 3. Enjoy!
-
-\*I'm not sure if it works on Apple - no chance to try it out yet.
 
 - Note app is still in development - do expect bugs.
 
@@ -116,6 +114,8 @@ Created logo with photoshop.
 Done styling for the screens.
 
 - 19 Nov: Refine styling.
+Removed back button from header.
+Removed blank space for scroll view.
 
 
 ```
@@ -148,10 +148,12 @@ Done styling for the screens.
 
 ### Sample images...
 
-<img src="./images/login.jpg" width="300px" height="500px"/>
-<img src="./images/browse.jpg" width="300px" height="500px"/>
-<img src="./images/item.jpg" width="300px" height="500px"/>
-<img src="./images/cart.jpg" width="300px" height="500px"/>
+<img src="./images/login2.jpg" width="300px" height="500px"/>
+<img src="./images/browse2.jpg" width="300px" height="500px"/>
+<img src="./images/item2.jpg" width="300px" height="500px"/>
+<img src="./images/item3.jpg" width="300px" height="500px"/>
+<img src="./images/cart2.jpg" width="300px" height="500px"/>
+<img src="./images/bought.jpg" width="300px" height="500px"/>
 
 ---
 
@@ -170,4 +172,5 @@ Require cycle message https://stackoverflow.com/questions/55664673/require-cycle
 Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript  
 React Native keys https://stackoverflow.com/questions/37578548/react-native-setting-keys-on-elements  
 Logo icon https://thenounproject.com/newhaircut/  
-Colour palette https://www.canva.com/colors/color-palettes/rosy-flamingo/
+Colour palette https://www.canva.com/colors/color-palettes/rosy-flamingo/  
+Remove blank space for scrollview https://bianca-dragomir.medium.com/filling-the-remaining-space-in-a-react-native-scrollview-496bc017ec4e  

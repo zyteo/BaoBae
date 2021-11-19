@@ -35,7 +35,7 @@ export default function App() {
           <Stack.Screen
             name="Home"
             component={OpenScreen}
-            options={{ title: "Overview" }}
+            options={{ title: "Welcome!" }}
           />
           <Stack.Screen name="Account" component={AccountScreen} />
           <Stack.Screen name="Comment" component={CommentScreen} />

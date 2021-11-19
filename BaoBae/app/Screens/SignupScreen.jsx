@@ -102,7 +102,7 @@ const SignupScreen = ({ navigation }) => {
   };
 
   return (
-    <ScrollView>
+    <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <StyledView>
       <StyledTextHeader>Create Account</StyledTextHeader>
         <StyledText>Email: </StyledText>
