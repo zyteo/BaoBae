@@ -169,5 +169,5 @@ Reading more about firebase + react native https://www.freecodecamp.org/news/rea
 Require cycle message https://stackoverflow.com/questions/55664673/require-cycles-are-allowed-but-can-result-in-uninitialized-values-consider-ref  
 Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript  
 React Native keys https://stackoverflow.com/questions/37578548/react-native-setting-keys-on-elements  
-Logo icon https://thenounproject.com/newhaircut/
+Logo icon https://thenounproject.com/newhaircut/  
 Colour palette https://www.canva.com/colors/color-palettes/rosy-flamingo/

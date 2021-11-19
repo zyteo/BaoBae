@@ -2,6 +2,7 @@ import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import React from "react";
 import { LogBox } from "react-native";
+import colours from "./app/Config/colours";
 import AccountScreen from "./app/Screens/AccountScreen";
 import AddCartScreen from "./app/Screens/AddCartScreen";
 import BrowseScreen from "./app/Screens/BrowseScreen";
@@ -13,14 +14,24 @@ import LoginScreen from "./app/Screens/LoginScreen";
 import OpenScreen from "./app/Screens/OpenScreen";
 import SearchScreen from "./app/Screens/SearchScreen";
 import SignupScreen from "./app/Screens/SignupScreen";
-
 LogBox.ignoreLogs(["Setting a timer"]);
 const Stack = createNativeStackNavigator();
 export default function App() {
   return (
     <>
       <NavigationContainer>
-        <Stack.Navigator>
+        <Stack.Navigator
+          screenOptions={{
+            headerStyle: {
+              backgroundColor: colours.border,
+            },
+            headerTintColor: "#fff",
+            headerTitleStyle: {
+              fontWeight: "bold",
+            },
+            headerBackVisible: false,
+          }}
+        >
           <Stack.Screen
             name="Home"
             component={OpenScreen}
