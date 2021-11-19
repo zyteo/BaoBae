@@ -201,7 +201,7 @@ const CommentScreen = ({ route, navigation }) => {
           />
           <StyledText>Rating</StyledText>
           <StyledRatingInput
-            placeholder="0 to 5"
+            placeholder="1 to 5"
             onChangeText={(text) => setRating(text)}
             value={rating}
             keyboardType="numeric"
