@@ -3,7 +3,7 @@
 
 # BaoBae
 
-<img src="./BaoBae/app/Config/Logo.jpg"/>
+<img src="./BaoBae/app/Config/Logo.png"/>
 Mobile app of a TaoBao clone. Made with React Native.
 
 ## Description
@@ -26,9 +26,9 @@ However, Android users can access the app.
 
 3. Enjoy!
 
-*I'm not sure if it works on Apple - no chance to try it out yet.
+\*I'm not sure if it works on Apple - no chance to try it out yet.
 
-* Note app is still in development - do expect bugs.
+- Note app is still in development - do expect bugs.
 
 ### Technology Used
 
@@ -115,6 +115,9 @@ Realised styled components work on React Native. Yes!
 Created logo with photoshop.
 Done styling for the screens.
 
+- 19 Nov: Refine styling.
+
+
 ```
 
 ### MVP complete!
@@ -167,3 +170,4 @@ Require cycle message https://stackoverflow.com/questions/55664673/require-cycle
 Passing property as parameter in JS https://stackoverflow.com/questions/13760186/how-to-pass-an-object-property-as-a-parameter-javascript  
 React Native keys https://stackoverflow.com/questions/37578548/react-native-setting-keys-on-elements  
 Logo icon https://thenounproject.com/newhaircut/
+Colour palette https://www.canva.com/colors/color-palettes/rosy-flamingo/

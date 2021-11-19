@@ -36,7 +36,7 @@ const StyledImage = styled.Image`
 const OpenScreen = ({ navigation }) => {
   return (
     <StyledView>
-      <StyledImage source={require('../Config/Logo.jpg')}/>
+      <StyledImage source={require('../Config/Logo.png')}/>
       <StyledTouchableOpacity onPress={() => navigation.navigate("Login")} >
         <StyledTouchableOpacityText>Login</StyledTouchableOpacityText>
       </StyledTouchableOpacity>
