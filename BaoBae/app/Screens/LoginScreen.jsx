@@ -39,8 +39,8 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
   margin: 2px;
   borderWidth: 0.5px;
-  borderRadius: 6px;
-  padding: 8px;
+  borderRadius: 4px;
+  padding: 6px;
   background-color: ${colours.buttonbox};
   color: ${colours.buttonboxtext};
   borderColor: ${colours.border};

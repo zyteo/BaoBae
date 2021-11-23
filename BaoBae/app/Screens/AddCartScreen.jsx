@@ -41,7 +41,7 @@ const StyledTouchableOpacity = styled.TouchableOpacity`
   margin: 2px;
   borderWidth: 0.5px;
   borderRadius: 6px;
-  padding: 8px;
+  padding: 6px;
   background-color: ${colours.buttonbox};
   color: ${colours.buttonboxtext};
   borderColor: ${colours.border};
@@ -60,7 +60,6 @@ const StyledImage = styled.Image`
   `;
 
 const StyledText = styled.Text`
-  height: 20px;
   margin: 8px;
   color: ${colours.inputboxtext};
   fontSize: 16px;
