@@ -116,19 +116,11 @@ const BuyItemScreen = ({ route, navigation }) => {
         itemSpecific.name,
         itemSpecific.price,
         parseInt(buyItemQuantity),
-        itemSpecific.image
+        itemSpecific.image,
+        Alert
       );
-      Alert.alert(
-        "Buy liao!",
-        `You bought ${buyItemQuantity} ${itemSpecific.name} at $ ${
-          itemSpecific.price
-        } each, for a total of $ ${
-          parseInt(buyItemQuantity) * itemSpecific.price
-        }.`,
-        [{ text: "TY 4 MAKING ME BROKE" }]
-      );
-      updateItemQuantity(itemSpecific.name, buyItemQuantity);
-      navigation.push("Account", {
+
+      navigation.push("Browse", {
         email: userEmail,
       });
     }

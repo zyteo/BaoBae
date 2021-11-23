@@ -301,31 +301,59 @@ const updateCartUser = async (email, itemname, price, quantity, image) => {
 // otherwise, increase the quantity of the item
 const updateUserBoughtItems = async (
   email,
-  itemname,
+  item,
   price,
   quantity,
-  image
+  image,
+  Alert
 ) => {
-  const docSnap = await getDoc(doc(db, "users", email));
+  const docSnapItem = await getDoc(doc(db, "items", item));
+  if (docSnapItem.data().quantity >= parseInt(quantity)) {
+    let itemsBoughtArray = [];
+    const docSnap = await getDoc(doc(db, "users", email));
+    // want to know all the items that the user bought
+    for (let key in docSnap.data().bought) {
+      itemsBoughtArray.push(key);
+    }
 
-  if (docSnap.exists()) {
-    console.log("Document data:", docSnap.data());
-  } else {
-    // doc.data() will be undefined in this case
-    console.log("No such document!");
-    await setDoc(
-      doc(db, "users", email),
-      {
-        bought: {
-          [itemname]: {
-            name: itemname,
-            price: price,
-            quantity: quantity,
-            image: image,
+    if (itemsBoughtArray.indexOf(item) === -1) {
+      await setDoc(
+        doc(db, "users", email),
+        {
+          bought: {
+            [item]: {
+              name: item,
+              price: price,
+              quantity: quantity,
+              image: image,
+            },
           },
         },
-      },
-      { merge: true }
+        { merge: true }
+      );
+    } else {
+      let accessBoughtItemQuantity = "bought." + item + ".quantity";
+      await updateDoc(doc(db, "users", email), {
+        [accessBoughtItemQuantity]: increment(quantity),
+      });
+    }
+
+    // decrease item quantity in items db
+    updateItemQuantity(item, quantity);
+    Alert.alert(
+      "Buy liao!",
+      `You bought ${quantity} ${item} at $ ${price} each, for a total of $ ${
+        parseInt(quantity) * price
+      }.`,
+      [{ text: "TY 4 MAKING ME BROKE" }]
+    );
+  } else {
+    Alert.alert(
+      "Stock too low!",
+      `You want to buy ${quantity} ${item}, but there is only ${
+        docSnapItem.data().quantity
+      } left. Try again?`,
+      [{ text: "OK" }]
     );
   }
 };
@@ -353,7 +381,7 @@ const updateBuyItemsFromCart = async (
   Alert
 ) => {
   const docSnapItem = await getDoc(doc(db, "items", item));
-  if (docSnapItem.data().quantity > parseInt(quantity)) {
+  if (docSnapItem.data().quantity >= parseInt(quantity)) {
     let itemsBoughtArray = [];
     const docSnap = await getDoc(doc(db, "users", email));
     // want to know all the items that the user bought
