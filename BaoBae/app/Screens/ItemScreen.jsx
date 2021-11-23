@@ -100,7 +100,7 @@ const ItemScreen = ({ route, navigation }) => {
         />
         <Text>{itemSpecific.description}</Text>
         <Text>${itemSpecific.price}</Text>
-        <Text>Quantity: {itemSpecific.quantity}</Text>
+        <Text>Quantity: {(itemSpecific.quantity > 0) ? itemSpecific.quantity : `SOLD OUT!`}</Text>
 
         <StyledSearchView>
           <StyledTouchableOpacity
@@ -113,7 +113,7 @@ const ItemScreen = ({ route, navigation }) => {
           >
             <StyledTouchableOpacityText>Add to 🛒</StyledTouchableOpacityText>
           </StyledTouchableOpacity>
-          <StyledTouchableOpacity
+          {(itemSpecific.quantity > 0) ? <StyledTouchableOpacity
             onPress={() =>
               navigation.push("BuyItem", {
                 name: itemName,
@@ -122,7 +122,7 @@ const ItemScreen = ({ route, navigation }) => {
             }
           >
             <StyledTouchableOpacityText>Buy</StyledTouchableOpacityText>
-          </StyledTouchableOpacity>
+          </StyledTouchableOpacity> : <></>}
 
           <StyledTouchableOpacity
             onPress={() => navigation.push("Browse", { email: userEmail })}
