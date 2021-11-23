@@ -103,17 +103,9 @@ const CartScreen = ({ route, navigation }) => {
       itemName,
       itemPrice,
       buyItemQuantity,
-      itemImage
+      itemImage,
+      Alert
     );
-
-    Alert.alert(
-      "Buy liao!",
-      `You bought ${buyItemQuantity} ${itemName} at $ ${itemPrice} each, for a total of $ ${
-        parseInt(buyItemQuantity) * itemPrice
-      }.`,
-      [{ text: "TY 4 MAKING ME BROKE" }]
-    );
-    updateItemQuantity(itemName, buyItemQuantity);
     navigation.navigate("Browse", {
       email: userEmail,
     });

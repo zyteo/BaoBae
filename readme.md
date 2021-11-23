@@ -117,6 +117,11 @@ Done styling for the screens.
 Removed back button from header.
 Removed blank space for scroll view.
 
+- 23 Nov: Refine the logic and code for the app.
+Update app such that buy button doesn't show when item quantity is 0.
+Update buying logic to check if item quantity > quantity buyer wants to buy, and then perform relevant code.
+
+
 
 ```
 
@@ -174,3 +179,4 @@ React Native keys https://stackoverflow.com/questions/37578548/react-native-sett
 Logo icon https://thenounproject.com/newhaircut/  
 Colour palette https://www.canva.com/colors/color-palettes/rosy-flamingo/  
 Remove blank space for scrollview https://bianca-dragomir.medium.com/filling-the-remaining-space-in-a-react-native-scrollview-496bc017ec4e  
+Check data exist https://firebase.google.com/docs/firestore/query-data/get-data  

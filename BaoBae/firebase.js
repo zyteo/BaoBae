@@ -297,7 +297,8 @@ const updateCartUser = async (email, itemname, price, quantity, image) => {
 };
 
 // update items that user bought
-// If item doesn't exist, new info created, otherwise, info will be overwritten
+// If item doesn't exist, new info created,
+// otherwise, increase the quantity of the item
 const updateUserBoughtItems = async (
   email,
   itemname,
@@ -305,20 +306,28 @@ const updateUserBoughtItems = async (
   quantity,
   image
 ) => {
-  await setDoc(
-    doc(db, "users", email),
-    {
-      bought: {
-        [itemname]: {
-          name: itemname,
-          price: price,
-          quantity: quantity,
-          image: image,
+  const docSnap = await getDoc(doc(db, "users", email));
+
+  if (docSnap.exists()) {
+    console.log("Document data:", docSnap.data());
+  } else {
+    // doc.data() will be undefined in this case
+    console.log("No such document!");
+    await setDoc(
+      doc(db, "users", email),
+      {
+        bought: {
+          [itemname]: {
+            name: itemname,
+            price: price,
+            quantity: quantity,
+            image: image,
+          },
         },
       },
-    },
-    { merge: true }
-  );
+      { merge: true }
+    );
+  }
 };
 
 // update the stock quantity once user purchases item
@@ -330,41 +339,69 @@ const updateItemQuantity = async (itemName, quantity) => {
 };
 
 // update user bought items for items in user cart
-// if items not bought before, add to user database
+// first check if item quantity > quantity that user wants to buy
+// if item quantity < quantity user wants to buy, throw alert
+// Otherwise, if items not bought before, add to user database
 // if items bought before, increment the item count in database
 // afterwards, remove item from cart
-const updateBuyItemsFromCart = async (email, item, price, quantity, image) => {
-  let itemsBoughtArray = [];
-  const docSnap = await getDoc(doc(db, "users", email));
-  // want to know all the items that the user bought
-  for (let key in docSnap.data().bought) {
-    itemsBoughtArray.push(key);
-  }
+const updateBuyItemsFromCart = async (
+  email,
+  item,
+  price,
+  quantity,
+  image,
+  Alert
+) => {
+  const docSnapItem = await getDoc(doc(db, "items", item));
+  if (docSnapItem.data().quantity > parseInt(quantity)) {
+    let itemsBoughtArray = [];
+    const docSnap = await getDoc(doc(db, "users", email));
+    // want to know all the items that the user bought
+    for (let key in docSnap.data().bought) {
+      itemsBoughtArray.push(key);
+    }
 
-  if (itemsBoughtArray.indexOf(item) === -1) {
-    await setDoc(
-      doc(db, "users", email),
-      {
-        bought: {
-          [item]: {
-            name: item,
-            price: price,
-            quantity: quantity,
-            image: image,
+    if (itemsBoughtArray.indexOf(item) === -1) {
+      await setDoc(
+        doc(db, "users", email),
+        {
+          bought: {
+            [item]: {
+              name: item,
+              price: price,
+              quantity: quantity,
+              image: image,
+            },
           },
         },
-      },
-      { merge: true }
+        { merge: true }
+      );
+    } else {
+      let accessBoughtItemQuantity = "bought." + item + ".quantity";
+      await updateDoc(doc(db, "users", email), {
+        [accessBoughtItemQuantity]: increment(quantity),
+      });
+    }
+    // remove item from cart
+    removeCartItem(email, item);
+    // decrease item quantity in items db
+    updateItemQuantity(item, quantity);
+    Alert.alert(
+      "Buy liao!",
+      `You bought ${quantity} ${item} at $ ${price} each, for a total of $ ${
+        parseInt(quantity) * price
+      }.`,
+      [{ text: "TY 4 MAKING ME BROKE" }]
     );
   } else {
-    let accessBoughtItemQuantity = "bought." + item + ".quantity";
-    await updateDoc(doc(db, "users", email), {
-      [accessBoughtItemQuantity]: increment(quantity),
-    });
+    Alert.alert(
+      "Stock too low!",
+      `You want to buy ${quantity} ${item}, but there is only ${
+        docSnapItem.data().quantity
+      } left. Update cart and try again?`,
+      [{ text: "OK" }]
+    );
   }
-
-  // remove item from cart
-  removeCartItem(email, item);
 };
 
 // remove item from cart
