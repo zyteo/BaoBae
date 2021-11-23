@@ -188,6 +188,36 @@ const db = getFirestore();
 //     "https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F3.bp.blogspot.com%2F-TjaKZ5SLIpk%2FUtyiaEKT__I%2FAAAAAAAADIk%2FCp0bYQNp3NM%2Fs1600%2FIMG_9903.jpg&f=1&nofb=1",
 //   description: "Every broke kid will know this, issa best friend...",
 // });
+// setDoc(doc(db, "items", "Leash"), {
+//   name: "Leash",
+//   price: 5,
+//   quantity: 3,
+//   type: "Pet",
+//   comments: {},
+//   image:
+//     "https://d7rh5s3nxmpy4.cloudfront.net/C2079/snc/1/strong_leash_1.jpg",
+//   description: "For walking your pet",
+// });
+// setDoc(doc(db, "items", "Cap"), {
+//   name: "Cap",
+//   price: 14.50,
+//   quantity: 10,
+//   type: "Fashion",
+//   comments: {},
+//   image:
+//     "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.iMFBTknhCxJ96oGqzt8TdAHaGG%26pid%3DApi&f=1",
+//   description: "Up your attractiveness by 100%!",
+// });
+// setDoc(doc(db, "items", "Mala Snack"), {
+//   name: "Mala Snack",
+//   price: 3.50,
+//   quantity: 10000,
+//   type: "Food",
+//   comments: {},
+//   image:
+//     "https://hk-min-shop.oss-cn-hongkong.aliyuncs.com/202004292029432c8375798.JPG",
+//   description: "You don't know what's good until you've tried this...",
+// });
 
 // add/update comments for item
 // If comment doesn't exist, new info created, otherwise, info will be overwritten

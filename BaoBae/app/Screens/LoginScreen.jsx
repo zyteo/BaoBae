@@ -34,17 +34,6 @@ const StyledTextInput = styled.TextInput`
   justify-content: center;
 `;
 
-const StyledTextHeader = styled.Text`
-  margin: 2px;
-  height: 36px;
-  padding: 6px;
-  color: ${colours.headerboxtext};
-  background-color: ${colours.headerbox};
-  fontSize: 18px;
-  align-items: center;
-  justify-content: center;
-  borderRadius: 2px;
-`;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
@@ -78,7 +67,6 @@ const LoginScreen = ({ navigation }) => {
 
   return (
     <StyledView>
-      <StyledTextHeader>Login</StyledTextHeader>
       <StyledText>Email: </StyledText>
       <StyledTextInput
         placeholder="Email"

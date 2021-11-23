@@ -80,13 +80,14 @@ const StyledText = styled.Text`
 `;
 
 const StyledViewItems = styled.View`
-  flex: 1;
+  flex: 4;
   background-color: ${colours.primary};
-  align-items: center;
+  alignItems: center;
   justifyContent: center;
   width: 100%;
   flexDirection: row;
   flexWrap: wrap;
+  alignSelf: center;
 `;
 
 const StyledItem = styled.View`
@@ -95,6 +96,8 @@ const StyledItem = styled.View`
   margin: 8px;
   width: 100px;
   height: 118px;
+  position: relative;
+  alignSelf: center;
 `;
 
 const BrowseScreen = ({ route, navigation }) => {
