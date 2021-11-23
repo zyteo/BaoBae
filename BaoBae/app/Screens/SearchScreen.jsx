@@ -61,7 +61,6 @@ const StyledImage = styled.Image`
   `;
 
 const StyledText = styled.Text`
-  height: 20px;
   margin: 8px;
   color: ${colours.inputboxtext};
   fontSize: 16px;
