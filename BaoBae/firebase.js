@@ -125,6 +125,14 @@ export { auth, signInUser, signUpUser, logOutUser };
 const db = getFirestore();
 
 // Add items in collection "items"
+// Types:
+// Health & Beauty
+// Technology
+// Fashion
+// Food
+// Toy
+// Pet
+
 // setDoc(doc(db, "items", "Tissue"), {
 //   name: "Tissue",
 //   price: 1,
@@ -218,6 +226,16 @@ const db = getFirestore();
 //     "https://hk-min-shop.oss-cn-hongkong.aliyuncs.com/202004292029432c8375798.JPG",
 //   description: "You don't know what's good until you've tried this...",
 // });
+// setDoc(doc(db, "items", "Pet Tunnel"), {
+//   name: "Pet Tunnel",
+//   price: 15,
+//   quantity: 10000,
+//   type: "Pet",
+//   comments: {},
+//   image:
+//     "https://m.media-amazon.com/images/I/61i30PaSlYS._AC_SL1500_.jpg",
+//   description: "Tunnels for your pets, tunnels for your toddler",
+// });
 
 // add/update comments for item
 // If comment doesn't exist, new info created, otherwise, info will be overwritten
@@ -245,6 +263,7 @@ const searchItems = async (searchQuery, setItems) => {
     .split(" ")
     .map((ele) => ele.charAt(0).toUpperCase() + ele.slice(1))
     .join(" ");
+    // query for both item name and type
   const q = query(collection(db, "items"), where("name", "==", cleanedText));
   const qType = query(collection(db, "items"), where("type", "==", cleanedText));
   const itemArray = [];
@@ -312,6 +331,7 @@ const updateUserBoughtItems = async (
   Alert
 ) => {
   const docSnapItem = await getDoc(doc(db, "items", item));
+  // if item quantity > quantity user wants to buy, all good
   if (docSnapItem.data().quantity >= parseInt(quantity)) {
     let itemsBoughtArray = [];
     const docSnap = await getDoc(doc(db, "users", email));
@@ -320,6 +340,7 @@ const updateUserBoughtItems = async (
       itemsBoughtArray.push(key);
     }
 
+    // if item doesn't exist, add to the user bought item
     if (itemsBoughtArray.indexOf(item) === -1) {
       await setDoc(
         doc(db, "users", email),
@@ -335,6 +356,7 @@ const updateUserBoughtItems = async (
         },
         { merge: true }
       );
+      // item already exists, just need to update quantity
     } else {
       let accessBoughtItemQuantity = "bought." + item + ".quantity";
       await updateDoc(doc(db, "users", email), {
@@ -351,6 +373,7 @@ const updateUserBoughtItems = async (
       }.`,
       [{ text: "TY 4 MAKING ME BROKE" }]
     );
+    // if item quantity < quantity user wants to buy, throw alert
   } else {
     Alert.alert(
       "Stock too low!",
