@@ -100,11 +100,14 @@ const StyledItem = styled.View`
 `;
 
 const BrowseScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const userEmail = route.params.email;
+  // react states
   const [text, setText] = useState("");
   const [items, setItems] = useState([]);
   const [user, setUser] = useState([]);
 
+  // useEffect - upon render, get all the items + user details
   useEffect(() => {
     getItems(setItems);
     getCurrentUser(userEmail, setUser);
