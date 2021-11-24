@@ -26,15 +26,6 @@ const StyledView = styled.View`
   width: 100%;
 `;
 
-const StyledSearchView = styled.View`
-  flex: 1;
-  background-color: ${colours.primary};
-  alignItems: center;
-  justifyContent: center;
-  width: 80%;
-  flexDirection: row;
-  margin: 8px;
-`;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
@@ -65,17 +56,6 @@ const StyledText = styled.Text`
   fontSize: 16px;
 `;
 
-
-const StyledComment = styled.View`
-  alignItems: center;
-  justifyContent: center;
-  margin: 2px;
-  background-color: white;
-  width: 90%;
-  borderRadius: 6px;
-
-`;
-
 const StyledTextInput = styled.TextInput`
   height: 40px;
   margin: 2px;
@@ -90,23 +70,28 @@ const StyledTextInput = styled.TextInput`
   `;
   
 const AddCartScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const itemName = route.params.name;
   const userEmail = route.params.email;
+  // react states
   const [itemSpecific, setItemSpecific] = useState([]);
   const [user, setUser] = useState([]);
   const [addCartQuantity, setAddCartQuantity] = useState();
 
   // handle for user adding to cart
   const handleAddCart = () => {
-    // alert if passwords dont match
+    // check if quantity is a number
     if (Number.isNaN(parseInt(addCartQuantity)) == true) {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
+      // quantity is a number, but more than 10
     } else if (parseInt(addCartQuantity) > 10) {
       Alert.alert("CoNsuMeRiSm BaD!", "Boss say limit to 10 only OK", [
         { text: "YES BOSS" },
       ]);
+      // quantity is a number, but less than or equal 0
     } else if (parseInt(addCartQuantity) <= 0) {
       Alert.alert("Huh?", "You want to buy or not?", [{ text: "INDECISIVE" }]);
+      // quantity valid! update user's cart
     } else {
       updateCartUser(
         userEmail,
@@ -128,6 +113,7 @@ const AddCartScreen = ({ route, navigation }) => {
     }
   };
 
+  // useEffect - upon render, get the item + user details
   useEffect(() => {
     getItemSpecific(itemName, setItemSpecific);
     getCurrentUser(userEmail, setUser);
