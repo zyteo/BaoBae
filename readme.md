@@ -122,6 +122,8 @@ Update app such that buy button doesn't show when item quantity is 0.
 Update buying logic to check if item quantity > quantity buyer wants to buy, and then perform relevant code.
 Tested app on another phone and edited styling accordingly.
 
+- 24 Nov: Screen record video of app showing features.
+
 
 
 ```
