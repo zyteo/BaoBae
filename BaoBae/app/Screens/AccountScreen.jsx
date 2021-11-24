@@ -78,21 +78,28 @@ const StyledItem = styled.View`
 `;
 
 const AccountScreen = ({ navigation, route }) => {
+  // save the params as a variable
   const userEmail = route.params.email;
+  // react state
   const [user, setUser] = useState([]);
+
+  // function to get the items that user bought in an array
   let boughtItemsArray = [];
   let boughtObjects = user.bought;
   for (const item in boughtObjects) {
     boughtItemsArray.push(boughtObjects[item]);
   }
 
+  // useEffect - upon render, get the user details
   useEffect(() => {
     getCurrentUser(userEmail, setUser);
   }, []);
+
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <StyledView>
         <StyledText>{user.username}'s Account</StyledText>
+        {/* If user has items bought, show the items, otherwise no items displayed */}
         {boughtItemsArray.length > 0 ? (
           <Text>Here's what you bought:</Text>
         ) : (

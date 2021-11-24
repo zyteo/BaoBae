@@ -144,6 +144,7 @@ Tested app on another phone and edited styling accordingly.
 
 - 24 Nov: Screen record video of app showing features.
 Built up on search function to include item types too.
+Neaten code, add comments for others to follow easier and remove redundancies. 
 
 
 
