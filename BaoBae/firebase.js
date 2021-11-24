@@ -246,10 +246,14 @@ const searchItems = async (searchQuery, setItems) => {
     .map((ele) => ele.charAt(0).toUpperCase() + ele.slice(1))
     .join(" ");
   const q = query(collection(db, "items"), where("name", "==", cleanedText));
+  const qType = query(collection(db, "items"), where("type", "==", cleanedText));
   const itemArray = [];
   const querySnapshot = await getDocs(q);
+  const querySnapshot2 = await getDocs(qType);
   querySnapshot.forEach((doc) => {
-    // doc.data() is never undefined for query doc snapshots
+    itemArray.push(doc.data());
+  });
+  querySnapshot2.forEach((doc) => {
     itemArray.push(doc.data());
   });
   setItems(itemArray);

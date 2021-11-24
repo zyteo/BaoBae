@@ -143,6 +143,7 @@ Update buying logic to check if item quantity > quantity buyer wants to buy, and
 Tested app on another phone and edited styling accordingly.
 
 - 24 Nov: Screen record video of app showing features.
+Built up on search function to include item types too.
 
 
 
