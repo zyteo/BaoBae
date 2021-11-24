@@ -1,4 +1,3 @@
-import { Route } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
   Text,
@@ -14,7 +13,6 @@ import styled from "styled-components/native";
 import {
   getCurrentUser,
   getItemSpecific,
-  updateItemQuantity,
   updateUserBoughtItems,
 } from "../../firebase";
 import colours from "../Config/colours";
@@ -26,16 +24,6 @@ const StyledView = styled.View`
   alignItems: center;
   justifyContent: center;
   width: 100%;
-`;
-
-const StyledSearchView = styled.View`
-  flex: 1;
-  background-color: ${colours.primary};
-  alignItems: center;
-  justifyContent: center;
-  width: 80%;
-  flexDirection: row;
-  margin: 8px;
 `;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
@@ -67,17 +55,6 @@ const StyledText = styled.Text`
   fontSize: 16px;
 `;
 
-
-const StyledComment = styled.View`
-  alignItems: center;
-  justifyContent: center;
-  margin: 2px;
-  background-color: white;
-  width: 90%;
-  borderRadius: 6px;
-
-`;
-
 const StyledTextInput = styled.TextInput`
   height: 40px;
   margin: 2px;
@@ -92,23 +69,28 @@ const StyledTextInput = styled.TextInput`
   `;
 
 const BuyItemScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const itemName = route.params.name;
   const userEmail = route.params.email;
+  // react states
   const [itemSpecific, setItemSpecific] = useState([]);
   const [user, setUser] = useState([]);
   const [buyItemQuantity, setBuyItemQuantity] = useState();
 
   // handle for user to buy item
   const handleBuyItem = () => {
-    // alert if passwords dont match
+    // check if quantity is a number
     if (Number.isNaN(parseInt(buyItemQuantity)) == true) {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
+      // quantity is a number, but more than 10
     } else if (parseInt(buyItemQuantity) > 10) {
       Alert.alert("CoNsuMeRiSm BaD!", "Y U WAN buy so many? 10 max!!", [
         { text: "YES BOSS" },
       ]);
+      // quantity is a number, but less than or equal 0
     } else if (parseInt(buyItemQuantity) <= 0) {
       Alert.alert("Huh?", "You want to buy or not?", [{ text: "INDECISIVE" }]);
+      // quantity valid! update user's bought items
     } else {
       updateUserBoughtItems(
         userEmail,
@@ -125,6 +107,7 @@ const BuyItemScreen = ({ route, navigation }) => {
     }
   };
 
+  // useEffect - upon render, get the item + user details
   useEffect(() => {
     getItemSpecific(itemName, setItemSpecific);
     getCurrentUser(userEmail, setUser);
@@ -140,6 +123,7 @@ const BuyItemScreen = ({ route, navigation }) => {
           }}
         />
         <Text>{itemSpecific.description}</Text>
+        <Text>Category: {itemSpecific.type}</Text>
         <Text>${itemSpecific.price}</Text>
         <Text>Quantity: {itemSpecific.quantity}</Text>
         <Text>{user.username}, how many items would you like to purchase?</Text>

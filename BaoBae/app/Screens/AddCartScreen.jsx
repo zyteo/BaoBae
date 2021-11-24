@@ -1,4 +1,3 @@
-import { Route } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
   Text,
@@ -129,6 +128,7 @@ const AddCartScreen = ({ route, navigation }) => {
           }}
         />
         <Text>{itemSpecific.description}</Text>
+        <Text>Category: {itemSpecific.type}</Text>
         <Text>${itemSpecific.price}</Text>
         <Text>Quantity: {itemSpecific.quantity}</Text>
         <Text>
