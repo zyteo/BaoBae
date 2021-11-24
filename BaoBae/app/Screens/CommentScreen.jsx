@@ -14,9 +14,7 @@ import styled from "styled-components/native";
 import {
   addComment,
   getCurrentUser,
-  getItems,
   getItemSpecific,
-  logOutUser,
 } from "../../firebase";
 import colours from "../Config/colours";
 
@@ -28,15 +26,6 @@ const StyledView = styled.View`
   width: 100%;
 `;
 
-const StyledSearchView = styled.View`
-  flex: 1;
-  background-color: ${colours.primary};
-  alignItems: center;
-  justifyContent: center;
-  width: 80%;
-  flexDirection: row;
-  margin: 8px;
-`;
 
 const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
@@ -69,16 +58,6 @@ const StyledText = styled.Text`
 `;
 
 
-const StyledComment = styled.View`
-  alignItems: center;
-  justifyContent: center;
-  margin: 2px;
-  background-color: white;
-  width: 90%;
-  borderRadius: 6px;
-
-`;
-
 const StyledReviewInput = styled.TextInput`
   height: 40px;
   margin: 2px;
@@ -105,39 +84,11 @@ const StyledRatingInput = styled.TextInput`
   fontSize: 14px;
   `;
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  items: {
-    flex: 1,
-    backgroundColor: colours.primary,
-    alignItems: "center",
-    justifyContent: "center",
-    flexDirection: "row",
-    flexWrap: "wrap",
-  },
-  input: {
-    height: 40,
-    margin: 10,
-    borderWidth: 1,
-    padding: 10,
-    width: "90%",
-    backgroundColor: colours.inputbox,
-    color: colours.inputboxtext,
-    borderColor: colours.border,
-  },
-  photo: {
-    width: 80,
-    height: 80,
-  },
-});
 const CommentScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const itemName = route.params.item;
   const userEmail = route.params.email;
+  // react states
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
   const [itemSpecific, setItemSpecific] = useState([]);
@@ -145,17 +96,20 @@ const CommentScreen = ({ route, navigation }) => {
 
   // handle for user adding comment
   const handleAddComment = () => {
-    // alert if passwords dont match
+    // check if rating is a number
     if (Number.isNaN(parseInt(rating)) == true) {
       Alert.alert("Oops!", "Rating is number pls", [{ text: "OK" }]);
+      // rating is a number, but more than 5
     } else if (parseInt(rating) > 5) {
       Alert.alert("Sorry boss!", "I know the item very good but max 5 ok", [
         { text: "OK" },
       ]);
+      // rating is a number, but less than or equal 0
     } else if (parseInt(rating) <= 0) {
       Alert.alert("Pls...", "Don't like item but at least give 1 pls", [
         { text: "OK" },
       ]);
+      // rating valid! add the comment
     } else {
       addComment(
         itemSpecific.name,
@@ -176,6 +130,7 @@ const CommentScreen = ({ route, navigation }) => {
     }
   };
 
+  // useEffect - upon render, get the item + user details
   useEffect(() => {
     getItemSpecific(itemName, setItemSpecific);
     getCurrentUser(userEmail, setUser);
