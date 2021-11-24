@@ -73,26 +73,32 @@ const StyledTouchableOpacityText = styled.Text`
   `;
 
 const SignupScreen = ({ navigation }) => {
+  // react states
   const [email, setEmail] = useState("");
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [passwordCheck, setPasswordCheck] = useState("");
+
   // handle for user sign up
   const handleSignUp = () => {
     // alert if passwords dont match
     if (password !== passwordCheck) {
       Alert.alert("Oops!", "Passwords do not match!", [{ text: "OK" }]);
+      // alert if passwords are too short
     } else if (password.length < 6 || passwordCheck.length < 6) {
       Alert.alert("Oops!", "Password must be at least 6 characters!", [
         { text: "OK" },
       ]);
+      // alert if username is too short
     } else if (username.length < 3) {
       Alert.alert("Oops!", "Username must be at least 3 characters!", [
         { text: "OK" },
       ]);
+      // Register the user
     } else {
       signUpUser(email, password, username, Alert);
       const directBrowse = auth.onAuthStateChanged((user) => {
+        // once account is created, user is automatically signed in. Firebase thing.
         if (user) {
           navigation.navigate("Browse", { email: user.email });
         }
