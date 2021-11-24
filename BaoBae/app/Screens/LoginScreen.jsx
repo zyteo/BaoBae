@@ -52,6 +52,7 @@ const StyledTouchableOpacityText = styled.Text`
   `;
 
 const LoginScreen = ({ navigation }) => {
+  // react states
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 

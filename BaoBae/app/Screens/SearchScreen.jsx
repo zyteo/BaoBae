@@ -12,7 +12,6 @@ import {
 import styled from "styled-components/native";
 import {
   getCurrentUser,
-  getItems,
   logOutUser,
   searchItems,
 } from "../../firebase";
@@ -87,12 +86,14 @@ const StyledItem = styled.View`
 `;
 
 const SearchScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const userEmail = route.params.email;
   const searchText = route.params.search;
-  const [text, setText] = useState("");
+  // react states
   const [items, setItems] = useState([]);
   const [user, setUser] = useState([]);
 
+  // useEffect - upon render, get all the searched items + user details
   useEffect(() => {
     searchItems(searchText, setItems);
     getCurrentUser(userEmail, setUser);
@@ -102,7 +103,12 @@ const SearchScreen = ({ route, navigation }) => {
     <>
       <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
         <StyledView>
+          {/* If search results yield items, show the items, otherwise no items displayed */}
+          {items.length > 0 ? (
           <StyledText>{user.username}, here's the search results.</StyledText>
+        ) : (
+          <StyledText>Sorry, the search yielded no results. Try again?</StyledText>
+        )}
 
           <StyledViewItems>
             {items.map((element, index) => {
