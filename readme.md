@@ -37,12 +37,16 @@ https://user-images.githubusercontent.com/86465458/143161746-d8c2e815-f82e-4f7b-
 https://user-images.githubusercontent.com/86465458/143161964-dfd5ae1c-e1c8-437e-b07d-efd5a0013c54.mp4
 
 #### Empty cart, empty account and search feature
+https://user-images.githubusercontent.com/86465458/143162458-c119cf8c-37ec-49aa-9aa8-d163d30b1d45.mp4
+
 #### Adding to cart and buying item feature
+https://user-images.githubusercontent.com/86465458/143162503-4ecbd637-65c6-4f13-8afc-5461342a6ac6.mp4
+
 #### Buying item from cart + comment feature
+https://user-images.githubusercontent.com/86465458/143162533-eed59e55-cd5b-436f-bbef-2d78dfcedb10.mp4
+
 #### HOT SALE - buying until item is depleted
-
-
-
+https://user-images.githubusercontent.com/86465458/143162577-a8b4d708-637d-4348-97e0-9e0146d6c799.mp4
 
 ### Technology Used
 
