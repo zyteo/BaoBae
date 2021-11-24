@@ -13,10 +13,8 @@ import {
 import styled from "styled-components/native";
 import {
   getCurrentUser,
-  getItemSpecific,
   removeCartItem,
   updateBuyItemsFromCart,
-  updateItemQuantity,
 } from "../../firebase";
 import colours from "../Config/colours";
 
@@ -87,8 +85,12 @@ const StyledItem = styled.View`
 `;
 
 const CartScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const userEmail = route.params.email;
+  // react state
   const [user, setUser] = useState([]);
+
+  // function to get the items in the user cart in an array
   let cartArray = [];
   let cartObjects = user.cart;
   for (const item in cartObjects) {
@@ -110,12 +112,14 @@ const CartScreen = ({ route, navigation }) => {
     });
   };
 
+  // handle for user to remove item from cart
   const handleRemoveCartItem = (email, item) => {
     removeCartItem(email, item);
     Alert.alert("Item removed!", "Gudbai", [{ text: "$ave $" }]);
     navigation.push("Cart", { email: userEmail });
   };
 
+  // useEffect - upon render, get the user details
   useEffect(() => {
     getCurrentUser(userEmail, setUser);
   }, []);
@@ -123,6 +127,7 @@ const CartScreen = ({ route, navigation }) => {
   return (
     <ScrollView contentContainerStyle={{ flexGrow: 1 }}>
       <StyledView>
+        {/* If user has items in cart, show the items, otherwise no items displayed */}
         {cartArray.length > 0 ? (
           <StyledText>{user.username}'s cart:</StyledText>
         ) : (
