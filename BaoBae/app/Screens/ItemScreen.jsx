@@ -98,6 +98,7 @@ const ItemScreen = ({ route, navigation }) => {
           }}
         />
         <Text>{itemSpecific.description}</Text>
+        <Text>Category: {itemSpecific.type}</Text>
         <Text>${itemSpecific.price}</Text>
         <Text>Quantity: {(itemSpecific.quantity > 0) ? itemSpecific.quantity : `SOLD OUT!`}</Text>
 

@@ -119,7 +119,7 @@ const BrowseScreen = ({ route, navigation }) => {
           </StyledText>
           <StyledSearchView>
             <StyledTextInput
-              placeholder="Search items"
+              placeholder="Search items / category"
               onChangeText={(text) => setText(text)}
             />
             <StyledSearch
