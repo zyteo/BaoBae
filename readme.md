@@ -28,6 +28,22 @@ However, Android users can access the app. (Sorry Apple users!)
 
 - Note app is still in development - do expect bugs.
 
+### Video showing App features
+
+#### Sign up
+https://user-images.githubusercontent.com/86465458/143161746-d8c2e815-f82e-4f7b-bdff-31c330830c2e.mp4
+
+#### Log in
+https://user-images.githubusercontent.com/86465458/143161964-dfd5ae1c-e1c8-437e-b07d-efd5a0013c54.mp4
+
+#### Empty cart, empty account and search feature
+#### Adding to cart and buying item feature
+#### Buying item from cart + comment feature
+#### HOT SALE - buying until item is depleted
+
+
+
+
 ### Technology Used
 
 Technologies used to build this project.
