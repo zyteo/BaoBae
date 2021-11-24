@@ -1,4 +1,3 @@
-import { Route } from "@react-navigation/native";
 import React, { useState, useEffect } from "react";
 import {
   Text,
@@ -10,7 +9,7 @@ import {
   ScrollView,
 } from "react-native";
 import styled from "styled-components/native";
-import { getCurrentUser, getItemSpecific } from "../../firebase";
+import { getItemSpecific } from "../../firebase";
 import colours from "../Config/colours";
 
 const StyledView = styled.View`
@@ -72,19 +71,22 @@ const StyledComment = styled.View`
 `;
 
 const ItemScreen = ({ route, navigation }) => {
+  // save the params as a variable
   const itemName = route.params.name;
   const userEmail = route.params.email;
+  // react state
   const [itemSpecific, setItemSpecific] = useState([]);
-  const [user, setUser] = useState([]);
+  
+  // function to get the comments for the item in an array
   let commentsArray = [];
   let comments = itemSpecific.comments;
   for (const comment in comments) {
     commentsArray.push(comments[comment]);
   }
 
+  // useEffect - upon render, get the item details
   useEffect(() => {
     getItemSpecific(itemName, setItemSpecific);
-    getCurrentUser(userEmail, setUser);
   }, []);
 
   return (
