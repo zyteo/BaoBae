@@ -67,6 +67,12 @@ const StyledViewItems = styled.View`
   flexWrap: wrap;
 `;
 
+const StyledTextItem = styled.Text`
+  color: ${colours.inputboxtext};
+  fontSize: 13px;
+  width: 100px;
+  `;
+
 const StyledHorizontalItems = styled.View`
   flexDirection: row;
   flexWrap: wrap;
@@ -143,11 +149,11 @@ const CartScreen = ({ route, navigation }) => {
                       uri: element.image,
                     }}
                   />
-                  <Text>{element.name}</Text>
+                  <StyledTextItem>{element.name}</StyledTextItem>
                 </StyledItem>
                 <StyledItem>
-                  <Text>${element.price} each</Text>
-                  <Text>{element.quantity} in cart</Text>
+                  <StyledTextItem>${element.price} each</StyledTextItem>
+                  <StyledTextItem>{element.quantity} in cart</StyledTextItem>
                 </StyledItem>
 
                 <StyledTouchableOpacity

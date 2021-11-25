@@ -23,6 +23,7 @@ const StyledView = styled.View`
 const StyledTouchableOpacity = styled.TouchableOpacity`
   height: 40px;
   margin: 2px;
+  marginRight: 1px;
   borderWidth: 0.5px;
   borderRadius: 6px;
   padding: 6px;
@@ -59,6 +60,12 @@ const StyledViewItems = styled.View`
   flexDirection: column;
   flexWrap: wrap;
 `;
+
+const StyledTextItem = styled.Text`
+  color: ${colours.inputboxtext};
+  fontSize: 13px;
+  width: 100px;
+  `;
 
 const StyledHorizontalItems = styled.View`
   flexDirection: row;
@@ -115,12 +122,12 @@ const AccountScreen = ({ navigation, route }) => {
                       uri: element.image,
                     }}
                   />
-                  <Text>{element.name}</Text>
+                  <StyledTextItem>{element.name}</StyledTextItem>
                 </StyledItem>
                 <StyledItem>
-                  <Text>${element.price} each</Text>
-                  <Text>{element.quantity} bought</Text>
-                  <Text>Total ${element.price * element.quantity}</Text>
+                  <StyledTextItem>${element.price} each</StyledTextItem>
+                  <StyledTextItem>{element.quantity} bought</StyledTextItem>
+                  <StyledTextItem>Total ${element.price * element.quantity}</StyledTextItem>
                 </StyledItem>
                 <StyledTouchableOpacity
                   onPress={() =>
