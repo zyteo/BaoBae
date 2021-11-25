@@ -236,6 +236,66 @@ const db = getFirestore();
 //     "https://m.media-amazon.com/images/I/61i30PaSlYS._AC_SL1500_.jpg",
 //   description: "Tunnels for your pets, tunnels for your toddler",
 // });
+// setDoc(doc(db, "items", "Pet Food Game"), {
+//   name: "Pet Food Game",
+//   price: 13,
+//   quantity: 20000,
+//   type: "Pet",
+//   comments: {},
+//   image:
+//     "https://i.insider.com/60523f51fe6a340019acf276?width=700",
+//   description: "Keep your pet's brain healthy and happy",
+// });
+// setDoc(doc(db, "items", "Marshmallows"), {
+//   name: "Marshmallows",
+//   price: 3,
+//   quantity: 690,
+//   type: "Food",
+//   comments: {},
+//   image:
+//     "https://media.istockphoto.com/photos/marshmallow-background-picture-id506817544",
+//   description: "Squishy and yummy but too much may give you diabetes...",
+// });
+// setDoc(doc(db, "items", "Hot Chocolate"), {
+//   name: "Hot Chocolate",
+//   price: 1.50,
+//   quantity: 5000,
+//   type: "Food",
+//   comments: {},
+//   image:
+//     "https://static01.nyt.com/images/2019/02/01/dining/gk-dairy-free-hot-chocolate/gk-dairy-free-hot-chocolate-articleLarge.jpg",
+//   description: "The best when it’s cold!",
+// });
+// setDoc(doc(db, "items", "Ugly Christmas Sweater"), {
+//   name: "Ugly Christmas Sweater",
+//   price: 19.90,
+//   quantity: 10000,
+//   type: "Fashion",
+//   comments: {},
+//   image:
+//     `https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/wine-ugly-sweater-1544738925.jpg`,
+//   description: "Keeps you warm. Bonus: It helps you smuggle your wine into the cinema",
+// });
+// setDoc(doc(db, "items", "Barney Costume"), {
+//   name: "Barney Costume",
+//   price: 69.90,
+//   quantity: 10000,
+//   type: "Fashion",
+//   comments: {},
+//   image:
+//     `https://static.wikia.nocookie.net/barney/images/0/07/BarneyinTUTU.jpg/revision/latest?cb=20210805191524`,
+//   description: "Limited edition Barney costume with pink tutu",
+// });
+// setDoc(doc(db, "items", "Deep Fried Mars Bars"), {
+//   name: "Deep Fried Mars Bars",
+//   price: 1.50,
+//   quantity: 690,
+//   type: "Food",
+//   comments: {},
+//   image:
+//     "https://img.theculturetrip.com/1440x807/smart/wp-content/uploads/2016/08/946220031_0aa58a55fe_o.jpg",
+//   description: "Sounds delicious but you shouldn’t eat too many…",
+// });
 
 // add/update comments for item
 // If comment doesn't exist, new info created, otherwise, info will be overwritten
@@ -263,9 +323,12 @@ const searchItems = async (searchQuery, setItems) => {
     .split(" ")
     .map((ele) => ele.charAt(0).toUpperCase() + ele.slice(1))
     .join(" ");
-    // query for both item name and type
+  // query for both item name and type
   const q = query(collection(db, "items"), where("name", "==", cleanedText));
-  const qType = query(collection(db, "items"), where("type", "==", cleanedText));
+  const qType = query(
+    collection(db, "items"),
+    where("type", "==", cleanedText)
+  );
   const itemArray = [];
   const querySnapshot = await getDocs(q);
   const querySnapshot2 = await getDocs(qType);

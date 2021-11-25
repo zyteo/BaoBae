@@ -67,14 +67,22 @@ const StyledText = styled.Text`
   justify-content: center;
 `;
 
-const StyledViewItems = styled.View`
-  flex: 1;
+const StyledTextItem = styled.Text`
+  color: ${colours.inputboxtext};
+  fontSize: 12px;
+  height: 40px;
+  `;
+  
+  const StyledViewItems = styled.View`
+  height: 100%;
+  flex: 4;
   background-color: ${colours.primary};
-  align-items: center;
+  alignItems: center;
   justifyContent: center;
   width: 100%;
   flexDirection: row;
   flexWrap: wrap;
+  alignSelf: center;
 `;
 
 const StyledItem = styled.View`
@@ -127,7 +135,7 @@ const SearchScreen = ({ route, navigation }) => {
                         uri: element.image,
                       }}
                     />
-                    <Text>{element.name}</Text>
+                    <StyledTextItem>{element.name}</StyledTextItem>
                   </TouchableOpacity>
                 </StyledItem>
               );

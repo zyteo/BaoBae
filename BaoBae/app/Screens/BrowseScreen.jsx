@@ -78,7 +78,14 @@ const StyledText = styled.Text`
   justify-content: center;
 `;
 
-const StyledViewItems = styled.View`
+const StyledTextItem = styled.Text`
+  color: ${colours.inputboxtext};
+  fontSize: 12px;
+  height: 40px;
+  `;
+  
+  const StyledViewItems = styled.View`
+  height: 100%;
   flex: 4;
   background-color: ${colours.primary};
   alignItems: center;
@@ -154,7 +161,7 @@ const BrowseScreen = ({ route, navigation }) => {
                         uri: element.image,
                       }}
                     />
-                    <Text>{element.name}</Text>
+                    <StyledTextItem>{element.name}</StyledTextItem>
                   </TouchableOpacity>
                 </StyledItem>
               );

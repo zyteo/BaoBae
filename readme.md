@@ -146,7 +146,7 @@ Tested app on another phone and edited styling accordingly.
 Built up on search function to include item types too.
 Neaten code, add comments for others to follow easier and remove redundancies. 
 
-
+- 25 Nov: Edit styling to make app look better.
 
 ```
 
