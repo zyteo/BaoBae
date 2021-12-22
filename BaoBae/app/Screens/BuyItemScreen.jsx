@@ -84,12 +84,12 @@ const BuyItemScreen = ({ route, navigation }) => {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
       // quantity is a number, but more than 10
     } else if (parseInt(buyItemQuantity) > 10) {
-      Alert.alert("CoNsuMeRiSm BaD!", "Y U WAN buy so many? 10 max!!", [
-        { text: "YES BOSS" },
+      Alert.alert("Limit!", "Sorry, maximum limit of 10!", [
+        { text: "OK" },
       ]);
       // quantity is a number, but less than or equal 0
     } else if (parseInt(buyItemQuantity) <= 0) {
-      Alert.alert("Huh?", "You want to buy or not?", [{ text: "INDECISIVE" }]);
+      Alert.alert("Huh?", "Quantity should be greater than 0!", [{ text: "OK" }]);
       // quantity valid! update user's bought items
     } else {
       updateUserBoughtItems(

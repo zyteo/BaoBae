@@ -121,7 +121,7 @@ const CartScreen = ({ route, navigation }) => {
   // handle for user to remove item from cart
   const handleRemoveCartItem = (email, item) => {
     removeCartItem(email, item);
-    Alert.alert("Item removed!", "Gudbai", [{ text: "$ave $" }]);
+    Alert.alert("Item removed!", "Goodbye items!", [{ text: "OK" }]);
     navigation.push("Cart", { email: userEmail });
   };
 

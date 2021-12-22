@@ -84,12 +84,12 @@ const AddCartScreen = ({ route, navigation }) => {
       Alert.alert("Oops!", "Numbers only!", [{ text: "OK" }]);
       // quantity is a number, but more than 10
     } else if (parseInt(addCartQuantity) > 10) {
-      Alert.alert("CoNsuMeRiSm BaD!", "Boss say limit to 10 only OK", [
-        { text: "YES BOSS" },
+      Alert.alert("Limit!", "Sorry, maximum limit of 10!", [
+        { text: "OK" },
       ]);
       // quantity is a number, but less than or equal 0
     } else if (parseInt(addCartQuantity) <= 0) {
-      Alert.alert("Huh?", "You want to buy or not?", [{ text: "INDECISIVE" }]);
+      Alert.alert("Huh?", "Quantity should be greater than 0!", [{ text: "OK" }]);
       // quantity valid! update user's cart
     } else {
       updateCartUser(
@@ -103,10 +103,10 @@ const AddCartScreen = ({ route, navigation }) => {
         "Added to cart!",
         `You added ${addCartQuantity} ${
           itemSpecific.name
-        } to your cart. YOU HAVE THE POTENTIAL to lose $ ${
+        } to your cart, for a potential cost of $${
           parseInt(addCartQuantity) * itemSpecific.price
-        } once you buy it!`,
-        [{ text: "YAY I GOT POTENTIAL!" }]
+        }!`,
+        [{ text: "OK" }]
       );
       navigation.navigate("Browse", { email: userEmail });
     }

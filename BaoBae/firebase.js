@@ -84,14 +84,14 @@ const signInUser = (email, password, Alert) => {
     .catch((error) => {
       // if email is not valid
       if (error.code === "auth/invalid-email") {
-        Alert.alert("Login failed!", "Enter valid email leh plsss", [
+        Alert.alert("Login failed!", "Enter valid email please", [
           { text: "OK" },
         ]);
         // if user doesn't exist
       } else if (error.code === "auth/user-not-found") {
         Alert.alert(
           "Login failed!",
-          "User not found! If you want to buy thing pls make account hor.",
+          "User not found! If you want to access the app, please make an account",
           [{ text: "ROGER" }]
         );
         // if user enters wrong password
@@ -430,11 +430,11 @@ const updateUserBoughtItems = async (
     // decrease item quantity in items db
     updateItemQuantity(item, quantity);
     Alert.alert(
-      "Buy liao!",
+      "Bought!",
       `You bought ${quantity} ${item} at $ ${price} each, for a total of $ ${
         parseInt(quantity) * price
       }.`,
-      [{ text: "TY 4 MAKING ME BROKE" }]
+      [{ text: "OK" }]
     );
     // if item quantity < quantity user wants to buy, throw alert
   } else {
@@ -505,11 +505,11 @@ const updateBuyItemsFromCart = async (
     // decrease item quantity in items db
     updateItemQuantity(item, quantity);
     Alert.alert(
-      "Buy liao!",
+      "Bought!",
       `You bought ${quantity} ${item} at $ ${price} each, for a total of $ ${
         parseInt(quantity) * price
       }.`,
-      [{ text: "TY 4 MAKING ME BROKE" }]
+      [{ text: "OK" }]
     );
   } else {
     Alert.alert(

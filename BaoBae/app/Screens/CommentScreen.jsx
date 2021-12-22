@@ -98,15 +98,15 @@ const CommentScreen = ({ route, navigation }) => {
   const handleAddComment = () => {
     // check if rating is a number
     if (Number.isNaN(parseInt(rating)) == true) {
-      Alert.alert("Oops!", "Rating is number pls", [{ text: "OK" }]);
+      Alert.alert("Oops!", "Rating must be a number", [{ text: "OK" }]);
       // rating is a number, but more than 5
     } else if (parseInt(rating) > 5) {
-      Alert.alert("Sorry boss!", "I know the item very good but max 5 ok", [
+      Alert.alert("Sorry!", "Maximum of 5!", [
         { text: "OK" },
       ]);
       // rating is a number, but less than or equal 0
     } else if (parseInt(rating) <= 0) {
-      Alert.alert("Pls...", "Don't like item but at least give 1 pls", [
+      Alert.alert("Sorry!", "Minimum of 1!", [
         { text: "OK" },
       ]);
       // rating valid! add the comment
@@ -120,8 +120,8 @@ const CommentScreen = ({ route, navigation }) => {
       );
       Alert.alert(
         "Comment added!",
-        `Now the whole world can see what you wrote!`,
-        [{ text: "YAY!" }]
+        `Now everyone can see your comment!`,
+        [{ text: "OK" }]
       );
       navigation.push("Item", {
         name: itemSpecific.name,
