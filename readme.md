@@ -26,27 +26,27 @@ However, Android users can access the app. (Sorry Apple users!)
 
 3. Enjoy!
 
-- Note app is still in development - do expect bugs.
+- Note app is still in development - there might be bugs.
 
 ### Video showing App features
 
 #### Sign up
-https://user-images.githubusercontent.com/86465458/143161746-d8c2e815-f82e-4f7b-bdff-31c330830c2e.mp4
+https://user-images.githubusercontent.com/86465458/143440086-2703ed07-f899-4178-8057-3bc9e3e8fdc7.mp4
 
 #### Log in
 https://user-images.githubusercontent.com/86465458/143161964-dfd5ae1c-e1c8-437e-b07d-efd5a0013c54.mp4
 
 #### Empty cart, empty account and search feature
-https://user-images.githubusercontent.com/86465458/143162458-c119cf8c-37ec-49aa-9aa8-d163d30b1d45.mp4
+https://user-images.githubusercontent.com/86465458/143440145-5e0a6cc3-dbec-4f23-aedb-c0d882947a67.mp4
 
 #### Adding to cart and buying item feature
-https://user-images.githubusercontent.com/86465458/143162503-4ecbd637-65c6-4f13-8afc-5461342a6ac6.mp4
+https://user-images.githubusercontent.com/86465458/143440234-3e7793e3-489f-48d2-b72c-d0d25563b66c.mp4
 
-#### Buying item from cart + comment feature
-https://user-images.githubusercontent.com/86465458/143162533-eed59e55-cd5b-436f-bbef-2d78dfcedb10.mp4
+#### Comment feature
+https://user-images.githubusercontent.com/86465458/143440307-17046f0e-acf4-4d3e-a613-d76a6dc14eda.mp4
 
 #### HOT SALE - buying until item is depleted
-https://user-images.githubusercontent.com/86465458/143162577-a8b4d708-637d-4348-97e0-9e0146d6c799.mp4
+https://user-images.githubusercontent.com/86465458/143440348-54a20683-b65a-409c-b24a-1c5c464b308d.mp4
 
 ### Technology Used
 
